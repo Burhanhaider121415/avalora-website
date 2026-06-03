@@ -8,7 +8,7 @@ const NAV_LINKS = [
   { label: 'Demo', href: '/#demo' },
   { label: 'How It Works', href: '/#how-it-works' },
   { label: 'Workflows', href: '/#workflow' },
-  { label: 'Leak Check', href: '/#leak-check' },
+  { label: 'Leak Check', href: 'https://leakcheck.theavalora.com' },
   { label: 'FAQ', href: '/#faq' },
 ];
 

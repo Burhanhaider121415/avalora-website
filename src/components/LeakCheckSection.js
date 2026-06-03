@@ -37,10 +37,10 @@ export default function LeakCheck() {
 
               <div className={styles.ctaArea}>
                 <a
-                  href="/#book-call"
+                  href="https://leakcheck.theavalora.com"
                   className={styles.primaryCTA}
                 >
-                  Book a Private Fit Call
+                  Run the Leak Check
                 </a>
                 <p className={styles.supportLine}>
                   15 minutes. No obligation. We review your call flow and missed booking opportunities.

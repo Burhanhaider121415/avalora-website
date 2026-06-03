@@ -31,22 +31,43 @@ export default function RetellManager() {
       // Widget is ready — stop polling
       clearInterval(poll);
 
-      // ─── Hide "Your RetellAI assistant" subtitle ───
-      const hideBranding = () => {
+      // ─── Hide vendor branding + customize modal text ───
+      const customizeBranding = () => {
         try {
-          // Hide subtitle
+          // Hide "Your RetellAI assistant" subtitle
           const subtitle = sr.querySelector('[class*="brandSubtitle"]');
           if (subtitle) subtitle.style.display = 'none';
 
           // Hide "Powered by Retell"
           const powered = sr.querySelector('[class*="poweredBy"]');
           if (powered) powered.style.display = 'none';
+
+          // Change "Start to call" button text to "Start Live Demo"
+          const allBtns = sr.querySelectorAll('button');
+          allBtns.forEach(btn => {
+            if (btn.textContent && btn.textContent.trim().includes('Start to call')) {
+              // Find the text span inside
+              const spans = btn.querySelectorAll('span');
+              spans.forEach(span => {
+                if (span.textContent.trim() === 'Start to call') {
+                  span.textContent = 'Start Live Demo';
+                }
+              });
+              if (spans.length === 0 && btn.childNodes.length > 0) {
+                btn.childNodes.forEach(node => {
+                  if (node.nodeType === 3 && node.textContent.trim() === 'Start to call') {
+                    node.textContent = 'Start Live Demo';
+                  }
+                });
+              }
+            }
+          });
         } catch (e) { /* ignore */ }
       };
 
-      hideBranding();
-      // Keep hiding in case the widget re-renders
-      const hideInterval = setInterval(hideBranding, 800);
+      customizeBranding();
+      // Keep customizing in case the widget re-renders
+      const hideInterval = setInterval(customizeBranding, 800);
 
       // ─── Expose global trigger function ───
       window.triggerRetellWidget = () => {
