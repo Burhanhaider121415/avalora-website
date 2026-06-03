@@ -85,3 +85,16 @@ button:focus-visible {
   outline: 2px solid var(--emerald);
   outline-offset: 2px;
 }
+
+/* ── Retell Widget Handling ── */
+retell-widget {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+body.demo-open retell-widget {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 100000 !important;
+}

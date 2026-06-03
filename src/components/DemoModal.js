@@ -68,6 +68,7 @@ export default function DemoModal({ isOpen, onClose }) {
 
     document.addEventListener('keydown', handleKeyDown);
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('demo-open');
 
     // Focus the modal on open
     const timer = setTimeout(() => {
@@ -77,6 +78,7 @@ export default function DemoModal({ isOpen, onClose }) {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = '';
+      document.body.classList.remove('demo-open');
       clearTimeout(timer);
     };
   }, [isOpen, handleKeyDown]);
@@ -159,10 +161,10 @@ export default function DemoModal({ isOpen, onClose }) {
               {/* ── Header ── */}
               <motion.div className={styles.header} variants={fadeUp}>
                 <h2 className={styles.title}>
-                  Hear Avalora Handle a Med Spa Inquiry
+                  Talk to Avalora
                 </h2>
                 <p className={styles.subtitle}>
-                  After-hours Botox/filler inquiry — English/Spanish supported
+                  Try a simulated med spa inquiry with Sofia.
                 </p>
               </motion.div>
 
@@ -187,8 +189,21 @@ export default function DemoModal({ isOpen, onClose }) {
                   ))}
                 </div>
 
-                <button className={styles.playBtn} aria-label="Play demo audio">
-                  <span className={styles.playIcon} />
+                <button 
+                  className={styles.talkBtn} 
+                  onClick={() => {
+                    const retellWidget = document.querySelector('retell-widget');
+                    if (retellWidget && retellWidget.shadowRoot) {
+                      const btn = retellWidget.shadowRoot.querySelector('button');
+                      if (btn) btn.click();
+                      else retellWidget.click();
+                    } else if (retellWidget) {
+                      retellWidget.click();
+                    }
+                  }}
+                  aria-label="Talk to Sofia"
+                >
+                  Talk to Sofia
                 </button>
               </motion.div>
 
@@ -236,12 +251,8 @@ export default function DemoModal({ isOpen, onClose }) {
 
               {/* ── Footer Notes ── */}
               <motion.div className={styles.footerNotes} variants={fadeUp}>
-                <p className={styles.launchNote}>
-                  Live demo integration launching soon.
-                </p>
                 <p className={styles.disclaimer}>
-                  Demo examples use simulated or anonymized patient scenarios
-                  only.
+                  Demo scenarios are simulated and do not provide medical advice.
                 </p>
               </motion.div>
             </motion.div>
