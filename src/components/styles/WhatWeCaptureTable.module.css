@@ -52,10 +52,10 @@
 
 .subtitle {
   font-family: var(--font-sans);
-  font-size: 1.0625rem;
+  font-size: 1.12rem; /* Bumped for readability */
   color: var(--charcoal);
   line-height: 1.7;
-  margin-bottom: var(--space-3xl);
+  margin-bottom: var(--space-xl); /* Reduced from var(--space-3xl) */
   max-width: 560px;
 }
 
@@ -84,7 +84,7 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--white);
-  padding: 1.1rem 1.5rem;
+  padding: 0.8rem 1.25rem; /* Reduced from 1.1rem 1.5rem */
   text-align: left;
   white-space: nowrap;
 }
@@ -112,9 +112,9 @@
 
 .table td {
   font-family: var(--font-sans);
-  font-size: 1rem;
+  font-size: 1.12rem; /* Bumped from 1rem for readability (+12%) */
   color: var(--charcoal);
-  padding: 1.1rem 1.5rem;
+  padding: 0.85rem 1.25rem; /* Reduced from 1.1rem 1.5rem */
   line-height: 1.6;
   vertical-align: top;
 }

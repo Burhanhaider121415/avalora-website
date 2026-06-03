@@ -54,7 +54,7 @@
 
 .tagline {
   font-family: var(--font-sans);
-  font-size: 0.95rem;
+  font-size: 1.05rem; /* Increased size for readability */
   line-height: var(--lh-relaxed);
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: var(--space-md);
@@ -94,7 +94,7 @@
 
 .columnLink {
   font-family: var(--font-sans);
-  font-size: 0.95rem;
+  font-size: 1.05rem; /* Increased size for readability */
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   transition: var(--transition-fast);
@@ -110,7 +110,7 @@
 /* --- Contact Email --- */
 .email {
   font-family: var(--font-sans);
-  font-size: var(--fs-sm);
+  font-size: 1.05rem; /* Increased size for readability */
   color: var(--gold);
   text-decoration: none;
   font-weight: var(--fw-medium);
@@ -141,7 +141,7 @@
 
 .disclaimerText {
   font-family: var(--font-sans);
-  font-size: 0.9rem;
+  font-size: 1rem; /* Increased size for readability */
   line-height: var(--lh-relaxed);
   color: rgba(255, 255, 255, 0.55);
   margin: 0;
@@ -156,7 +156,7 @@
 
 .copyright {
   font-family: var(--font-sans);
-  font-size: 0.85rem;
+  font-size: 0.95rem; /* Increased size for readability */
   color: rgba(255, 255, 255, 0.5);
   margin: 0;
 }

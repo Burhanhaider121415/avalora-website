@@ -115,27 +115,107 @@
 
 /* ── Leak Flow Connector ── */
 
-.flowConnector {
+.visualFlow {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-sm);
-  margin-bottom: var(--space-2xl);
+  gap: 1.5rem;
+  max-width: 840px;
+  margin: 0 auto 3.5rem;
+  background: var(--ivory-warm);
+  border: 1px solid rgba(27, 107, 90, 0.08);
+  padding: 1.25rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(26, 31, 54, 0.02);
 }
 
-.flowDot {
-  width: 6px;
-  height: 6px;
+.flowStep {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex: 1;
+}
+
+.flowStepActive {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex: 1.1;
+  background: var(--white);
+  border: 1px solid rgba(197, 165, 114, 0.35);
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(197, 165, 114, 0.06);
+}
+
+.flowIcon {
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  background: var(--sage);
-  opacity: 0.5;
+  background: rgba(143, 168, 154, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sage);
+  flex-shrink: 0;
 }
 
-.flowLine {
-  width: 40px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--sage), transparent);
-  opacity: 0.4;
+.flowIconActive {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(27, 107, 90, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--emerald);
+  flex-shrink: 0;
+  box-shadow: 0 0 12px rgba(27, 107, 90, 0.1);
+}
+
+.flowText {
+  display: flex;
+  flex-direction: column;
+}
+
+.flowLabel {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--sage);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.flowLabelActive {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--emerald);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.flowValue {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--charcoal);
+}
+
+.flowValueActive {
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.flowArrow {
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
 }
 
 /* ── Leak Cards Section ── */
@@ -268,7 +348,19 @@
     padding: 1.75rem var(--space-md);
   }
 
-  .flowConnector {
-    display: none;
+  .visualFlow {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  
+  .flowArrow {
+    transform: rotate(90deg);
+  }
+
+  .flowStep, .flowStepActive {
+    width: 100%;
+    justify-content: flex-start;
   }
 }

@@ -40,35 +40,10 @@
 
 .cardsGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 1.5rem;
   margin-bottom: 3.5rem;
-}
-
-/* Last row: 2 cards centered */
-.cardsGrid > *:nth-child(4) {
-  grid-column: 1 / 2;
-}
-
-.cardsGrid > *:nth-child(5) {
-  grid-column: 2 / 3;
-}
-
-/* Push last 2 cards to center when there's 5 items */
-@supports (grid-template-columns: repeat(3, 1fr)) {
-  .cardsGrid {
-    justify-items: center;
-  }
-
-  .cardsGrid > *:nth-child(4) {
-    grid-column: auto;
-    justify-self: end;
-  }
-
-  .cardsGrid > *:nth-child(5) {
-    grid-column: auto;
-    justify-self: start;
-  }
+  justify-items: center;
 }
 
 .card {
@@ -79,11 +54,21 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   max-width: 360px;
   width: 100%;
+  grid-column: span 2;
 }
 
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 32px rgba(27, 107, 90, 0.08);
+}
+
+/* Center last row (Card 4 and 5) in a 6-column grid */
+.cardsGrid > *:nth-child(4) {
+  grid-column: 2 / span 2;
+}
+
+.cardsGrid > *:nth-child(5) {
+  grid-column: 4 / span 2;
 }
 
 .cardIcon {
@@ -100,7 +85,7 @@
 
 .cardTitle {
   font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 1.15rem;
+  font-size: 1.25rem; /* Increased size for readability */
   font-weight: 600;
   color: var(--navy, #1A1F36);
   margin: 0 0 0.6rem;
@@ -108,7 +93,7 @@
 
 .cardDescription {
   font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 1.05rem;
+  font-size: 1.12rem; /* Increased size for readability (+10-15%) */
   color: var(--charcoal, #2D2D3A);
   line-height: 1.7;
   margin: 0;
@@ -149,7 +134,7 @@
 
 .hipaaTitle {
   font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 1.1rem;
+  font-size: 1.2rem; /* Increased size for readability */
   font-weight: 600;
   color: var(--navy, #1A1F36);
   margin: 0 0 0.75rem;
@@ -157,7 +142,7 @@
 
 .hipaaText {
   font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 1rem;
+  font-size: 1.08rem; /* Increased size for readability (+10-15%) */
   color: var(--charcoal, #2D2D3A);
   line-height: 1.7;
   margin: 0 0 0.75rem;
@@ -172,7 +157,7 @@
   align-items: center;
   gap: 0.4rem;
   font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 0.9rem;
+  font-size: 0.95rem; /* Increased size for readability */
   font-weight: 600;
   color: var(--emerald, #1B6B5A);
   text-decoration: none;
@@ -204,19 +189,25 @@
 
 @media (max-width: 900px) {
   .cardsGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 
-  .cardsGrid > *:nth-child(4),
+  .card {
+    grid-column: span 2 !important;
+  }
+
+  .cardsGrid > *:nth-child(4) {
+    grid-column: span 2 !important;
+  }
+
   .cardsGrid > *:nth-child(5) {
-    grid-column: auto;
-    justify-self: center;
+    grid-column: 2 / span 2 !important;
   }
 }
 
 @media (max-width: 600px) {
   .section {
-    padding: 4.5rem 1rem;
+    padding: 3.5rem 1rem;
   }
 
   .cardsGrid {
@@ -225,6 +216,12 @@
 
   .card {
     max-width: 100%;
+    grid-column: span 1 !important;
+  }
+
+  .cardsGrid > *:nth-child(4),
+  .cardsGrid > *:nth-child(5) {
+    grid-column: span 1 !important;
   }
 
   .hipaaInner {
@@ -233,3 +230,4 @@
     gap: 1rem;
   }
 }
+

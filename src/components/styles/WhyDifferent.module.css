@@ -45,7 +45,7 @@
 
 .header {
   text-align: center;
-  margin-bottom: var(--space-3xl);
+  margin-bottom: var(--space-xl); /* Reduced from var(--space-3xl) */
 }
 
 .heading {
@@ -79,7 +79,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  padding: 1.1rem var(--space-xl);
+  padding: 0.8rem var(--space-xl); /* Reduced from 1.1rem */
   text-align: left;
   color: rgba(255, 255, 255, 0.7);
 }
@@ -106,9 +106,9 @@
 
 .tableBody td {
   font-family: var(--font-sans);
-  font-size: 1rem;
+  font-size: 1.12rem; /* Bumped from 1rem for readability (+12%) */
   line-height: 1.6;
-  padding: 1.1rem var(--space-xl);
+  padding: 0.85rem var(--space-xl); /* Reduced from 1.1rem */
   border-bottom: 1px solid rgba(143, 168, 154, 0.08);
   vertical-align: top;
 }

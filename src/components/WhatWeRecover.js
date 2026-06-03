@@ -139,24 +139,47 @@ export default function WhatWeRecover() {
           </p>
         </header>
 
-        {/* Module Grid */}
-        <div className={styles.moduleGrid} role="list">
-          {modules.map((mod) => {
-            const IconComponent = mod.icon;
-            return (
-              <article key={mod.title} className={styles.moduleCard} role="listitem">
-                <div className={styles.cardIcon}>
-                  <IconComponent className={styles.icon} />
-                </div>
-                <h3 className={styles.cardTitle}>{mod.title}</h3>
-                <p className={styles.cardDescription}>{mod.description}</p>
-                <p className={styles.goodFor}>
-                  <span className={styles.goodForLabel}>Good for: </span>
-                  {mod.goodFor}
-                </p>
-              </article>
-            );
-          })}
+        {/* Module Grid + Mockup Container */}
+        <div className={styles.contentWrapper}>
+          <div className={styles.moduleGrid} role="list">
+            {modules.map((mod) => {
+              const IconComponent = mod.icon;
+              return (
+                <article key={mod.title} className={styles.moduleCard} role="listitem">
+                  <div className={styles.cardIcon}>
+                    <IconComponent className={styles.icon} />
+                  </div>
+                  <h3 className={styles.cardTitle}>{mod.title}</h3>
+                  <p className={styles.cardDescription}>{mod.description}</p>
+                  <p className={styles.goodFor}>
+                    <span className={styles.goodForLabel}>Good for: </span>
+                    {mod.goodFor}
+                  </p>
+                </article>
+              );
+            })}
+          </div>
+
+          <div className={styles.mockupColumn}>
+            <div className={styles.mockupSticky}>
+              <div className={styles.mockupCard}>
+                <span className={styles.mockupTag}>Active Capture</span>
+                <img 
+                  src="/images/phone-ui-mockup.png" 
+                  alt="Avalora Patient Intake Interface" 
+                  className={styles.mockupImage}
+                />
+              </div>
+              <div className={styles.mockupCardSecondary}>
+                <span className={styles.mockupTagSecondary}>Staff Handoff</span>
+                <img 
+                  src="/images/staff-summary-card.png" 
+                  alt="Staff Summary Notification" 
+                  className={styles.mockupImage}
+                />
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Supporting Workflows */}

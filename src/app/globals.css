@@ -79,14 +79,14 @@
   --space-xl: 2rem;       /* 32px */
   --space-2xl: 3rem;      /* 48px */
   --space-3xl: 4rem;      /* 64px */
-  --space-4xl: 6rem;      /* 96px */
+  --space-4xl: 4.5rem;      /* Compressed from 6rem */
   --space-5xl: 8rem;      /* 128px */
 
   /* — Layout — */
   --container-max: 1200px;
   --container-narrow: 800px;
   --container-wide: 1400px;
-  --section-padding: var(--space-4xl) var(--space-lg);
+  --section-padding: 4.5rem var(--space-lg); /* Compressed from var(--space-4xl) var(--space-lg) */
   --header-height: 72px;
   --announcement-height: 40px;
 

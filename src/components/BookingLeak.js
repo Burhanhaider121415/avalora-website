@@ -101,13 +101,56 @@ export default function BookingLeak() {
           </p>
         </header>
 
-        {/* Flow connector */}
-        <div className={styles.flowConnector} aria-hidden="true">
-          <span className={styles.flowDot} />
-          <span className={styles.flowLine} />
-          <span className={styles.flowDot} />
-          <span className={styles.flowLine} />
-          <span className={styles.flowDot} />
+        {/* Premium visual flow break */}
+        <div className={styles.visualFlow} aria-hidden="true">
+          <div className={styles.flowStep}>
+            <div className={styles.flowIcon}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <div className={styles.flowText}>
+              <span className={styles.flowLabel}>Patient Inquiry</span>
+              <span className={styles.flowValue}>Call / DM / Form</span>
+            </div>
+          </div>
+
+          <div className={styles.flowArrow}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+
+          <div className={styles.flowStepActive}>
+            <div className={styles.flowIconActive}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M9 12l2 2 4-4M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <div className={styles.flowText}>
+              <span className={styles.flowLabelActive}>Avalora Captures</span>
+              <span className={styles.flowValueActive}>Instant Response</span>
+            </div>
+          </div>
+
+          <div className={styles.flowArrow}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+
+          <div className={styles.flowStep}>
+            <div className={styles.flowIcon}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <rect x="4" y="3" width="16" height="18" rx="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M9 9h6M9 13h6M9 17h4" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <div className={styles.flowText}>
+              <span className={styles.flowLabel}>Staff Handoff</span>
+              <span className={styles.flowValue}>Clean Scheduled Task</span>
+            </div>
+          </div>
         </div>
 
         {/* Problem narrative */}

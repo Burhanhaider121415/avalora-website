@@ -52,11 +52,93 @@
 
 /* ── Module Grid ── */
 
+.contentWrapper {
+  display: flex;
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-3xl);
+  align-items: flex-start;
+}
+
 .moduleGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr); /* 2 columns on desktop to fit mockup column */
   gap: var(--space-xl);
-  margin-bottom: var(--space-3xl);
+  flex: 2;
+  margin-bottom: 0;
+}
+
+.mockupColumn {
+  flex: 1;
+  min-width: 300px;
+  position: sticky;
+  top: 100px;
+}
+
+.mockupSticky {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mockupCard {
+  background: var(--white);
+  border: 1px solid rgba(197, 165, 114, 0.25);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.mockupCardSecondary {
+  background: var(--white);
+  border: 1px solid rgba(27, 107, 90, 0.15);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.mockupCard:hover, .mockupCardSecondary:hover {
+  transform: translateY(-2px);
+}
+
+.mockupTag {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(197, 165, 114, 0.12);
+  color: var(--gold);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.75rem;
+}
+
+.mockupTagSecondary {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(27, 107, 90, 0.08);
+  color: var(--emerald);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.75rem;
+}
+
+.mockupImage {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  display: block;
 }
 
 /* ── Module Card ── */
@@ -136,7 +218,7 @@
 
 .cardDescription {
   font-family: var(--font-sans);
-  font-size: 1.05rem;
+  font-size: 1.12rem; /* Increased size for readability (+10-15%) */
   color: var(--charcoal);
   line-height: 1.7;
   margin-bottom: var(--space-lg);
@@ -217,11 +299,29 @@
   opacity: 0.5;
 }
 
-/* ── Responsive ── */
-
 @media (max-width: 1024px) {
+  .contentWrapper {
+    flex-direction: column;
+  }
+  
   .moduleGrid {
+    flex: none;
+    width: 100%;
     grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .mockupColumn {
+    width: 100%;
+    position: static;
+    margin-top: var(--space-2xl);
+  }
+  
+  .mockupSticky {
+    flex-direction: row;
+  }
+  
+  .mockupCard, .mockupCardSecondary {
+    flex: 1;
   }
 }
 
@@ -248,6 +348,10 @@
   .moduleGrid {
     grid-template-columns: 1fr;
     gap: var(--space-md);
+  }
+
+  .mockupSticky {
+    flex-direction: column;
   }
 
   .workflowsList {

@@ -34,7 +34,7 @@
 
 .header {
   text-align: center;
-  margin-bottom: var(--space-3xl);
+  margin-bottom: var(--space-xl); /* Reduced from var(--space-3xl) */
 }
 
 .heading {
@@ -51,7 +51,7 @@
 .accordion {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
+  gap: var(--space-md); /* Reduced from var(--space-lg) */
 }
 
 /* Individual card */
@@ -88,7 +88,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-md);
-  padding: var(--space-xl) var(--space-2xl);
+  padding: var(--space-md) var(--space-xl); /* Reduced from var(--space-xl) var(--space-2xl) */
   background: transparent;
   border: none;
   cursor: pointer;
@@ -162,7 +162,7 @@
 }
 
 .answer {
-  padding: 0 var(--space-2xl) var(--space-xl);
+  padding: 0 var(--space-xl) var(--space-lg); /* Reduced from 0 var(--space-2xl) var(--space-xl) */
   font-family: var(--font-sans);
   font-size: 1.05rem;
   line-height: 1.75;

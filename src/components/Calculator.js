@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import styles from './styles/Calculator.module.css';
 
 const leakFactors = [
@@ -15,9 +15,6 @@ const leakFactors = [
 
 export default function Calculator() {
   const sectionRef = useRef(null);
-  const [showResult, setShowResult] = useState(false);
-  const [estimateLow, setEstimateLow] = useState(0);
-  const [estimateHigh, setEstimateHigh] = useState(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -36,23 +33,6 @@ export default function Calculator() {
 
     return () => observer.disconnect();
   }, []);
-
-  const handleRunCheck = () => {
-    // Placeholder calculation for demo
-    const low = Math.floor(Math.random() * 40000 + 60000);
-    const high = Math.floor(low * 1.6 + Math.random() * 30000);
-    setEstimateLow(low);
-    setEstimateHigh(high);
-    setShowResult(true);
-  };
-
-  const formatCurrency = (num) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      maximumFractionDigits: 0,
-    }).format(num);
-  };
 
   return (
     <section id="calculator" className={styles.section} ref={sectionRef}>
@@ -85,54 +65,23 @@ export default function Calculator() {
               </ul>
             </div>
 
+            {/* Visual Message Card */}
+            <div className={styles.leakMessage}>
+              <p className={styles.leakMessageText}>
+                During your private fit call, we can review these leakage points in your current call flow. Avalora can review missed-call and booking leakage during the fit call.
+              </p>
+            </div>
+
             {/* CTA Area */}
             <div className={styles.ctaArea}>
-              <button
-                onClick={handleRunCheck}
+              <a
+                href="#"
                 className={styles.primaryCTA}
                 data-placeholder="true"
               >
-                Run the Booking Leak Check
-              </button>
-              <a
-                href="/miami-med-spa-booking-leak-report"
-                className={styles.secondaryCTA}
-              >
-                Get the Miami Med Spa Booking Leak Report
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M6 4l4 4-4 4"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                Book a Private Fit Call
               </a>
             </div>
-
-            {/* Result Area */}
-            {showResult && (
-              <div className={styles.resultArea}>
-                <div className={styles.resultGlow} />
-                <p className={styles.resultText}>
-                  Based on your inputs, your clinic may have an estimated annual
-                  booking opportunity at risk of{' '}
-                  <strong className={styles.resultAmount}>
-                    {formatCurrency(estimateLow)}–{formatCurrency(estimateHigh)}
-                  </strong>
-                  . This is not a guarantee. It is a directional estimate to help
-                  identify where missed calls, slow callbacks, and unfinished
-                  booking requests may be creating leakage.
-                </p>
-              </div>
-            )}
           </div>
 
           {/* Microcopy */}
@@ -145,3 +94,4 @@ export default function Calculator() {
     </section>
   );
 }
+

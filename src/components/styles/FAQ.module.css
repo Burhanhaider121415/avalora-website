@@ -38,7 +38,7 @@
 /* ── FAQ Group ── */
 
 .faqGroup {
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem; /* Reduced from 2.5rem */
 }
 
 .faqGroup:last-child {
@@ -80,7 +80,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 1.5rem 0.75rem;
+  padding: 1rem 0.5rem; /* Reduced from 1.5rem 0.75rem */
   background: none;
   border: none;
   cursor: pointer;
@@ -95,7 +95,7 @@
 
 .questionText {
   font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 1.08rem;
+  font-size: 1.18rem; /* Bumped from 1.08rem for readability (+10%) */
   font-weight: 600;
   color: var(--navy, #1A1F36);
   line-height: 1.45;
@@ -132,12 +132,12 @@
 }
 
 .faqAnswer {
-  padding: 0 0.5rem 1.5rem;
+  padding: 0 0.5rem 1rem; /* Reduced from 1.5rem */
 }
 
 .faqAnswer p {
   font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 1.02rem;
+  font-size: 1.12rem; /* Bumped from 1.02rem for readability (+10%) */
   color: var(--charcoal, #2D2D3A);
   line-height: 1.75;
   margin: 0;

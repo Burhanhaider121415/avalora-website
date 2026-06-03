@@ -6,7 +6,6 @@ const NAV_LINKS = [
   { label: 'What We Recover', href: '#recover' },
   { label: 'How It Works', href: '#how-it-works' },
   { label: 'Booking Leak Calculator', href: '#calculator' },
-  { label: 'Miami Med Spa Booking Leak Report', href: '#' , placeholder: true },
   { label: 'FAQ', href: '#faq' },
 ];
 
