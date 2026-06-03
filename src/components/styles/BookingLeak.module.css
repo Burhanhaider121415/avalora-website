@@ -1,0 +1,277 @@
+/* ═══════════════════════════════════════════
+   BookingLeak — Problem Visualization
+   Calm, empathetic tone. No aggressive reds.
+   ═══════════════════════════════════════════ */
+
+.section {
+  padding: var(--space-4xl) var(--space-lg);
+  background: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle background texture */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(ellipse 600px 400px at 10% 20%, rgba(143, 168, 154, 0.06), transparent),
+    radial-gradient(ellipse 500px 300px at 90% 80%, rgba(27, 107, 90, 0.04), transparent);
+  pointer-events: none;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Header Block ── */
+
+.header {
+  max-width: 760px;
+  margin: 0 auto var(--space-3xl);
+  text-align: center;
+}
+
+.heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.25;
+  margin-bottom: var(--space-lg);
+  letter-spacing: -0.01em;
+}
+
+.intro {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  color: var(--charcoal);
+  line-height: 1.7;
+  margin-bottom: var(--space-xl);
+  opacity: 0.85;
+}
+
+/* ── Problem narrative ── */
+
+.narrative {
+  max-width: 680px;
+  margin: 0 auto var(--space-3xl);
+  text-align: center;
+}
+
+.problem {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 500;
+  color: var(--emerald-deep);
+  margin-bottom: var(--space-lg);
+  letter-spacing: -0.005em;
+}
+
+.detail {
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 1.3vw, 1.0625rem);
+  color: var(--charcoal);
+  line-height: 1.8;
+  margin-bottom: var(--space-xl);
+  opacity: 0.8;
+}
+
+.keyLine {
+  font-family: var(--font-serif);
+  font-size: clamp(1.125rem, 1.8vw, 1.375rem);
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: var(--space-md);
+  position: relative;
+  display: inline-block;
+}
+
+.keyLine::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: var(--radius-full);
+}
+
+.empathy {
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 1.3vw, 1.0625rem);
+  color: var(--sage);
+  font-style: italic;
+  margin-top: var(--space-lg);
+  letter-spacing: 0.01em;
+}
+
+/* ── Leak Flow Connector ── */
+
+.flowConnector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-2xl);
+}
+
+.flowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sage);
+  opacity: 0.5;
+}
+
+.flowLine {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--sage), transparent);
+  opacity: 0.4;
+}
+
+/* ── Leak Cards Section ── */
+
+.leakSection {
+  margin-top: var(--space-2xl);
+}
+
+.leakHeading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 2.2vw, 1.625rem);
+  font-weight: 500;
+  color: var(--navy);
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+  letter-spacing: -0.005em;
+}
+
+.leakGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-lg);
+}
+
+/* ── Individual Leak Card ── */
+
+.leakCard {
+  background: var(--ivory);
+  border: 1px solid rgba(143, 168, 154, 0.15);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-lg);
+  position: relative;
+  transition:
+    transform var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out),
+    border-color var(--duration-normal) var(--ease-out);
+}
+
+.leakCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(143, 168, 154, 0.3);
+}
+
+/* Flow line between cards (desktop) */
+.leakCard:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -0.85rem;
+  width: 0.7rem;
+  height: 1px;
+  background: var(--sage);
+  opacity: 0.3;
+}
+
+.iconWrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: rgba(143, 168, 154, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-lg);
+  transition: background var(--duration-normal) var(--ease-out);
+}
+
+.leakCard:hover .iconWrapper {
+  background: rgba(27, 107, 90, 0.1);
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+  color: var(--emerald);
+  flex-shrink: 0;
+}
+
+.cardTitle {
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: var(--space-sm);
+  line-height: 1.3;
+}
+
+.cardDescription {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--charcoal);
+  line-height: 1.65;
+  opacity: 0.8;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 1024px) {
+  .leakGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Remove connector lines on wrap */
+  .leakCard::after {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--space-3xl) var(--space-lg);
+  }
+
+  .leakGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: var(--space-2xl) var(--space-md);
+  }
+
+  .leakGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .leakCard {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .flowConnector {
+    display: none;
+  }
+}

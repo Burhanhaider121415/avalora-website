@@ -1,0 +1,358 @@
+/* ═══════════════════════════════════════════
+   BilingualIntake — EN/ES Support Section
+   ═══════════════════════════════════════════ */
+
+.section {
+  padding: var(--section-padding);
+  background: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Warm ambient gradient */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse 500px 600px at 80% 40%,
+    rgba(197, 165, 114, 0.04),
+    transparent
+  );
+  pointer-events: none;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4xl);
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Copy Column ──────────────────────────── */
+
+.copyColumn {
+  max-width: 540px;
+}
+
+.sectionLabel {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--emerald);
+  margin-bottom: var(--space-sm);
+}
+
+.heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.25;
+  margin-bottom: var(--space-2xl);
+}
+
+.headingAccent {
+  color: var(--emerald);
+}
+
+.paragraph {
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  color: var(--charcoal);
+  line-height: 1.75;
+  margin-bottom: var(--space-lg);
+}
+
+/* ── Workflows List ───────────────────────── */
+
+.listLabel {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.workflowList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  margin-bottom: var(--space-2xl);
+}
+
+.workflowItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  color: var(--charcoal);
+  line-height: 1.5;
+  padding: 0.375rem 0;
+}
+
+.workflowIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--emerald);
+}
+
+/* ── Microcopy ────────────────────────────── */
+
+.microcopy {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--gray-500);
+  line-height: 1.6;
+  font-style: italic;
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--gray-200);
+  max-width: 440px;
+}
+
+/* ── Visual Column — Bilingual Card ───────── */
+
+.visualColumn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bilingualCard {
+  width: 100%;
+  max-width: 420px;
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  border: 1px solid var(--gray-100);
+}
+
+/* ── EN/ES Toggle Header ──────────────────── */
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  background: var(--emerald);
+}
+
+.cardHeaderLabel {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.langToggle {
+  display: flex;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-full);
+  padding: 3px;
+  gap: 2px;
+}
+
+.langBtn {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.375rem 1rem;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+  color: rgba(255, 255, 255, 0.7);
+  background: transparent;
+}
+
+.langBtnActive {
+  background: var(--white);
+  color: var(--emerald-deep);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.langBtn:not(.langBtnActive):hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ── Card Body ────────────────────────────── */
+
+.cardBody {
+  padding: 1.5rem;
+}
+
+.cardField {
+  padding: 0.75rem 0;
+}
+
+.cardField + .cardField {
+  border-top: 1px solid var(--gray-100);
+}
+
+.fieldLabel {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  margin-bottom: 0.375rem;
+}
+
+.fieldValue {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  color: var(--navy);
+  line-height: 1.4;
+}
+
+/* ── Status Badge ─────────────────────────── */
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.375rem 0.875rem;
+  border-radius: var(--radius-full);
+  margin-top: var(--space-md);
+}
+
+.statusReady {
+  background: rgba(27, 107, 90, 0.08);
+  color: var(--emerald-deep);
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--emerald);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ── Card Footer ──────────────────────────── */
+
+.cardFooter {
+  padding: 1rem 1.5rem;
+  background: var(--ivory);
+  border-top: 1px solid var(--gray-100);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.footerIcon {
+  width: 14px;
+  height: 14px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.footerText {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--gray-500);
+  line-height: 1.5;
+}
+
+/* ── Scroll Reveal ────────────────────────── */
+
+.revealed {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--duration-slow) var(--ease-out),
+              transform var(--duration-slow) var(--ease-out);
+}
+
+.revealed.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.revealedRight {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity var(--duration-slow) var(--ease-out),
+              transform var(--duration-slow) var(--ease-out);
+  transition-delay: 200ms;
+}
+
+.revealedRight.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Responsive ───────────────────────────── */
+
+@media (max-width: 960px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: var(--space-3xl);
+  }
+
+  .visualColumn {
+    order: -1;
+  }
+
+  .bilingualCard {
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  .copyColumn {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3.5rem 1.25rem;
+  }
+
+  .bilingualCard {
+    max-width: 100%;
+  }
+
+  .paragraph {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardHeader {
+    padding: 1rem 1.25rem;
+    flex-direction: column;
+    gap: var(--space-sm);
+    align-items: flex-start;
+  }
+
+  .langToggle {
+    align-self: stretch;
+  }
+
+  .langBtn {
+    flex: 1;
+    text-align: center;
+  }
+}

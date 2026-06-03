@@ -1,0 +1,517 @@
+/* ═══════════════════════════════════════════
+   Hero Section — Premium Split Layout
+   ═══════════════════════════════════════════ */
+
+.hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 7rem 1.5rem 5rem;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 50%, rgba(27, 107, 90, 0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 20% 80%, rgba(197, 165, 114, 0.05) 0%, transparent 60%),
+    var(--ivory);
+  overflow: hidden;
+}
+
+/* Subtle background grain texture via pseudo-element */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+/* ─── Left Column: Copy ─── */
+
+.copyColumn {
+  animation: fadeInUp 0.8s var(--ease-out) both;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.75rem;
+}
+
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1.5px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  border-radius: 2px;
+}
+
+.headline {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
+  max-width: 580px;
+}
+
+.subheadline {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--charcoal);
+  max-width: 520px;
+  margin-bottom: 2.5rem;
+  opacity: 0.88;
+}
+
+/* ─── CTAs ─── */
+
+.ctaGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2rem;
+  background: var(--emerald);
+  color: var(--white);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all var(--duration-normal) var(--ease-out);
+  box-shadow:
+    0 2px 8px rgba(27, 107, 90, 0.2),
+    0 0 0 0 rgba(27, 107, 90, 0);
+}
+
+.ctaPrimary:hover {
+  background: var(--emerald-deep);
+  transform: translateY(-1px);
+  box-shadow:
+    0 4px 16px rgba(27, 107, 90, 0.3),
+    0 0 0 3px rgba(27, 107, 90, 0.08);
+}
+
+.ctaPrimary:active {
+  transform: translateY(0);
+}
+
+.ctaIcon {
+  display: inline-flex;
+  font-size: 1.1rem;
+}
+
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2rem;
+  background: transparent;
+  color: var(--emerald);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 1.5px solid var(--emerald);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.ctaSecondary:hover {
+  background: rgba(27, 107, 90, 0.05);
+  border-color: var(--emerald-deep);
+  color: var(--emerald-deep);
+  transform: translateY(-1px);
+}
+
+.ctaSecondary:active {
+  transform: translateY(0);
+}
+
+.microcopy {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: var(--sage);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+}
+
+/* ─── Right Column: Phone Visual ─── */
+
+.visualColumn {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  min-height: 520px;
+}
+
+/* Phone frame */
+.phoneFrame {
+  position: relative;
+  width: 300px;
+  height: 580px;
+  background: var(--white);
+  border-radius: 40px;
+  border: 3px solid var(--gray-200);
+  box-shadow:
+    0 20px 60px rgba(26, 31, 54, 0.12),
+    0 4px 16px rgba(26, 31, 54, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  animation: fadeInUp 0.9s var(--ease-out) 0.2s both;
+}
+
+/* Glass sheen on phone */
+.phoneFrame::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.1) 40%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+  border-radius: 40px 40px 0 0;
+}
+
+/* Notch */
+.phoneNotch {
+  position: relative;
+  z-index: 3;
+  width: 120px;
+  height: 28px;
+  background: var(--navy);
+  border-radius: 0 0 18px 18px;
+  margin: 0 auto;
+}
+
+/* Dynamic island dot */
+.phoneNotch::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 20px;
+  width: 10px;
+  height: 10px;
+  background: #1a1a2e;
+  border-radius: 50%;
+}
+
+/* Phone screen content area */
+.phoneScreen {
+  padding: 1.25rem 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Inquiry card inside phone */
+.inquiryCard {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.inquiryHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.pulseDot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.inquiryTitle {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: 0.02em;
+}
+
+/* Inquiry rows */
+.inquiryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.4rem 0;
+  gap: 0.5rem;
+}
+
+.inquiryRow + .inquiryRow {
+  border-top: 1px solid var(--gray-50);
+}
+
+.inquiryLabel {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.inquiryValue {
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--navy);
+  text-align: right;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.badgeAmber {
+  background: #FEF3C7;
+  color: #92400E;
+}
+
+.badgeTeal {
+  background: #CCFBF1;
+  color: #115E59;
+}
+
+.badgeLang {
+  background: #EEF2FF;
+  color: #3730A3;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* Staff Summary card — overlapping the phone */
+.staffCard {
+  position: absolute;
+  bottom: 20px;
+  right: -30px;
+  width: 280px;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 1.1rem 1.25rem;
+  box-shadow:
+    0 12px 40px rgba(26, 31, 54, 0.1),
+    0 2px 8px rgba(26, 31, 54, 0.05);
+  animation: slideInRight 0.8s var(--ease-out) 0.6s both;
+  z-index: 4;
+}
+
+.staffCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
+}
+
+.staffCardIcon {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, var(--emerald), var(--emerald-deep));
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.staffCardTitle {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.staffCardBody {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--charcoal);
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+  opacity: 0.85;
+}
+
+.staffCardStatus {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--emerald);
+}
+
+.checkIcon {
+  width: 16px;
+  height: 16px;
+  background: var(--emerald);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 0.55rem;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════
+   Responsive — Tablet+
+   ═══════════════════════════════════════════ */
+
+@media (min-width: 768px) {
+  .hero {
+    padding: 8rem 2rem 6rem;
+  }
+
+  .staffCard {
+    right: -50px;
+    bottom: 30px;
+    width: 300px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .hero {
+    padding: 6rem 2.5rem;
+  }
+
+  .visualColumn {
+    justify-content: flex-end;
+    min-height: 600px;
+  }
+
+  .phoneFrame {
+    width: 320px;
+    height: 620px;
+  }
+
+  .staffCard {
+    right: -60px;
+    bottom: 40px;
+    width: 310px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero {
+    padding: 6rem 3rem;
+  }
+
+  .headline {
+    max-width: 600px;
+  }
+
+  .subheadline {
+    max-width: 540px;
+  }
+
+  .staffCard {
+    right: -70px;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Mobile adjustments
+   ═══════════════════════════════════════════ */
+
+@media (max-width: 767px) {
+  .hero {
+    min-height: auto;
+    padding: 5rem 1.25rem 3.5rem;
+  }
+
+  .visualColumn {
+    min-height: 480px;
+    margin-top: 1rem;
+  }
+
+  .phoneFrame {
+    width: 270px;
+    height: 520px;
+  }
+
+  .staffCard {
+    right: -10px;
+    bottom: 0;
+    width: 250px;
+  }
+
+  .ctaGroup {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ctaPrimary,
+  .ctaSecondary {
+    justify-content: center;
+    text-align: center;
+  }
+}

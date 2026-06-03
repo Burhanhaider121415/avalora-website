@@ -1,0 +1,238 @@
+/* ── Calculator Section ── */
+
+.section {
+  padding: 7rem 1.5rem;
+  background-color: var(--ivory-warm, #F5F0E8);
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* ── Header ── */
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.heading {
+  font-family: var(--font-playfair, 'Playfair Display', serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--navy, #1A1F36);
+  line-height: 1.2;
+  margin: 0 0 1rem;
+}
+
+.subtext {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  color: var(--charcoal, #2D2D3A);
+  line-height: 1.7;
+  max-width: 640px;
+  margin: 0 auto;
+  opacity: 0.85;
+}
+
+/* ── Calculator Card ── */
+
+.calculatorCard {
+  background: var(--white, #FFFFFF);
+  border-radius: 20px;
+  box-shadow: 0 4px 40px rgba(26, 31, 54, 0.06);
+  border: 1px solid rgba(27, 107, 90, 0.08);
+  overflow: hidden;
+}
+
+.cardInner {
+  padding: 2.5rem 3rem;
+}
+
+/* ── Factors ── */
+
+.factorsSection {
+  margin-bottom: 2rem;
+}
+
+.factorsHeading {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--navy, #1A1F36);
+  margin: 0 0 1.25rem;
+}
+
+.factorsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.7rem 2rem;
+}
+
+.factorItem {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 0.92rem;
+  color: var(--charcoal, #2D2D3A);
+}
+
+.factorDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--emerald, #1B6B5A);
+  flex-shrink: 0;
+}
+
+/* ── CTAs ── */
+
+.ctaArea {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0;
+}
+
+.primaryCTA {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white, #FFFFFF);
+  background: linear-gradient(135deg, var(--emerald, #1B6B5A), var(--emerald-deep, #0F4F42));
+  border: none;
+  border-radius: 10px;
+  padding: 0.9rem 2rem;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.primaryCTA:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(27, 107, 90, 0.2);
+}
+
+.secondaryCTA {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--emerald, #1B6B5A);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.secondaryCTA:hover {
+  color: var(--emerald-deep, #0F4F42);
+}
+
+/* ── Result Area ── */
+
+.resultArea {
+  position: relative;
+  margin-top: 2rem;
+  padding: 1.75rem 2rem;
+  background: linear-gradient(135deg, rgba(197, 165, 114, 0.06), rgba(197, 165, 114, 0.12));
+  border: 1px solid rgba(197, 165, 114, 0.25);
+  border-radius: 14px;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.resultGlow {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold, #C5A572), var(--gold-light, #D4BC8E), var(--gold, #C5A572));
+  border-radius: 14px 14px 0 0;
+}
+
+.resultText {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 0.95rem;
+  color: var(--navy, #1A1F36);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.resultAmount {
+  font-family: var(--font-playfair, 'Playfair Display', serif);
+  font-size: 1.2rem;
+  color: var(--gold, #C5A572);
+  font-weight: 700;
+}
+
+/* ── Microcopy ── */
+
+.microcopy {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 0.8rem;
+  color: var(--charcoal, #2D2D3A);
+  opacity: 0.6;
+  line-height: 1.6;
+  margin: 0;
+  padding: 1rem 3rem 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* ── Animations ── */
+
+.animate {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 700px) {
+  .section {
+    padding: 4.5rem 1rem;
+  }
+
+  .cardInner {
+    padding: 2rem 1.5rem;
+  }
+
+  .factorsList {
+    grid-template-columns: 1fr;
+  }
+
+  .microcopy {
+    padding: 1rem 1.5rem 1.5rem;
+  }
+
+  .resultArea {
+    padding: 1.25rem 1.5rem;
+  }
+}

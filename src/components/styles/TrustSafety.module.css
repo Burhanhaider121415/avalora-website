@@ -1,0 +1,238 @@
+/* ── Trust & Safety Section ── */
+
+.section {
+  padding: 7rem 1.5rem;
+  background-color: var(--white, #FFFFFF);
+  position: relative;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ── Header ── */
+
+.header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.heading {
+  font-family: var(--font-playfair, 'Playfair Display', serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--navy, #1A1F36);
+  line-height: 1.2;
+  margin: 0 0 1rem;
+}
+
+.intro {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  color: var(--charcoal, #2D2D3A);
+  line-height: 1.7;
+  max-width: 640px;
+  margin: 0 auto;
+  opacity: 0.85;
+}
+
+/* ── Cards Grid ── */
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+/* Last row: 2 cards centered */
+.cardsGrid > *:nth-child(4) {
+  grid-column: 1 / 2;
+}
+
+.cardsGrid > *:nth-child(5) {
+  grid-column: 2 / 3;
+}
+
+/* Push last 2 cards to center when there's 5 items */
+@supports (grid-template-columns: repeat(3, 1fr)) {
+  .cardsGrid {
+    justify-items: center;
+  }
+
+  .cardsGrid > *:nth-child(4) {
+    grid-column: auto;
+    justify-self: end;
+  }
+
+  .cardsGrid > *:nth-child(5) {
+    grid-column: auto;
+    justify-self: start;
+  }
+}
+
+.card {
+  background: var(--ivory, #FAF7F2);
+  border: 1px solid rgba(27, 107, 90, 0.08);
+  border-radius: 16px;
+  padding: 2rem 1.75rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 360px;
+  width: 100%;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(27, 107, 90, 0.08);
+}
+
+.cardIcon {
+  color: var(--emerald, #1B6B5A);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background: rgba(27, 107, 90, 0.08);
+  border-radius: 12px;
+}
+
+.cardTitle {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--navy, #1A1F36);
+  margin: 0 0 0.6rem;
+}
+
+.cardDescription {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 0.92rem;
+  color: var(--charcoal, #2D2D3A);
+  line-height: 1.65;
+  margin: 0;
+  opacity: 0.85;
+}
+
+/* ── HIPAA Block ── */
+
+.hipaaBlock {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.hipaaInner {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2rem 2.25rem;
+  background: var(--ivory, #FAF7F2);
+  border: 1px solid rgba(27, 107, 90, 0.1);
+  border-radius: 14px;
+}
+
+.hipaaIcon {
+  flex-shrink: 0;
+  color: var(--emerald, #1B6B5A);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(27, 107, 90, 0.08);
+  border-radius: 10px;
+  margin-top: 2px;
+}
+
+.hipaaContent {
+  flex: 1;
+}
+
+.hipaaTitle {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--navy, #1A1F36);
+  margin: 0 0 0.75rem;
+}
+
+.hipaaText {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 0.92rem;
+  color: var(--charcoal, #2D2D3A);
+  line-height: 1.7;
+  margin: 0 0 0.75rem;
+  opacity: 0.85;
+}
+
+.hipaaText:last-of-type {
+  margin-bottom: 1.25rem;
+}
+
+.hipaaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--emerald, #1B6B5A);
+  text-decoration: none;
+  padding: 0.6rem 1.25rem;
+  border: 1.5px solid var(--emerald, #1B6B5A);
+  border-radius: 8px;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.hipaaButton:hover {
+  background-color: var(--emerald, #1B6B5A);
+  color: var(--white, #FFFFFF);
+}
+
+/* ── Animations ── */
+
+.animate {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 900px) {
+  .cardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cardsGrid > *:nth-child(4),
+  .cardsGrid > *:nth-child(5) {
+    grid-column: auto;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: 4.5rem 1rem;
+  }
+
+  .cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+
+  .hipaaInner {
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+}

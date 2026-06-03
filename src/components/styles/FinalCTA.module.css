@@ -1,0 +1,223 @@
+/* ── Final CTA Section ── */
+
+.section {
+  padding: 8rem 1.5rem;
+  background: linear-gradient(
+    165deg,
+    var(--navy, #1A1F36) 0%,
+    var(--emerald-deep, #0F4F42) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Background Decorations ── */
+
+.bgDecor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.wave1 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(197, 165, 114, 0.03)
+  );
+}
+
+.wave2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(
+    0deg,
+    transparent,
+    rgba(255, 255, 255, 0.02)
+  );
+}
+
+.floatingCard1 {
+  position: absolute;
+  top: 15%;
+  left: 8%;
+  width: 80px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  animation: floatSlow 8s ease-in-out infinite;
+}
+
+.floatingCard2 {
+  position: absolute;
+  bottom: 20%;
+  right: 10%;
+  width: 60px;
+  height: 40px;
+  background: rgba(197, 165, 114, 0.04);
+  border: 1px solid rgba(197, 165, 114, 0.08);
+  border-radius: 8px;
+  animation: floatSlow 10s ease-in-out infinite reverse;
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(2deg);
+  }
+}
+
+/* ── Heading ── */
+
+.heading {
+  font-family: var(--font-playfair, 'Playfair Display', serif);
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 700;
+  color: var(--white, #FFFFFF);
+  line-height: 1.25;
+  margin: 0 0 1.75rem;
+}
+
+/* ── Paragraphs ── */
+
+.paragraph {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: clamp(1rem, 1.8vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+  margin: 0 0 1rem;
+}
+
+.paragraph:last-of-type {
+  margin-bottom: 2.5rem;
+}
+
+/* ── CTA Group ── */
+
+.ctaGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.primaryCTA {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--navy, #1A1F36);
+  background: linear-gradient(135deg, var(--gold, #C5A572), var(--gold-light, #D4BC8E));
+  border-radius: 10px;
+  padding: 1rem 2.5rem;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.primaryCTA:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(197, 165, 114, 0.3);
+}
+
+.secondaryCTA {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white, #FFFFFF);
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: 10px;
+  padding: 0.9rem 2rem;
+  text-decoration: none;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.secondaryCTA:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+/* ── Microcopy ── */
+
+.microcopy {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.6;
+  margin: 0 0 1rem;
+}
+
+.trustMicrocopy {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Animations ── */
+
+.animate {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 600px) {
+  .section {
+    padding: 5rem 1rem;
+  }
+
+  .ctaGroup {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .primaryCTA,
+  .secondaryCTA {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .floatingCard1,
+  .floatingCard2 {
+    display: none;
+  }
+}

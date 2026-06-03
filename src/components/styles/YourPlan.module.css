@@ -1,0 +1,183 @@
+/* ── Your Plan Section ── */
+
+.section {
+  padding: 7rem 1.5rem;
+  background-color: var(--white, #FFFFFF);
+  position: relative;
+}
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+/* ── Header ── */
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.heading {
+  font-family: var(--font-playfair, 'Playfair Display', serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--navy, #1A1F36);
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* ── Consult Card ── */
+
+.consultCard {
+  background: var(--ivory, #FAF7F2);
+  border-radius: 20px;
+  box-shadow: 0 4px 40px rgba(26, 31, 54, 0.05);
+  border: 1px solid rgba(27, 107, 90, 0.08);
+  overflow: hidden;
+}
+
+.cardBody {
+  padding: 3rem;
+}
+
+.paragraph {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 1.02rem;
+  color: var(--charcoal, #2D2D3A);
+  line-height: 1.75;
+  margin: 0 0 1.25rem;
+  opacity: 0.88;
+}
+
+/* ── Checklist ── */
+
+.checklistHeading {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--navy, #1A1F36);
+  margin: 2rem 0 1.25rem;
+}
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.7rem 2rem;
+}
+
+.checkItem {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 0.92rem;
+  color: var(--charcoal, #2D2D3A);
+  line-height: 1.5;
+}
+
+.checkIcon {
+  color: var(--emerald, #1B6B5A);
+  flex-shrink: 0;
+}
+
+/* ── Important Sentence ── */
+
+.importantSentence {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 0.95rem;
+  color: var(--navy, #1A1F36);
+  line-height: 1.7;
+  font-weight: 500;
+  margin: 0 0 2rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(27, 107, 90, 0.04);
+  border-left: 3px solid var(--emerald, #1B6B5A);
+  border-radius: 0 8px 8px 0;
+}
+
+/* ── CTA Area ── */
+
+.ctaArea {
+  text-align: center;
+  padding-top: 0.5rem;
+}
+
+.primaryCTA {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white, #FFFFFF);
+  background: linear-gradient(135deg, var(--emerald, #1B6B5A), var(--emerald-deep, #0F4F42));
+  border-radius: 10px;
+  padding: 0.9rem 2.5rem;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.primaryCTA:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(27, 107, 90, 0.2);
+}
+
+.supportLine {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 0.88rem;
+  color: var(--charcoal, #2D2D3A);
+  line-height: 1.6;
+  margin: 1rem 0 0;
+  opacity: 0.7;
+}
+
+/* ── Microcopy ── */
+
+.microcopy {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 0.8rem;
+  color: var(--charcoal, #2D2D3A);
+  opacity: 0.55;
+  line-height: 1.6;
+  margin: 0;
+  padding: 1rem 3rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* ── Animations ── */
+
+.animate {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 700px) {
+  .section {
+    padding: 4.5rem 1rem;
+  }
+
+  .cardBody {
+    padding: 2rem 1.5rem;
+  }
+
+  .checklist {
+    grid-template-columns: 1fr;
+  }
+
+  .microcopy {
+    padding: 1rem 1.5rem 1.25rem;
+  }
+}

@@ -1,0 +1,177 @@
+/* ── FAQ Section ── */
+
+.section {
+  padding: 7rem 1.5rem;
+  background-color: var(--ivory-warm, #F5F0E8);
+  position: relative;
+}
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+/* ── Header ── */
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.heading {
+  font-family: var(--font-playfair, 'Playfair Display', serif);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--navy, #1A1F36);
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* ── FAQ List ── */
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── FAQ Item ── */
+
+.faqItem {
+  border-bottom: 1px solid rgba(26, 31, 54, 0.08);
+  transition: background-color 0.25s ease;
+}
+
+.faqItem:first-child {
+  border-top: 1px solid rgba(26, 31, 54, 0.08);
+}
+
+.faqItemOpen {
+  background-color: rgba(27, 107, 90, 0.02);
+}
+
+/* ── Question Button ── */
+
+.faqQuestion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.35rem 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  gap: 1rem;
+  transition: color 0.25s ease;
+}
+
+.faqQuestion:hover {
+  color: var(--emerald, #1B6B5A);
+}
+
+.questionText {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--navy, #1A1F36);
+  line-height: 1.4;
+  flex: 1;
+}
+
+.faqItemOpen .questionText {
+  color: var(--emerald, #1B6B5A);
+}
+
+/* ── Chevron ── */
+
+.chevron {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--charcoal, #2D2D3A);
+  transition: transform 0.35s ease, color 0.25s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+  color: var(--emerald, #1B6B5A);
+}
+
+/* ── Answer ── */
+
+.faqAnswerWrapper {
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faqAnswer {
+  padding: 0 0.5rem 1.5rem;
+}
+
+.faqAnswer p {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 0.95rem;
+  color: var(--charcoal, #2D2D3A);
+  line-height: 1.7;
+  margin: 0;
+  opacity: 0.85;
+}
+
+/* ── Compliance Section ── */
+
+.complianceSection {
+  margin-top: 3rem;
+  padding-top: 1rem;
+}
+
+.complianceHeading {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--sage, #8FA89A);
+  margin: 0 0 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.complianceItem {
+  opacity: 0.9;
+}
+
+/* ── Animations ── */
+
+.animate {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 600px) {
+  .section {
+    padding: 4.5rem 1rem;
+  }
+
+  .faqQuestion {
+    padding: 1.1rem 0.25rem;
+  }
+
+  .questionText {
+    font-size: 0.95rem;
+  }
+
+  .faqAnswer {
+    padding: 0 0.25rem 1.25rem;
+  }
+}
