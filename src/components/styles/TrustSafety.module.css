@@ -29,12 +29,11 @@
 
 .intro {
   font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  font-size: clamp(1.05rem, 1.8vw, 1.15rem);
   color: var(--charcoal, #2D2D3A);
   line-height: 1.7;
   max-width: 640px;
   margin: 0 auto;
-  opacity: 0.85;
 }
 
 /* ── Cards Grid ── */
@@ -76,7 +75,7 @@
   background: var(--ivory, #FAF7F2);
   border: 1px solid rgba(27, 107, 90, 0.08);
   border-radius: 16px;
-  padding: 2rem 1.75rem;
+  padding: 2rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   max-width: 360px;
   width: 100%;
@@ -101,7 +100,7 @@
 
 .cardTitle {
   font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: var(--navy, #1A1F36);
   margin: 0 0 0.6rem;
@@ -109,11 +108,10 @@
 
 .cardDescription {
   font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 0.92rem;
+  font-size: 1.05rem;
   color: var(--charcoal, #2D2D3A);
-  line-height: 1.65;
+  line-height: 1.7;
   margin: 0;
-  opacity: 0.85;
 }
 
 /* ── HIPAA Block ── */
@@ -159,11 +157,10 @@
 
 .hipaaText {
   font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 0.92rem;
+  font-size: 1rem;
   color: var(--charcoal, #2D2D3A);
   line-height: 1.7;
   margin: 0 0 0.75rem;
-  opacity: 0.85;
 }
 
 .hipaaText:last-of-type {

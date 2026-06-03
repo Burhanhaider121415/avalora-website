@@ -75,13 +75,13 @@
 
 .tableHead th {
   font-family: var(--font-sans);
-  font-size: 0.8125rem;
+  font-size: 1.05rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  padding: var(--space-lg) var(--space-xl);
+  padding: 1.1rem var(--space-xl);
   text-align: left;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .tableHead th:last-child {
@@ -106,9 +106,9 @@
 
 .tableBody td {
   font-family: var(--font-sans);
-  font-size: 0.9375rem;
+  font-size: 1rem;
   line-height: 1.6;
-  padding: var(--space-lg) var(--space-xl);
+  padding: 1.1rem var(--space-xl);
   border-bottom: 1px solid rgba(143, 168, 154, 0.08);
   vertical-align: top;
 }
@@ -193,7 +193,7 @@
   background: var(--ivory);
   border: 1px solid rgba(143, 168, 154, 0.12);
   border-radius: var(--radius-md);
-  padding: var(--space-lg);
+  padding: 2rem;
   transition:
     border-color var(--duration-fast) var(--ease-out),
     box-shadow var(--duration-fast) var(--ease-out);
@@ -206,9 +206,9 @@
 
 .cardGeneric {
   font-family: var(--font-sans);
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--gray-500);
-  line-height: 1.6;
+  line-height: 1.65;
   margin-bottom: var(--space-md);
   padding-bottom: var(--space-md);
   border-bottom: 1px solid rgba(143, 168, 154, 0.1);
@@ -237,10 +237,10 @@
 
 .cardAvalora {
   font-family: var(--font-sans);
-  font-size: 0.9375rem;
+  font-size: 1rem;
   color: var(--navy);
   font-weight: 500;
-  line-height: 1.6;
+  line-height: 1.65;
   position: relative;
   padding-left: 26px;
 }
@@ -292,7 +292,7 @@
 
 .bottomLineText {
   font-family: var(--font-sans);
-  font-size: clamp(0.9375rem, 1.3vw, 1.0625rem);
+  font-size: clamp(1.05rem, 1.4vw, 1.125rem);
   color: var(--charcoal);
   line-height: 1.8;
 }

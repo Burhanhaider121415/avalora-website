@@ -83,9 +83,9 @@
   align-items: flex-start;
   gap: var(--space-sm);
   font-family: var(--font-sans);
-  font-size: 0.9375rem;
+  font-size: 1rem;
   color: var(--charcoal);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .checkIcon {
@@ -113,12 +113,11 @@
 
 .closingText {
   font-family: var(--font-sans);
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: var(--charcoal);
-  line-height: 1.7;
+  line-height: 1.75;
   max-width: 480px;
   font-style: italic;
-  opacity: 0.85;
 }
 
 /* ── Image Column ─────────────────────────── */

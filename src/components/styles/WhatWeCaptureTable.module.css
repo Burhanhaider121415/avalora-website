@@ -57,7 +57,6 @@
   line-height: 1.7;
   margin-bottom: var(--space-3xl);
   max-width: 560px;
-  opacity: 0.85;
 }
 
 /* ── Desktop Table ────────────────────────── */
@@ -80,12 +79,12 @@
 
 .table th {
   font-family: var(--font-sans);
-  font-size: 0.8125rem;
-  font-weight: 600;
+  font-size: 1.05rem;
+  font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--white);
-  padding: 1.125rem 1.5rem;
+  padding: 1.1rem 1.5rem;
   text-align: left;
   white-space: nowrap;
 }
@@ -113,9 +112,9 @@
 
 .table td {
   font-family: var(--font-sans);
-  font-size: 0.9375rem;
+  font-size: 1rem;
   color: var(--charcoal);
-  padding: 1rem 1.5rem;
+  padding: 1.1rem 1.5rem;
   line-height: 1.6;
   vertical-align: top;
 }
@@ -187,7 +186,7 @@
 .card {
   background: var(--white);
   border-radius: var(--radius-lg);
-  padding: 1.5rem;
+  padding: 2rem;
   box-shadow: var(--shadow-md);
   border: 1px solid var(--gray-100);
   transition: box-shadow var(--duration-normal) var(--ease-out);
@@ -216,8 +215,8 @@
 
 .cardTitle {
   font-family: var(--font-sans);
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.05rem;
+  font-weight: 700;
   color: var(--navy);
 }
 
@@ -243,9 +242,9 @@
 
 .cardValue {
   font-family: var(--font-sans);
-  font-size: 0.9375rem;
+  font-size: 1rem;
   color: var(--charcoal);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .cardDestination {

@@ -30,12 +30,11 @@
 
 .subtext {
   font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  font-size: clamp(1.05rem, 1.8vw, 1.15rem);
   color: var(--charcoal, #2D2D3A);
   line-height: 1.7;
   max-width: 640px;
   margin: 0 auto;
-  opacity: 0.85;
 }
 
 /* ── Calculator Card ── */
@@ -49,7 +48,7 @@
 }
 
 .cardInner {
-  padding: 2.5rem 3rem;
+  padding: 2.75rem 3rem;
 }
 
 /* ── Factors ── */
@@ -80,7 +79,7 @@
   align-items: center;
   gap: 0.65rem;
   font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 0.92rem;
+  font-size: 1rem;
   color: var(--charcoal, #2D2D3A);
 }
 
@@ -163,7 +162,7 @@
 
 .resultText {
   font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   color: var(--navy, #1A1F36);
   line-height: 1.7;
   margin: 0;
@@ -180,12 +179,12 @@
 
 .microcopy {
   font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--charcoal, #2D2D3A);
   opacity: 0.6;
   line-height: 1.6;
   margin: 0;
-  padding: 1rem 3rem 1.5rem;
+  padding: 1.25rem 3rem 1.5rem;
   border-top: 1px solid rgba(0, 0, 0, 0.04);
 }
 

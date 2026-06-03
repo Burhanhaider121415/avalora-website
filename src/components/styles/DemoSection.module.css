@@ -54,10 +54,9 @@
 
 .subtext {
   font-family: var(--font-sans);
-  font-size: clamp(1rem, 1.6vw, 1.125rem);
+  font-size: clamp(1.02rem, 1.6vw, 1.15rem);
   color: var(--charcoal);
-  line-height: 1.7;
-  opacity: 0.85;
+  line-height: 1.75;
 }
 
 /* ── Grid Layout ── */
@@ -276,11 +275,11 @@
 
 /* Chat Bubbles */
 .chatBubble {
-  padding: var(--space-lg) var(--space-xl);
+  padding: var(--space-xl) var(--space-2xl);
   border-radius: var(--radius-lg);
   font-family: var(--font-sans);
-  font-size: 0.95rem;
-  line-height: 1.65;
+  font-size: 1rem;
+  line-height: 1.7;
   position: relative;
   max-width: 92%;
 }
@@ -292,12 +291,11 @@
 
 .bubbleLabel {
   display: block;
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: var(--space-sm);
-  opacity: 0.7;
 }
 
 .patientBubble {
@@ -330,7 +328,7 @@
   background: var(--white);
   border: 1px solid var(--gray-200);
   border-radius: var(--radius-lg);
-  padding: var(--space-xl);
+  padding: var(--space-2xl);
   box-shadow: var(--shadow-md);
 }
 
@@ -353,9 +351,9 @@
 .detailRow {
   display: flex;
   gap: var(--space-md);
-  font-size: 0.875rem;
-  line-height: 1.5;
-  padding: var(--space-xs) 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  padding: 0.5rem 0;
 }
 
 .detailLabel {
@@ -375,7 +373,7 @@
   border: 1px solid var(--gray-200);
   border-left: 4px solid var(--gold);
   border-radius: var(--radius-md);
-  padding: var(--space-xl);
+  padding: var(--space-2xl);
   box-shadow: var(--shadow-md);
 }
 
@@ -408,7 +406,7 @@
 
 .handoffContent {
   font-family: var(--font-sans);
-  font-size: 0.9rem;
+  font-size: 1rem;
   line-height: 1.7;
   color: var(--charcoal);
 }
@@ -451,8 +449,9 @@
   text-align: center;
   margin-top: var(--space-3xl);
   font-family: var(--font-sans);
-  font-size: 0.8rem;
-  color: var(--gray-400);
+  font-size: 0.88rem;
+  color: var(--charcoal);
+  opacity: 0.55;
   font-style: italic;
 }
 

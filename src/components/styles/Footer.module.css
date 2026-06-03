@@ -54,9 +54,9 @@
 
 .tagline {
   font-family: var(--font-sans);
-  font-size: var(--fs-sm);
+  font-size: 0.95rem;
   line-height: var(--lh-relaxed);
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.7);
   margin-bottom: var(--space-md);
 }
 
@@ -94,12 +94,12 @@
 
 .columnLink {
   font-family: var(--font-sans);
-  font-size: var(--fs-sm);
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   transition: var(--transition-fast);
   display: inline-block;
-  padding: 2px 0;
+  padding: 3px 0;
 }
 
 .columnLink:hover {
@@ -141,9 +141,9 @@
 
 .disclaimerText {
   font-family: var(--font-sans);
-  font-size: var(--fs-xs);
+  font-size: 0.9rem;
   line-height: var(--lh-relaxed);
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.55);
   margin: 0;
 }
 
@@ -156,8 +156,8 @@
 
 .copyright {
   font-family: var(--font-sans);
-  font-size: var(--fs-xs);
-  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
   margin: 0;
 }
 

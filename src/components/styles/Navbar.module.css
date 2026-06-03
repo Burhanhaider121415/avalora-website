@@ -97,8 +97,18 @@
 }
 
 .ctaPrimary {
-  font-size: var(--fs-xs) !important;
-  padding: 10px 20px !important;
+  font-size: var(--fs-sm) !important;
+  padding: 10px 22px !important;
+  background: linear-gradient(135deg, var(--emerald), var(--emerald-deep)) !important;
+  color: var(--white) !important;
+  border: none !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 8px rgba(27, 107, 90, 0.2);
+}
+
+.ctaPrimary:hover {
+  box-shadow: 0 4px 16px rgba(27, 107, 90, 0.3);
+  transform: translateY(-1px);
 }
 
 .ctaSecondary {
@@ -312,7 +322,11 @@
     gap: var(--space-md);
   }
 
-  .ctaPrimary,
+  .ctaPrimary {
+    font-size: var(--fs-sm) !important;
+    padding: 10px 26px !important;
+  }
+
   .ctaSecondary {
     font-size: var(--fs-sm) !important;
     padding: 10px 24px !important;

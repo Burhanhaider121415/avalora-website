@@ -55,7 +55,6 @@
   color: var(--charcoal);
   line-height: 1.7;
   margin-bottom: var(--space-xl);
-  opacity: 0.85;
 }
 
 /* ── Problem narrative ── */
@@ -81,7 +80,6 @@
   color: var(--charcoal);
   line-height: 1.8;
   margin-bottom: var(--space-xl);
-  opacity: 0.8;
 }
 
 .keyLine {
@@ -168,7 +166,7 @@
   background: var(--ivory);
   border: 1px solid rgba(143, 168, 154, 0.15);
   border-radius: var(--radius-lg);
-  padding: var(--space-xl) var(--space-lg);
+  padding: 1.75rem;
   position: relative;
   transition:
     transform var(--duration-normal) var(--ease-out),
@@ -219,7 +217,7 @@
 
 .cardTitle {
   font-family: var(--font-serif);
-  font-size: 1.0625rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: var(--navy);
   margin-bottom: var(--space-sm);
@@ -228,10 +226,9 @@
 
 .cardDescription {
   font-family: var(--font-sans);
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   color: var(--charcoal);
-  line-height: 1.65;
-  opacity: 0.8;
+  line-height: 1.7;
 }
 
 /* ── Responsive ── */
@@ -268,7 +265,7 @@
   }
 
   .leakCard {
-    padding: var(--space-lg) var(--space-md);
+    padding: 1.75rem var(--space-md);
   }
 
   .flowConnector {

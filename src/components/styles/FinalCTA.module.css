@@ -102,9 +102,9 @@
 
 .paragraph {
   font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: clamp(1rem, 1.8vw, 1.1rem);
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.7;
+  font-size: clamp(1.08rem, 1.8vw, 1.18rem);
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.8;
   margin: 0 0 1rem;
 }
 
@@ -128,14 +128,15 @@
   align-items: center;
   justify-content: center;
   font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 1.05rem;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 700;
   color: var(--navy, #1A1F36);
   background: linear-gradient(135deg, var(--gold, #C5A572), var(--gold-light, #D4BC8E));
-  border-radius: 10px;
-  padding: 1rem 2.5rem;
+  border-radius: var(--radius-full, 9999px);
+  padding: 1.3rem 3.25rem;
   text-decoration: none;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 18px rgba(197, 165, 114, 0.25);
 }
 
 .primaryCTA:hover {
@@ -149,12 +150,12 @@
   justify-content: center;
   font-family: var(--font-inter, 'Inter', sans-serif);
   font-size: 1rem;
-  font-weight: 600;
-  color: var(--white, #FFFFFF);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
   background: transparent;
-  border: 1.5px solid rgba(255, 255, 255, 0.35);
-  border-radius: 10px;
-  padding: 0.9rem 2rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-full, 9999px);
+  padding: 1rem 2.25rem;
   text-decoration: none;
   transition: background-color 0.25s ease, border-color 0.25s ease;
 }
@@ -168,17 +169,17 @@
 
 .microcopy {
   font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.55);
-  line-height: 1.6;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.65;
   margin: 0 0 1rem;
 }
 
 .trustMicrocopy {
   font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.4);
-  line-height: 1.6;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.65;
   margin: 0;
   max-width: 540px;
   margin-left: auto;
