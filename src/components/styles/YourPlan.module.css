@@ -1,17 +1,16 @@
-/* ── Your Plan Section ── */
+/* ═══════════════════════════════════════════
+   Your Plan — Consultation Card
+   ═══════════════════════════════════════════ */
 
 .section {
-  padding: 7rem 1.5rem;
-  background-color: var(--white, #FFFFFF);
-  position: relative;
+  padding: 6rem 1.5rem;
+  background: var(--ivory);
 }
 
 .container {
-  max-width: 780px;
+  max-width: 900px;
   margin: 0 auto;
 }
-
-/* ── Header ── */
 
 .header {
   text-align: center;
@@ -19,164 +18,172 @@
 }
 
 .heading {
-  font-family: var(--font-playfair, 'Playfair Display', serif);
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 700;
-  color: var(--navy, #1A1F36);
-  line-height: 1.2;
-  margin: 0;
+  color: var(--ink);
 }
 
-/* ── Consult Card ── */
-
+/* ── Consultation Card ── */
 .consultCard {
-  background: var(--ivory, #FAF7F2);
-  border-radius: 20px;
-  box-shadow: 0 4px 40px rgba(26, 31, 54, 0.05);
-  border: 1px solid rgba(27, 107, 90, 0.08);
+  background: #FFFFFF;
+  border: 1px solid rgba(200, 169, 125, 0.3); /* subtle champagne border */
+  border-radius: 24px;
+  box-shadow: var(--shadow-float);
   overflow: hidden;
+  position: relative;
+}
+
+/* Champagne gold accent line at the top */
+.consultCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--champagne), var(--gold-light), var(--brass-muted));
 }
 
 .cardBody {
-  padding: 3rem 3.25rem;
+  padding: 3rem 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .cardBody {
+    padding: 4rem 5rem;
+  }
 }
 
 .paragraph {
-  font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 1.15rem; /* Increased size for readability (+10-15%) */
-  color: var(--charcoal, #2D2D3A);
-  line-height: 1.75;
-  margin: 0 0 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--espresso);
+  margin-bottom: 1.25rem;
 }
 
 /* ── Checklist ── */
-
 .checklistHeading {
-  font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--navy, #1A1F36);
-  margin: 2rem 0 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(61, 43, 31, 0.5);
+  margin: 2.5rem 0 1.25rem;
 }
 
 .checklist {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 2rem;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.7rem 2rem;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .checklist {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .checkItem {
   display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 1.1rem; /* Increased size for readability (+10-15%) */
-  color: var(--charcoal, #2D2D3A);
-  line-height: 1.6;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--ink);
 }
 
-.checkIcon {
-  color: var(--emerald, #1B6B5A);
+.checkIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(200, 169, 125, 0.15); /* champagne tint */
+  color: var(--brass-muted);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+/* ── Important Block ── */
+.importantBlock {
+  position: relative;
+  padding: 1.5rem;
+  background: var(--vellum);
+  border-radius: 12px;
+  margin-bottom: 3rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.importantAccent {
+  width: 3px;
+  background: var(--emerald);
+  border-radius: 2px;
   flex-shrink: 0;
 }
 
-/* ── Important Sentence ── */
-
 .importantSentence {
-  font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 1.05rem;
-  color: var(--navy, #1A1F36);
-  line-height: 1.7;
-  font-weight: 500;
-  margin: 0 0 2rem;
-  padding: 1.25rem 1.5rem;
-  background: rgba(27, 107, 90, 0.04);
-  border-left: 3px solid var(--emerald, #1B6B5A);
-  border-radius: 0 8px 8px 0;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--espresso);
+  font-style: italic;
 }
 
 /* ── CTA Area ── */
-
 .ctaArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  padding-top: 0.5rem;
+  gap: 1rem;
 }
 
 .primaryCTA {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--white, #FFFFFF);
-  background: linear-gradient(135deg, var(--emerald, #1B6B5A), var(--emerald-deep, #0F4F42));
-  border-radius: 10px;
-  padding: 0.9rem 2.5rem;
-  text-decoration: none;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  padding: 1.1rem 2.5rem;
+  background: var(--emerald);
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-emerald-glow);
 }
 
 .primaryCTA:hover {
+  background: var(--bottle-green);
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(27, 107, 90, 0.2);
+  box-shadow:
+    0 8px 28px rgba(27, 107, 90, 0.5),
+    0 0 0 3px rgba(27, 107, 90, 0.15);
 }
 
 .supportLine {
-  font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 1rem; /* Increased size for readability (+10-15%) */
-  color: var(--charcoal, #2D2D3A);
-  line-height: 1.6;
-  margin: 1rem 0 0;
-  opacity: 0.8;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: rgba(61, 43, 31, 0.6);
+  max-width: 400px;
 }
 
-/* ── Microcopy ── */
+/* ── Footer Bar ── */
+.footerBar {
+  background: rgba(245, 240, 232, 0.5);
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  padding: 1.5rem 2.5rem;
+  text-align: center;
+}
 
 .microcopy {
-  font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 0.92rem; /* Increased size for readability (+10-15%) */
-  color: var(--charcoal, #2D2D3A);
-  opacity: 0.7;
-  line-height: 1.6;
-  margin: 0;
-  padding: 1rem 3rem 1.5rem;
-  text-align: center;
-  border-top: 1px solid rgba(0, 0, 0, 0.04);
-}
-
-/* ── Animations ── */
-
-.animate {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ── Responsive ── */
-
-@media (max-width: 700px) {
-  .section {
-    padding: 4.5rem 1rem;
-  }
-
-  .cardBody {
-    padding: 2rem 1.5rem;
-  }
-
-  .checklist {
-    grid-template-columns: 1fr;
-  }
-
-  .microcopy {
-    padding: 1rem 1.5rem 1.25rem;
-  }
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: rgba(61, 43, 31, 0.5);
 }

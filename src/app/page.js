@@ -8,6 +8,7 @@ import HowItWorks from '@/components/HowItWorks';
 import WorkflowModule from '@/components/WorkflowModule';
 import FAQ from '@/components/FAQ';
 import LeakCheck from '@/components/Calculator'; // renamed internally to LeakCheck
+import YourPlan from '@/components/YourPlan';
 import FinalCTA from '@/components/FinalCTA';
 import Footer from '@/components/Footer';
 
@@ -28,6 +29,7 @@ export default function Home() {
       <HowItWorks />
       <WorkflowModule />
       <LeakCheck />
+      <YourPlan />
       <FAQ />
       <FinalCTA />
       <Footer />
