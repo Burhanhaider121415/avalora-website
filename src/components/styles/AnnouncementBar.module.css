@@ -2,7 +2,7 @@
    AnnouncementBar — Thin premium top bar
    ============================================================ */
 .bar {
-  background-color: var(--emerald-deep);
+  background-color: var(--deep-navy);
   color: var(--white);
   padding: 10px var(--space-lg);
   position: relative;
