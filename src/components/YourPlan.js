@@ -102,7 +102,7 @@ export default function YourPlan() {
 
             <div className={styles.ctaArea}>
               <a
-                href="#leak-check"
+                href="/#book-call"
                 className={styles.primaryCTA}
               >
                 Book a Private Fit Call

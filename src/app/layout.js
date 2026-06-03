@@ -3,6 +3,7 @@ import "./globals.css";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import DemoModal from "@/components/DemoModal";
 import Script from "next/script";
 
 const playfair = Playfair_Display({
@@ -56,6 +57,7 @@ export default function RootLayout({ children }) {
         <Navbar />
         {children}
         <Footer />
+        <DemoModal />
         <Script
           id="retell-widget"
           src="https://dashboard.retellai.com/retell-widget-v2.js"

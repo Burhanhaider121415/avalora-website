@@ -9,6 +9,7 @@ export default function BusinessAssociateAgreement() {
   return (
     <main className={styles.legalPage}>
       <div className={styles.container}>
+        <a href='/' className={styles.backLink}>&larr; Back to Home</a>
         <h1 className={styles.title}>Business Associate Agreement</h1>
 
         <div className={styles.content}>
@@ -52,3 +53,4 @@ export default function BusinessAssociateAgreement() {
     </main>
   );
 }
+

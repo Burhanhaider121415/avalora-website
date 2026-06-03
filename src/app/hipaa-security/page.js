@@ -9,6 +9,7 @@ export default function HIPAASecurity() {
   return (
     <main className={styles.legalPage}>
       <div className={styles.container}>
+        <a href='/' className={styles.backLink}>&larr; Back to Home</a>
         <h1 className={styles.title}>HIPAA &amp; Security</h1>
 
         <div className={styles.content}>
@@ -76,3 +77,4 @@ export default function HIPAASecurity() {
     </main>
   );
 }
+

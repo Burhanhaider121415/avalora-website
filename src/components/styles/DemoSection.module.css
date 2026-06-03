@@ -96,6 +96,108 @@
   filter: brightness(0.6);
 }
 
+/* ── Custom UI Mockup inside Demo Preview ── */
+.uiMockup {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: #0b1320;
+  align-items: center;
+  justify-content: center;
+}
+
+.mockupCard {
+  background: #f7f6f1; /* Ivory warm */
+  border-radius: 12px;
+  flex: 1;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  text-align: left;
+  overflow: hidden;
+  font-family: var(--font-sans);
+}
+
+.mockupHeader {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mockupTitle {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #3b3935; /* Espresso */
+  flex: 1;
+}
+
+.mockupTime {
+  font-size: 0.75rem;
+  color: #777;
+}
+
+.mockupBody {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.mockupRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.mockupLabel {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: #777;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.mockupValue {
+  font-size: 0.9rem;
+  color: #222;
+  line-height: 1.3;
+}
+
+.mockupBadgeMissed {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #d9534f;
+  background: rgba(217, 83, 79, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  display: inline-block;
+  width: max-content;
+}
+
+.mockupBadgeReady {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1B6B5A;
+  background: rgba(27, 107, 90, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  display: inline-block;
+  width: max-content;
+}
+
+.mockupTag {
+  background: #eee;
+  padding: 0.1rem 0.3rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  margin-left: 0.3rem;
+}
+
 /* ── Play Overlay ── */
 .playOverlay {
   position: absolute;

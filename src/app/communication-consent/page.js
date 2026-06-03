@@ -9,6 +9,7 @@ export default function CommunicationConsent() {
   return (
     <main className={styles.legalPage}>
       <div className={styles.container}>
+        <a href='/' className={styles.backLink}>&larr; Back to Home</a>
         <h1 className={styles.title}>Communication Consent</h1>
 
         <div className={styles.content}>
@@ -68,3 +69,4 @@ export default function CommunicationConsent() {
     </main>
   );
 }
+

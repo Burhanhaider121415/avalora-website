@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import DemoModal from './DemoModal';
@@ -27,8 +27,6 @@ const staggerItem = {
 };
 
 export default function DemoSection() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   return (
     <section className={styles.section} id="demo">
       <div className={styles.container}>
@@ -52,26 +50,75 @@ export default function DemoSection() {
         {/* Demo Preview Card */}
         <motion.div
           className={styles.demoPreview}
-          onClick={() => setIsModalOpen(true)}
+          onClick={() => window.dispatchEvent(new Event('openDemoModal'))}
           role="button"
           tabIndex={0}
           aria-label="Play demo: After-hours Botox/filler inquiry"
           onKeyDown={(e) => {
             if (e.key === 'Enter' || e.key === ' ') {
               e.preventDefault();
-              setIsModalOpen(true);
+              window.dispatchEvent(new Event('openDemoModal'));
             }
           }}
           {...fadeUp(0.3)}
         >
-          <Image
-            src="/images/dashboard-ui.png"
-            alt="Avalora dashboard showing patient intake summary"
-            fill
-            className={styles.demoImage}
-            sizes="(max-width: 767px) 100vw, 800px"
-            priority
-          />
+          <div className={styles.uiMockup}>
+            {/* Card 1 */}
+            <div className={styles.mockupCard}>
+              <div className={styles.mockupHeader}>
+                <span className={styles.mockupTitle}>Missed Call Notification</span>
+                <span className={styles.mockupTime}>11:02 AM</span>
+              </div>
+              <div className={styles.mockupBody}>
+                <div className={styles.mockupRow}>
+                  <span className={styles.mockupLabel}>Status</span>
+                  <span className={styles.mockupBadgeMissed}>● Missed Call</span>
+                </div>
+                <div className={styles.mockupRow}>
+                  <span className={styles.mockupLabel}>Patient</span>
+                  <span className={styles.mockupValue}>Sarah Johnson<br/>(555) 123-4567</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className={styles.mockupCard}>
+              <div className={styles.mockupHeader}>
+                <span className={styles.mockupTitle}>Patient Intake Summary</span>
+              </div>
+              <div className={styles.mockupBody}>
+                <div className={styles.mockupRow}>
+                  <span className={styles.mockupLabel}>Treatment</span>
+                  <span className={styles.mockupValue}>Filler consultation</span>
+                </div>
+                <div className={styles.mockupRow}>
+                  <span className={styles.mockupLabel}>Language</span>
+                  <span className={styles.mockupValue}>Spanish <span className={styles.mockupTag}>ES</span></span>
+                </div>
+                <div className={styles.mockupRow}>
+                  <span className={styles.mockupLabel}>Preferred Time</span>
+                  <span className={styles.mockupValue}>Friday after 4 PM</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className={styles.mockupCard}>
+              <div className={styles.mockupHeader}>
+                <span className={styles.mockupTitle}>Staff Handoff</span>
+              </div>
+              <div className={styles.mockupBody}>
+                <div className={styles.mockupRow}>
+                  <span className={styles.mockupLabel}>Status</span>
+                  <span className={styles.mockupBadgeReady}>● Ready for Review</span>
+                </div>
+                <div className={styles.mockupRow}>
+                  <span className={styles.mockupLabel}>Notes</span>
+                  <span className={styles.mockupValue}>Spanish intake completed. Preferences captured.</span>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className={styles.playOverlay}>
             <div className={styles.playBtn}>
               <div className={styles.playIcon} />
@@ -159,7 +206,7 @@ export default function DemoSection() {
         <motion.div className={styles.ctaArea} {...fadeUp(0.5)}>
           <button
             className={styles.ctaButton}
-            onClick={() => setIsModalOpen(true)}
+            onClick={() => window.dispatchEvent(new Event('openDemoModal'))}
             type="button"
           >
             Hear the Demo
@@ -169,12 +216,6 @@ export default function DemoSection() {
           </span>
         </motion.div>
       </div>
-
-      {/* Demo Modal */}
-      <DemoModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
     </section>
   );
 }

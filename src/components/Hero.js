@@ -84,16 +84,13 @@ export default function Hero() {
           <motion.div className={styles.ctaGroup} variants={fadeUp}>
             <button
               className={styles.ctaPrimary}
-              onClick={() => {
-                const modal = document.getElementById('demo-modal');
-                if (modal) modal.style.display = 'flex';
-              }}
+              onClick={() => window.dispatchEvent(new Event('openDemoModal'))}
             >
               Hear the Demo
             </button>
-            <button className={styles.ctaSecondary}>
+            <a href="/#book-call" className={styles.ctaSecondary}>
               Book a Private Fit Call
-            </button>
+            </a>
           </motion.div>
 
           <motion.p className={styles.microcopy} variants={fadeUp}>

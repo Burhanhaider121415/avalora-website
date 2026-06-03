@@ -1,12 +1,14 @@
+'use client';
+
 import Image from 'next/image';
 import styles from './styles/Footer.module.css';
 
 const NAV_LINKS = [
-  { label: 'Demo', href: '#demo' },
-  { label: 'How It Works', href: '#how-it-works' },
-  { label: 'Workflows', href: '#workflow' },
-  { label: 'Leak Check', href: '#leak-check' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'Demo', href: '/#demo' },
+  { label: 'How It Works', href: '/#how-it-works' },
+  { label: 'Workflows', href: '/#workflow' },
+  { label: 'Leak Check', href: '/#leak-check' },
+  { label: 'FAQ', href: '/#faq' },
 ];
 
 const LEGAL_LINKS = [
@@ -50,9 +52,19 @@ export default function Footer() {
             <ul className={styles.columnList} role="list">
               {NAV_LINKS.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className={styles.columnLink}>
-                    {link.label}
-                  </a>
+                  {link.label === 'Demo' ? (
+                    <button 
+                      onClick={() => window.dispatchEvent(new Event('openDemoModal'))}
+                      className={styles.columnLink}
+                      style={{ background: 'none', border: 'none', padding: '3px 0', cursor: 'pointer', textAlign: 'left' }}
+                    >
+                      {link.label}
+                    </button>
+                  ) : (
+                    <a href={link.href} className={styles.columnLink}>
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>

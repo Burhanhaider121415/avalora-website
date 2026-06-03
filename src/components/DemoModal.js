@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './styles/DemoModal.module.css';
 
@@ -51,8 +51,39 @@ const barHeights = [
   62, 44, 75, 36, 52, 26,
 ];
 
-export default function DemoModal({ isOpen, onClose }) {
+export default function DemoModal() {
+  const [isOpen, setIsOpen] = useState(false);
+  const onClose = () => setIsOpen(false);
   const modalRef = useRef(null);
+
+  useEffect(() => {
+    const handleOpen = () => setIsOpen(true);
+    window.addEventListener('openDemoModal', handleOpen);
+    return () => window.removeEventListener('openDemoModal', handleOpen);
+  }, []);
+
+  /* ── Hide Retell Branding ── */
+  useEffect(() => {
+    if (!isOpen) return;
+    
+    // Hide Retell text inside Shadow DOM by finding the text node
+    const interval = setInterval(() => {
+      const widget = document.querySelector('retell-widget');
+      if (widget && widget.shadowRoot) {
+        const iter = document.createNodeIterator(widget.shadowRoot, NodeFilter.SHOW_TEXT);
+        let node;
+        while ((node = iter.nextNode())) {
+          if (node.nodeValue && node.nodeValue.includes('Your RetellAI assistant')) {
+            if (node.parentElement) {
+              node.parentElement.style.display = 'none';
+            }
+          }
+        }
+      }
+    }, 200);
+    
+    return () => clearInterval(interval);
+  }, [isOpen]);
 
   /* ── Escape key handler ── */
   const handleKeyDown = useCallback(
@@ -61,6 +92,17 @@ export default function DemoModal({ isOpen, onClose }) {
     },
     [onClose],
   );
+
+  const triggerRetell = () => {
+    const retellWidget = document.querySelector('retell-widget');
+    if (retellWidget && retellWidget.shadowRoot) {
+      const btn = retellWidget.shadowRoot.querySelector('button');
+      if (btn) btn.click();
+      else retellWidget.click();
+    } else if (retellWidget) {
+      retellWidget.click();
+    }
+  };
 
   /* ── Focus trap ── */
   useEffect(() => {
@@ -189,22 +231,23 @@ export default function DemoModal({ isOpen, onClose }) {
                   ))}
                 </div>
 
-                <button 
-                  className={styles.talkBtn} 
-                  onClick={() => {
-                    const retellWidget = document.querySelector('retell-widget');
-                    if (retellWidget && retellWidget.shadowRoot) {
-                      const btn = retellWidget.shadowRoot.querySelector('button');
-                      if (btn) btn.click();
-                      else retellWidget.click();
-                    } else if (retellWidget) {
-                      retellWidget.click();
-                    }
-                  }}
-                  aria-label="Talk to Sofia"
-                >
-                  Talk to Sofia
-                </button>
+                <div className={styles.langButtons}>
+                  <button 
+                    className={styles.talkBtn} 
+                    onClick={triggerRetell}
+                    aria-label="Hear it in English"
+                  >
+                    Hear it in English
+                  </button>
+                  <button 
+                    className={styles.talkBtnOutline} 
+                    onClick={triggerRetell}
+                    aria-label="Hear it in Spanish"
+                  >
+                    Hear it in Spanish
+                  </button>
+                </div>
+                <p className={styles.langNote}>Sofia can respond in English or Spanish during the demo.</p>
               </motion.div>
 
               {/* ── Divider ── */}

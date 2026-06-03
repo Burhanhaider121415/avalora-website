@@ -5,11 +5,11 @@ import Image from 'next/image';
 import styles from './styles/Navbar.module.css';
 
 const NAV_LINKS = [
-  { label: 'Demo', href: '#demo' },
-  { label: 'How It Works', href: '#how-it-works' },
-  { label: 'Workflows', href: '#workflow' },
-  { label: 'Leak Check', href: '#leak-check' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'Demo', href: '/#demo' },
+  { label: 'How It Works', href: '/#how-it-works' },
+  { label: 'Workflows', href: '/#workflow' },
+  { label: 'Leak Check', href: '/#leak-check' },
+  { label: 'FAQ', href: '/#faq' },
 ];
 
 export default function Navbar() {
@@ -76,11 +76,11 @@ export default function Navbar() {
 
         {/* Desktop CTAs */}
         <div className={styles.ctas}>
-          <a href="#demo" className={`${styles.ctaPrimary}`}>
+          <button onClick={() => window.dispatchEvent(new Event('openDemoModal'))} className={`${styles.ctaPrimary}`}>
             Hear the Demo
-          </a>
+          </button>
           <a
-            href="#leak-check"
+            href="/#book-call"
             className={`${styles.ctaSecondary}`}
           >
             Book a Private Fit Call
@@ -136,15 +136,17 @@ export default function Navbar() {
           </ul>
 
           <div className={styles.mobileCtas}>
-            <a
-              href="#demo"
+            <button
+              onClick={() => {
+                window.dispatchEvent(new Event('openDemoModal'));
+                closeMobile();
+              }}
               className={styles.mobilePrimaryCta}
-              onClick={closeMobile}
             >
               Hear the Demo
-            </a>
+            </button>
             <a
-              href="#leak-check"
+              href="/#book-call"
               className={styles.mobileSecondaryCta}
               onClick={closeMobile}
             >

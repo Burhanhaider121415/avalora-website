@@ -7,9 +7,10 @@ import WhatWeRecover from '@/components/WhatWeRecover';
 import HowItWorks from '@/components/HowItWorks';
 import WorkflowModule from '@/components/WorkflowModule';
 import FAQ from '@/components/FAQ';
-import LeakCheck from '@/components/Calculator'; // renamed internally to LeakCheck
+import LeakCheckSection from '@/components/LeakCheckSection';
 import YourPlan from '@/components/YourPlan';
 import FinalCTA from '@/components/FinalCTA';
+import CalendlySection from '@/components/CalendlySection';
 import Footer from '@/components/Footer';
 
 export const metadata = {
@@ -20,7 +21,6 @@ export const metadata = {
 export default function Home() {
   return (
     <main>
-      <Navbar />
       <Hero />
       <DemoSection />
       <FrontDeskRelief />
@@ -28,11 +28,11 @@ export default function Home() {
       <WhatWeRecover />
       <HowItWorks />
       <WorkflowModule />
-      <LeakCheck />
+      <LeakCheckSection />
       <YourPlan />
       <FAQ />
       <FinalCTA />
-      <Footer />
+      <CalendlySection />
     </main>
   );
 }

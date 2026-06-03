@@ -51,13 +51,12 @@ export default function FinalCTA() {
         </p>
 
         <div className={`${styles.ctaGroup} ${styles.animate}`}>
-          <a href="#demo" className={styles.primaryCTA}>
+          <button onClick={() => window.dispatchEvent(new Event('openDemoModal'))} className={styles.primaryCTA}>
             Hear the Demo
-          </a>
+          </button>
           <a
-            href="#"
+            href="/#book-call"
             className={styles.secondaryCTA}
-            data-placeholder="true"
           >
             Book a Private Fit Call
           </a>

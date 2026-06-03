@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import styles from './styles/Calculator.module.css';
+import styles from './styles/LeakCheckSection.module.css';
 
 const leakFactors = [
   'Missed calls',
@@ -37,9 +37,8 @@ export default function LeakCheck() {
 
               <div className={styles.ctaArea}>
                 <a
-                  href="#"
+                  href="/#book-call"
                   className={styles.primaryCTA}
-                  data-placeholder="true"
                 >
                   Book a Private Fit Call
                 </a>
