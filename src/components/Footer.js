@@ -54,7 +54,7 @@ export default function Footer() {
                 <li key={link.label}>
                   {link.label === 'Demo' ? (
                     <button 
-                      onClick={() => window.dispatchEvent(new Event('openDemoModal'))}
+                      onClick={() => window.triggerRetellWidget?.()}
                       className={styles.columnLink}
                       style={{ background: 'none', border: 'none', padding: '3px 0', cursor: 'pointer', textAlign: 'left' }}
                     >

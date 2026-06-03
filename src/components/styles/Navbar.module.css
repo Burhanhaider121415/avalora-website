@@ -274,6 +274,48 @@
   justify-content: center;
 }
 
+.mobilePrimaryCta {
+  display: block;
+  width: 100%;
+  padding: 14px 24px;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, var(--emerald), var(--emerald-deep));
+  color: var(--white, #fff);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mobilePrimaryCta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(27, 107, 90, 0.3);
+}
+
+.mobileSecondaryCta {
+  display: block;
+  width: 100%;
+  padding: 14px 24px;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--navy, #1A1F36);
+  border: 1.5px solid var(--gray-200, #E5E7EB);
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.mobileSecondaryCta:hover {
+  background: var(--gray-50, #F9FAFB);
+  border-color: var(--emerald);
+}
+
 /* --- Mobile Contact --- */
 .mobileContact {
   margin-top: auto;

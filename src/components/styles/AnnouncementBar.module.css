@@ -54,11 +54,15 @@
   font-family: var(--font-sans);
   font-size: var(--fs-sm);
   font-weight: var(--fw-semibold);
-  color: var(--gold);
+  color: var(--gold, #C5A572);
   white-space: nowrap;
   text-decoration: none;
   transition: var(--transition-fast);
   flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
 .cta:hover {

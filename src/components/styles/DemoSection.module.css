@@ -77,25 +77,27 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  background-color: var(--emerald);
-  color: white;
+  background: linear-gradient(135deg, #d4af37, #c5a572);
+  color: #1A1F36;
   padding: 1.25rem 2.5rem;
   border-radius: var(--radius-pill);
   font-size: 1.2rem;
-  font-weight: 600;
-  box-shadow: var(--shadow-emerald-glow);
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(212, 175, 55, 0.4);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .talkButton:hover {
   transform: scale(1.05);
-  box-shadow: 0 10px 30px rgba(27, 107, 90, 0.4), 0 0 0 6px rgba(27, 107, 90, 0.15);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5), 0 0 0 6px rgba(212, 175, 55, 0.15);
 }
 
 .playIcon {
   width: 24px;
   height: 24px;
-  background: white;
+  background: #1A1F36;
   clip-path: polygon(15% 0, 15% 100%, 90% 50%);
 }
 
