@@ -31,8 +31,9 @@ export default function LeakCheck() {
                 See the booking leak hiding in your call flow.
               </h2>
               <p className={styles.subtext}>
-                During your private fit call, we review these leakage points in your current call flow
-                and identify where patient demand may be slipping before booking.
+                Run Avalora&apos;s private Leak Check to estimate where missed calls,
+                slow callbacks, after-hours inquiries, and unfinished booking requests
+                may be costing your clinic appointment opportunities.
               </p>
 
               <div className={styles.ctaArea}>
@@ -43,7 +44,7 @@ export default function LeakCheck() {
                   Run the Leak Check
                 </a>
                 <p className={styles.supportLine}>
-                  15 minutes. No obligation. We review your call flow and missed booking opportunities.
+                  Private estimate. No guaranteed revenue claim. Takes under 60 seconds.
                 </p>
               </div>
             </div>

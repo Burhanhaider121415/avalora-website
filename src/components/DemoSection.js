@@ -56,7 +56,7 @@ export default function DemoSection() {
                 type="button"
               >
                 <div className={styles.playIcon} />
-                Talk to Sofia Now
+                Hear Demo
               </button>
               <p className={styles.overlayNote}>
                 Sofia can respond in English or Spanish.
