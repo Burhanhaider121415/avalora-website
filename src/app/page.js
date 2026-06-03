@@ -8,9 +8,7 @@ import WhyDifferent from "@/components/WhyDifferent";
 import WhatWeCaptureTable from "@/components/WhatWeCaptureTable";
 import FrontDeskRelief from "@/components/FrontDeskRelief";
 import HowItWorks from "@/components/HowItWorks";
-import BilingualIntake from "@/components/BilingualIntake";
-import CRMHandoff from "@/components/CRMHandoff";
-import TrustSafety from "@/components/TrustSafety";
+import WorkflowModule from "@/components/WorkflowModule";
 import Calculator from "@/components/Calculator";
 import YourPlan from "@/components/YourPlan";
 import FounderNote from "@/components/FounderNote";
@@ -142,14 +140,8 @@ export default function Home() {
         {/* Section 12 — How It Works */}
         <HowItWorks />
 
-        {/* Section 13 — Bilingual Miami Intake */}
-        <BilingualIntake />
-
-        {/* Section 14 — CRM / Handoff */}
-        <CRMHandoff />
-
-        {/* Section 15 — Trust and Safety */}
-        <TrustSafety />
+        {/* Section 13-15 — Workflow Module (Consolidated) */}
+        <WorkflowModule />
 
         {/* Section 16 — Calculator / Report */}
         <Calculator />

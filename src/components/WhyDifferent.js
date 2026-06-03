@@ -1,9 +1,9 @@
 'use client';
 
+import useScrollReveal from '@/hooks/useScrollReveal';
 import styles from './styles/WhyDifferent.module.css';
 
 /* ── Comparison Data ── */
-
 const comparisonRows = [
   {
     generic: 'Leads with "AI answering"',
@@ -41,57 +41,61 @@ const comparisonRows = [
 ];
 
 /* ── Component ── */
-
 export default function WhyDifferent() {
+  const sectionRef = useScrollReveal();
+
   return (
-    <section id="why-different" className={styles.section} aria-labelledby="why-different-heading">
+    <section id="why-different" className={styles.section} aria-labelledby="why-different-heading" ref={sectionRef}>
       <div className={styles.container}>
 
         {/* Header */}
-        <header className={styles.header}>
+        <header className={styles.header} data-reveal>
           <h2 id="why-different-heading" className={styles.heading}>
             Why Avalora Is Different
           </h2>
         </header>
 
         {/* Desktop Table */}
-        <table className={styles.comparisonTable} role="table" aria-label="Comparison of generic AI receptionist versus Avalora">
-          <thead className={styles.tableHead}>
-            <tr>
-              <th scope="col">Generic AI receptionist</th>
-              <th scope="col">Avalora</th>
-            </tr>
-          </thead>
-          <tbody className={styles.tableBody}>
-            {comparisonRows.map((row, index) => (
-              <tr key={index}>
-                <td className={styles.genericCell}>{row.generic}</td>
-                <td className={`${styles.avaloraCell} ${styles.avaloraColumnHighlight}`}>
-                  {row.avalora}
-                </td>
+        <div className={styles.tableWrapper} data-reveal data-reveal-delay="200">
+          <table className={styles.comparisonTable} role="table" aria-label="Comparison of generic AI receptionist versus Avalora">
+            <thead className={styles.tableHead}>
+              <tr>
+                <th scope="col">Generic AI receptionist</th>
+                <th scope="col" className={styles.avaloraTh}>Avalora</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className={styles.tableBody}>
+              {comparisonRows.map((row, index) => (
+                <tr key={index}>
+                  <td className={styles.genericCell}>{row.generic}</td>
+                  <td className={`${styles.avaloraCell} ${styles.avaloraColumnHighlight}`}>
+                    <span className={styles.checkIcon}>✓</span>
+                    {row.avalora}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
-        {/* Mobile Stacked Cards */}
-        <div className={styles.mobileCards} role="list" aria-label="Comparison of generic AI receptionist versus Avalora">
+        {/* Mobile Scroll-Snap Cards */}
+        <div className={styles.mobileCards} role="list" aria-label="Comparison of generic AI receptionist versus Avalora" data-reveal data-reveal-delay="200">
           {comparisonRows.map((row, index) => (
             <div key={index} className={styles.comparisonCard} role="listitem">
-              <div className={styles.cardGeneric}>
-                <span className={styles.genericLabel}>Generic AI receptionist</span>
-                {row.generic}
-              </div>
               <div className={styles.cardAvalora}>
                 <span className={styles.avaloraLabel}>Avalora</span>
                 {row.avalora}
+              </div>
+              <div className={styles.cardGeneric}>
+                <span className={styles.genericLabel}>Generic AI receptionist</span>
+                {row.generic}
               </div>
             </div>
           ))}
         </div>
 
         {/* Bottom Line */}
-        <div className={styles.bottomLine}>
+        <div className={styles.bottomLine} data-reveal data-reveal-delay="300">
           <p className={styles.bottomLineText}>
             <strong>Many clinics search for an AI receptionist.</strong> Avalora is different. It is
             a controlled lead recovery and front desk support layer built to capture missed calls,

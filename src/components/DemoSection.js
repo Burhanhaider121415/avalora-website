@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
+import useScrollReveal from '@/hooks/useScrollReveal';
 import styles from './styles/DemoSection.module.css';
 
 /**
@@ -33,16 +34,17 @@ const CAPTURED_DETAILS = [
 
 export default function DemoSection() {
   const barHeights = useMemo(() => generateBarHeights(26), []);
+  const sectionRef = useScrollReveal();
 
   return (
-    <section id="demo" className={styles.section} aria-labelledby="demo-heading">
+    <section id="demo" className={styles.section} aria-labelledby="demo-heading" ref={sectionRef}>
       <div className={styles.container}>
         {/* ── Section Header ── */}
         <header className={styles.header}>
-          <h2 id="demo-heading" className={styles.heading}>
+          <h2 id="demo-heading" className={styles.heading} data-reveal>
             Hear how Avalora handles a real med spa inquiry.
           </h2>
-          <p className={styles.subtext}>
+          <p className={styles.subtext} data-reveal data-reveal-delay="100">
             Listen to a calm, clinic-approved intake flow for a high-intent
             after-hours Botox or filler inquiry — then see the exact summary
             your front desk receives.
@@ -52,7 +54,7 @@ export default function DemoSection() {
         {/* ── Two-Column Grid ── */}
         <div className={styles.grid}>
           {/* LEFT — Demo Player */}
-          <div className={styles.playerCard} role="region" aria-label="Demo player">
+          <div className={styles.playerCard} role="region" aria-label="Demo player" data-reveal data-reveal-delay="200">
             <div className={styles.playerInner}>
               <p className={styles.scenarioLabel}>After-hours Botox/filler inquiry</p>
 
@@ -62,7 +64,7 @@ export default function DemoSection() {
                   <span
                     key={i}
                     className={styles.waveBar}
-                    style={{ height: `${height}px` }}
+                    style={{ height: `${height}px`, '--bar-delay': `${i * 0.08}s` }}
                   />
                 ))}
               </div>
@@ -76,9 +78,11 @@ export default function DemoSection() {
                 <span className={styles.playIcon} />
               </button>
 
+              <div className={styles.playerDivider} aria-hidden="true" />
+
               {/* Placeholder Note */}
               <p className={styles.placeholderNote}>
-                [DEMO VIDEO PLACEHOLDER — insert final Avalora demo video later]
+                Full demo experience launching soon.
               </p>
 
               {/* Primary CTA */}
@@ -96,7 +100,7 @@ export default function DemoSection() {
           {/* RIGHT — Transcript & Handoff */}
           <div className={styles.transcriptColumn}>
             {/* Patient Chat Bubble */}
-            <div className={`${styles.chatBubble} ${styles.patientBubble}`}>
+            <div className={`${styles.chatBubble} ${styles.patientBubble}`} data-reveal data-reveal-delay="300">
               <span className={styles.bubbleLabel}>Patient</span>
               <q>
                 Hi, I wanted to ask about Botox or filler appointments this
@@ -105,7 +109,7 @@ export default function DemoSection() {
             </div>
 
             {/* Avalora Response Bubble */}
-            <div className={`${styles.chatBubble} ${styles.avalonBubble}`}>
+            <div className={`${styles.chatBubble} ${styles.avalonBubble}`} data-reveal data-reveal-delay="400">
               <span className={styles.bubbleLabel}>Avalora</span>
               <q>
                 I can help collect a few details for the team. Are you a new or
@@ -114,7 +118,7 @@ export default function DemoSection() {
             </div>
 
             {/* Captured Details Card */}
-            <div className={styles.detailsCard}>
+            <div className={styles.detailsCard} data-reveal data-reveal-delay="500">
               <h3 className={styles.detailsTitle}>Captured Details</h3>
               <dl className={styles.detailsList}>
                 {CAPTURED_DETAILS.map(({ label, value }) => (
@@ -127,7 +131,7 @@ export default function DemoSection() {
             </div>
 
             {/* Staff Handoff Card */}
-            <div className={styles.handoffCard}>
+            <div className={styles.handoffCard} data-reveal data-reveal-delay="600">
               <h3 className={styles.handoffTitle}>
                 <span className={styles.handoffIcon} aria-hidden="true">
                   <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -148,6 +152,8 @@ export default function DemoSection() {
               href="#"
               className={styles.secondaryCta}
               data-placeholder="true"
+              data-reveal
+              data-reveal-delay="700"
             >
               Book a Private Fit Call
             </a>
@@ -155,7 +161,7 @@ export default function DemoSection() {
         </div>
 
         {/* ── Microcopy Disclaimer ── */}
-        <p className={styles.microcopy}>
+        <p className={styles.microcopy} data-reveal data-reveal-delay="800">
           Demo examples use simulated or anonymized patient scenarios only.
         </p>
       </div>

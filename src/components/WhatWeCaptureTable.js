@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import useScrollReveal from '@/hooks/useScrollReveal';
 import styles from './styles/WhatWeCaptureTable.module.css';
 
 const captureData = [
@@ -37,30 +37,12 @@ const captureData = [
 ];
 
 export default function WhatWeCaptureTable() {
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add(styles.visible);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
-    );
-
-    const elements = sectionRef.current?.querySelectorAll(`.${styles.revealed}`);
-    elements?.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
+  const sectionRef = useScrollReveal();
 
   return (
     <section id="what-we-capture" className={styles.section} ref={sectionRef}>
       <div className={styles.container}>
-        <div className={styles.revealed}>
+        <div className={styles.header} data-reveal>
           <p className={styles.sectionLabel}>Capture Intelligence</p>
           <h2 className={styles.heading}>
             What Avalora captures — and where it goes.
@@ -72,7 +54,7 @@ export default function WhatWeCaptureTable() {
         </div>
 
         {/* Desktop Table */}
-        <div className={`${styles.tableWrapper} ${styles.revealed}`}>
+        <div className={styles.tableWrapper} data-reveal data-reveal-delay="200">
           <table className={styles.table} role="table">
             <thead>
               <tr>
@@ -118,10 +100,10 @@ export default function WhatWeCaptureTable() {
           </table>
         </div>
 
-        {/* Mobile Cards */}
-        <div className={styles.mobileCards}>
+        {/* Mobile Scroll-Snap Cards */}
+        <div className={styles.mobileCards} data-reveal data-reveal-delay="200">
           {captureData.map((row, index) => (
-            <div key={index} className={`${styles.card} ${styles.revealed}`}>
+            <div key={index} className={styles.card}>
               <div className={styles.cardHeader}>
                 <span className={styles.cardDot} aria-hidden="true" />
                 <h3 className={styles.cardTitle}>{row.type}</h3>
