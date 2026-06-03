@@ -32,9 +32,14 @@ export default function Footer() {
         <div className={styles.top}>
           {/* Brand Column */}
           <div className={styles.brand}>
-            <a href="/" className={styles.logoLink} aria-label="Avalora — Home">
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className={styles.topTapArea}
+              aria-label="Back to top"
+            >
+              <span className={styles.topTapLabel}>Back to top ↑</span>
               <span className={styles.logoText}>AVALORA</span>
-            </a>
+            </button>
             <p className={styles.tagline}>
               Lead recovery, booking support, and patient communication for Miami med spas.
             </p>

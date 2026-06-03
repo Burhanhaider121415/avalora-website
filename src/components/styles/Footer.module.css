@@ -39,9 +39,34 @@
   max-width: 340px;
 }
 
-.logoLink {
-  display: inline-block;
-  margin-bottom: var(--space-lg);
+.topTapArea {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: var(--space-lg, 1.5rem);
+  cursor: pointer;
+  text-align: left;
+}
+
+.topTapLabel {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.45);
+  transition: color 0.3s ease;
+}
+
+.topTapArea:hover .topTapLabel {
+  color: var(--gold-light, #E8D5B5);
+}
+
+.topTapArea:hover .logoText {
+  color: var(--gold-light, #E8D5B5);
 }
 
 .logoText {
@@ -51,6 +76,7 @@
   letter-spacing: 0.2em;
   color: var(--gold, #C5A572);
   display: inline-block;
+  transition: color 0.3s ease;
 }
 
 .tagline {
