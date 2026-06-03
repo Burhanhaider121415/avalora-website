@@ -51,7 +51,7 @@ export default function FinalCTA() {
         </p>
 
         <div className={`${styles.ctaGroup} ${styles.animate}`}>
-          <button onClick={() => window.dispatchEvent(new Event('openDemoModal'))} className={styles.primaryCTA}>
+          <button onClick={() => window.triggerRetellWidget?.()} className={styles.primaryCTA}>
             Hear the Demo
           </button>
           <a

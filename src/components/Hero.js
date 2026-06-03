@@ -84,7 +84,7 @@ export default function Hero() {
           <motion.div className={styles.ctaGroup} variants={fadeUp}>
             <button
               className={styles.ctaPrimary}
-              onClick={() => window.dispatchEvent(new Event('openDemoModal'))}
+              onClick={() => window.triggerRetellWidget?.()}
             >
               Hear the Demo
             </button>
