@@ -111,6 +111,16 @@
   transform: translateY(-1px);
 }
 
+.goldButton {
+  background: linear-gradient(135deg, #d4af37, #aa8000) !important;
+  color: #fff !important;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3) !important;
+}
+
+.goldButton:hover {
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.5) !important;
+}
+
 .ctaSecondary {
   font-size: var(--fs-xs) !important;
   padding: 10px 20px !important;

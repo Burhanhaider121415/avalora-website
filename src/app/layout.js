@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import RetellManager from "@/components/RetellManager";
 import Script from "next/script";
 
+
 const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -58,10 +59,8 @@ export default function RootLayout({ children }) {
         {children}
         <Footer />
         <RetellManager />
-        <Script
+        <div 
           id="retell-widget"
-          src="https://dashboard.retellai.com/retell-widget-v2.js"
-          type="module"
           data-voice-public-key="public_key_f0c21d7fc2a86f6165b2a"
           data-voice-agent-id="agent_4ede89fd9d32176954f8b51052"
           data-title="Talk to Avalora"
@@ -69,6 +68,11 @@ export default function RootLayout({ children }) {
           data-color="#123C34"
           data-show-ai-popup="false"
           data-auto-open="false"
+          style={{ display: 'none' }}
+        ></div>
+        <Script
+          src="https://dashboard.retellai.com/retell-widget-v2.js"
+          type="module"
           strategy="afterInteractive"
         />
       </body>

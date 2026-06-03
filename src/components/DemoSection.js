@@ -41,7 +41,7 @@ export default function DemoSection() {
         >
           <div className={styles.imageWrapper}>
             <Image 
-              src="/frontdesk_scene.png" 
+              src="/images/medspa-reception.png" 
               alt="Luxury Med Spa Reception" 
               fill
               className={styles.receptionImage}

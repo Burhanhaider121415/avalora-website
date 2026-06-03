@@ -76,7 +76,7 @@ export default function Navbar() {
 
         {/* Desktop CTAs */}
         <div className={styles.ctas}>
-          <button onClick={() => window.dispatchEvent(new Event('openDemoModal'))} className={`${styles.ctaPrimary}`}>
+          <button onClick={() => window.triggerRetellWidget?.()} className={`${styles.ctaPrimary} ${styles.goldButton}`}>
             Hear the Demo
           </button>
           <a
@@ -138,10 +138,10 @@ export default function Navbar() {
           <div className={styles.mobileCtas}>
             <button
               onClick={() => {
-                window.dispatchEvent(new Event('openDemoModal'));
+                window.triggerRetellWidget?.();
                 closeMobile();
               }}
-              className={styles.mobilePrimaryCta}
+              className={`${styles.mobilePrimaryCta} ${styles.goldButton}`}
             >
               Hear the Demo
             </button>
