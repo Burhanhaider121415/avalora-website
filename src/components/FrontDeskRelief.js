@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import styles from './styles/FrontDeskRelief.module.css';
 
@@ -13,94 +13,86 @@ const benefits = [
   'Protect the patient experience',
 ];
 
-function CheckIcon({ className }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 18 18"
-      fill="none"
-      aria-hidden="true"
-    >
-      <circle cx="9" cy="9" r="8.5" stroke="currentColor" strokeWidth="1" opacity="0.3" />
-      <path
-        d="M5.5 9.5L7.5 11.5L12.5 6.5"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 export default function FrontDeskRelief() {
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add(styles.visible);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
-    );
-
-    const elements = sectionRef.current?.querySelectorAll(
-      `.${styles.revealed}, .${styles.revealedRight}`
-    );
-    elements?.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section id="front-desk-relief" className={styles.section} ref={sectionRef}>
+    <section id="front-desk-relief" className={styles.section}>
       <div className={styles.container}>
+        {/* Image Column */}
+        <motion.div
+          className={styles.imageColumn}
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
+        >
+          <div className={styles.imageWrapper}>
+            <Image
+              src="/images/frontdesk-scene.png"
+              alt="Premium med spa front desk with warm lighting and organized reception area"
+              fill
+              sizes="(max-width: 960px) 100vw, 50vw"
+              className={styles.image}
+            />
+          </div>
+          {/* Glass accent overlay */}
+          <div className={styles.imageAccent} aria-hidden="true">
+            <span className={styles.accentDot} />
+            <span className={styles.accentText}>Front desk stays in control</span>
+          </div>
+        </motion.div>
+
         {/* Copy Column */}
-        <div className={styles.copyColumn}>
-          <div className={styles.revealed}>
-            <p className={styles.sectionLabel}>Front Desk Support</p>
-            <h2 className={styles.heading}>
-              Your front desk stays human.{' '}
-              <span className={styles.headingAccent}>
-                Avalora catches what they miss.
-              </span>
-            </h2>
-          </div>
+        <motion.div
+          className={styles.copyColumn}
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
+        >
+          <p className={styles.eyebrow}>Front Desk Support</p>
+          <h2 className={styles.heading}>
+            Your front desk stays human.{' '}
+            <span className={styles.headingAccent}>
+              Avalora catches what they miss.
+            </span>
+          </h2>
 
-          <div className={styles.revealed}>
-            <p className={styles.paragraph}>
-              Your receptionist is doing more than answering phones.
-            </p>
-            <p className={styles.paragraph}>
-              She is checking in patients, managing payments, calming nervous
-              clients, updating provider schedules, handling DMs, and still
-              trying to answer every call.
-            </p>
-            <p className={styles.paragraph}>
-              Avalora adds a controlled capture layer around the moments your
-              team cannot reach fast enough: overflow calls, missed calls,
-              after-hours inquiries, repetitive booking questions, and follow-up
-              requests.
-            </p>
-          </div>
+          <p className={styles.paragraph}>
+            Your receptionist is doing more than answering phones.
+          </p>
+          <p className={styles.paragraph}>
+            She is checking in patients, managing payments, calming nervous
+            clients, updating provider schedules, handling DMs, and still
+            trying to answer every call.
+          </p>
+          <p className={styles.paragraph}>
+            Avalora adds a controlled capture layer around the moments your
+            team cannot reach fast enough: overflow calls, missed calls,
+            after-hours inquiries, repetitive booking questions, and follow-up
+            requests.
+          </p>
 
-          <div className={styles.revealed}>
-            <p className={styles.listLabel}>Avalora helps your team:</p>
-            <ul className={styles.benefitsList} role="list">
-              {benefits.map((benefit, index) => (
-                <li key={index} className={styles.benefitItem}>
-                  <CheckIcon className={styles.checkIcon} />
-                  <span>{benefit}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <p className={styles.listLabel}>Avalora helps your team:</p>
+          <ul className={styles.benefitsList} role="list">
+            {benefits.map((benefit, index) => (
+              <motion.li
+                key={index}
+                className={styles.benefitItem}
+                initial={{ opacity: 0, x: 15 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+              >
+                <svg className={styles.checkIcon} viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                  <circle cx="9" cy="9" r="8" stroke="#1B6B5A" strokeWidth="1.5" opacity="0.3" />
+                  <path d="M5.5 9.5L7.5 11.5L12.5 6.5" stroke="#1B6B5A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span>{benefit}</span>
+              </motion.li>
+            ))}
+          </ul>
 
-          <div className={`${styles.closingBlock} ${styles.revealed}`}>
+          <div className={styles.closingBlock}>
             <p className={styles.closingBold}>
               This is not receptionist replacement.
             </p>
@@ -109,22 +101,7 @@ export default function FrontDeskRelief() {
               the team can respond.
             </p>
           </div>
-        </div>
-
-        {/* Image Column */}
-        <div className={`${styles.imageColumn} ${styles.revealedRight}`}>
-          <div className={styles.imageWrapper}>
-            <Image
-              src="/images/medspa-reception.png"
-              alt="Med spa front desk reception area with staff assisting patients"
-              fill
-              sizes="(max-width: 960px) 100vw, 50vw"
-              className={styles.image}
-              priority={false}
-            />
-          </div>
-          <div className={styles.imageAccent} aria-hidden="true" />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

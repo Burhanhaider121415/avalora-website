@@ -1,366 +1,296 @@
 /* ═══════════════════════════════════════════
-   BookingLeak — Problem Visualization
-   Calm, empathetic tone. No aggressive reds.
+   Booking Leak — Premium Visual Flow
    ═══════════════════════════════════════════ */
 
 .section {
-  padding: var(--space-4xl) var(--space-lg);
-  background: var(--white);
+  padding: 7rem 1.5rem;
+  background: #FAF8F5;
   position: relative;
-  overflow: hidden;
-}
-
-/* Subtle background texture */
-.section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background:
-    radial-gradient(ellipse 600px 400px at 10% 20%, rgba(143, 168, 154, 0.06), transparent),
-    radial-gradient(ellipse 500px 300px at 90% 80%, rgba(27, 107, 90, 0.04), transparent);
-  pointer-events: none;
 }
 
 .container {
-  max-width: var(--max-width);
+  max-width: 1100px;
   margin: 0 auto;
-  position: relative;
-  z-index: 1;
 }
 
-/* ── Header Block ── */
-
+/* ── Header ── */
 .header {
-  max-width: 760px;
-  margin: 0 auto var(--space-3xl);
   text-align: center;
+  max-width: 700px;
+  margin: 0 auto 4rem;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #C8A97D;
+  margin-bottom: 1rem;
+  padding: 0.35rem 1rem;
+  background: rgba(200, 169, 125, 0.1);
+  border: 1px solid rgba(200, 169, 125, 0.2);
+  border-radius: 9999px;
 }
 
 .heading {
   font-family: var(--font-serif);
-  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-  font-weight: 600;
-  color: var(--navy);
-  line-height: 1.25;
-  margin-bottom: var(--space-lg);
-  letter-spacing: -0.01em;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: #1A1A2E;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
 }
 
 .intro {
   font-family: var(--font-sans);
-  font-size: clamp(1rem, 1.5vw, 1.125rem);
-  color: var(--charcoal);
-  line-height: 1.7;
-  margin-bottom: var(--space-xl);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #3D2B1F;
+  opacity: 0.8;
 }
 
-/* ── Problem narrative ── */
+/* ── Flow Container ── */
+.flowContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
 
-.narrative {
-  max-width: 680px;
-  margin: 0 auto var(--space-3xl);
+@media (min-width: 768px) {
+  .flowContainer {
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0;
+  }
+}
+
+.flowColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+  max-width: 280px;
+}
+
+.flowColumnLabel {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(61, 43, 31, 0.4);
+  margin-bottom: 0.5rem;
   text-align: center;
+}
+
+/* Source Cards */
+.sourceCard {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.02);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sourceCard:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.sourceEmoji {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F5F0E8;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.sourceLabel {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1A1A2E;
+}
+
+.sourceSub {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: rgba(61, 43, 31, 0.5);
+  margin-top: 0.15rem;
+}
+
+/* Hub Column */
+.hubColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5rem;
+  min-width: 160px;
+}
+
+@media (max-width: 767px) {
+  .hubColumn {
+    flex-direction: row;
+    padding: 1rem 0;
+  }
+  .connectorLine {
+    width: 30px !important;
+    height: 2px !important;
+  }
+}
+
+.connectorLine {
+  width: 2px;
+  height: 30px;
+  background: linear-gradient(to bottom, transparent, #1B6B5A, transparent);
+}
+
+@media (min-width: 768px) {
+  .connectorLine {
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #1B6B5A, transparent);
+  }
+  .hubColumn {
+    flex-direction: row;
+  }
+}
+
+.avaloraHub {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, #0D4A3A 0%, #1B6B5A 100%);
+  border-radius: 50%;
+  box-shadow:
+    0 8px 32px rgba(27, 107, 90, 0.3),
+    0 0 0 8px rgba(27, 107, 90, 0.08);
+}
+
+.hubPulse {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1px solid rgba(27, 107, 90, 0.3);
+  animation: hubPulse 3s ease-in-out infinite;
+}
+
+@keyframes hubPulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.08); opacity: 0; }
+}
+
+.hubTitle {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.hubSub {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 0.15rem;
+}
+
+/* Destination Cards */
+.destCard {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.25rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease;
+}
+
+.destCard:hover {
+  transform: translateX(4px);
+}
+
+.destDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.destLabel {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1A1A2E;
+}
+
+/* ── Narrative ── */
+.narrative {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
 }
 
 .problem {
   font-family: var(--font-serif);
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
-  font-weight: 500;
-  color: var(--emerald-deep);
-  margin-bottom: var(--space-lg);
-  letter-spacing: -0.005em;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1A1A2E;
+  margin-bottom: 1rem;
 }
 
 .detail {
   font-family: var(--font-sans);
-  font-size: clamp(0.95rem, 1.3vw, 1.0625rem);
-  color: var(--charcoal);
-  line-height: 1.8;
-  margin-bottom: var(--space-xl);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #3D2B1F;
+  margin-bottom: 1.5rem;
 }
 
 .keyLine {
   font-family: var(--font-serif);
-  font-size: clamp(1.125rem, 1.8vw, 1.375rem);
+  font-size: 1.15rem;
   font-weight: 600;
-  color: var(--navy);
-  margin-bottom: var(--space-md);
-  position: relative;
-  display: inline-block;
-}
-
-.keyLine::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 2px;
-  background: var(--gold);
-  border-radius: var(--radius-full);
+  color: #1B6B5A;
+  margin-bottom: 0.75rem;
 }
 
 .empathy {
   font-family: var(--font-sans);
-  font-size: clamp(0.95rem, 1.3vw, 1.0625rem);
-  color: var(--sage);
+  font-size: 1rem;
+  color: #3D2B1F;
+  opacity: 0.7;
   font-style: italic;
-  margin-top: var(--space-lg);
-  letter-spacing: 0.01em;
-}
-
-/* ── Leak Flow Connector ── */
-
-.visualFlow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  max-width: 840px;
-  margin: 0 auto 3.5rem;
-  background: var(--ivory-warm);
-  border: 1px solid rgba(27, 107, 90, 0.08);
-  padding: 1.25rem 2rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(26, 31, 54, 0.02);
-}
-
-.flowStep {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  flex: 1;
-}
-
-.flowStepActive {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  flex: 1.1;
-  background: var(--white);
-  border: 1px solid rgba(197, 165, 114, 0.35);
-  padding: 0.6rem 1rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(197, 165, 114, 0.06);
-}
-
-.flowIcon {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: rgba(143, 168, 154, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--sage);
-  flex-shrink: 0;
-}
-
-.flowIconActive {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: rgba(27, 107, 90, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--emerald);
-  flex-shrink: 0;
-  box-shadow: 0 0 12px rgba(27, 107, 90, 0.1);
-}
-
-.flowText {
-  display: flex;
-  flex-direction: column;
-}
-
-.flowLabel {
-  font-family: var(--font-sans);
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--sage);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.flowLabelActive {
-  font-family: var(--font-sans);
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--emerald);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.flowValue {
-  font-family: var(--font-sans);
-  font-size: 0.92rem;
-  font-weight: 500;
-  color: var(--charcoal);
-}
-
-.flowValueActive {
-  font-family: var(--font-sans);
-  font-size: 0.98rem;
-  font-weight: 600;
-  color: var(--navy);
-}
-
-.flowArrow {
-  color: var(--gold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.8;
-}
-
-/* ── Leak Cards Section ── */
-
-.leakSection {
-  margin-top: var(--space-2xl);
-}
-
-.leakHeading {
-  font-family: var(--font-serif);
-  font-size: clamp(1.25rem, 2.2vw, 1.625rem);
-  font-weight: 500;
-  color: var(--navy);
-  text-align: center;
-  margin-bottom: var(--space-2xl);
-  letter-spacing: -0.005em;
-}
-
-.leakGrid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: var(--space-lg);
-}
-
-/* ── Individual Leak Card ── */
-
-.leakCard {
-  background: var(--ivory);
-  border: 1px solid rgba(143, 168, 154, 0.15);
-  border-radius: var(--radius-lg);
-  padding: 1.75rem;
-  position: relative;
-  transition:
-    transform var(--duration-normal) var(--ease-out),
-    box-shadow var(--duration-normal) var(--ease-out),
-    border-color var(--duration-normal) var(--ease-out);
-}
-
-.leakCard:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-  border-color: rgba(143, 168, 154, 0.3);
-}
-
-/* Flow line between cards (desktop) */
-.leakCard:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: -0.85rem;
-  width: 0.7rem;
-  height: 1px;
-  background: var(--sage);
-  opacity: 0.3;
-}
-
-.iconWrapper {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-md);
-  background: rgba(143, 168, 154, 0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: var(--space-lg);
-  transition: background var(--duration-normal) var(--ease-out);
-}
-
-.leakCard:hover .iconWrapper {
-  background: rgba(27, 107, 90, 0.1);
-}
-
-.icon {
-  width: 22px;
-  height: 22px;
-  color: var(--emerald);
-  flex-shrink: 0;
-}
-
-.cardTitle {
-  font-family: var(--font-serif);
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--navy);
-  margin-bottom: var(--space-sm);
-  line-height: 1.3;
-}
-
-.cardDescription {
-  font-family: var(--font-sans);
-  font-size: 1.05rem;
-  color: var(--charcoal);
-  line-height: 1.7;
-}
-
-/* ── Responsive ── */
-
-@media (max-width: 1024px) {
-  .leakGrid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  /* Remove connector lines on wrap */
-  .leakCard::after {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .section {
-    padding: var(--space-3xl) var(--space-lg);
-  }
-
-  .leakGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-md);
-  }
-}
-
-@media (max-width: 480px) {
-  .section {
-    padding: var(--space-2xl) var(--space-md);
-  }
-
-  .leakGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .leakCard {
-    padding: 1.75rem var(--space-md);
-  }
-
-  .visualFlow {
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1.25rem;
-    margin-bottom: 2rem;
-  }
-  
-  .flowArrow {
-    transform: rotate(90deg);
-  }
-
-  .flowStep, .flowStepActive {
-    width: 100%;
-    justify-content: flex-start;
-  }
 }

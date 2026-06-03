@@ -6,10 +6,9 @@ import styles from './styles/Navbar.module.css';
 
 const NAV_LINKS = [
   { label: 'Demo', href: '#demo' },
-  { label: 'What We Recover', href: '#recover' },
   { label: 'How It Works', href: '#how-it-works' },
-  { label: 'Safety', href: '#trust-safety' },
-  { label: 'Calculator', href: '#calculator' },
+  { label: 'Workflows', href: '#workflow' },
+  { label: 'Leak Check', href: '#leak-check' },
   { label: 'FAQ', href: '#faq' },
 ];
 
@@ -77,13 +76,12 @@ export default function Navbar() {
 
         {/* Desktop CTAs */}
         <div className={styles.ctas}>
-          <a href="#demo" className={`btn btn-primary btn-sm ${styles.ctaPrimary}`}>
+          <a href="#demo" className={`${styles.ctaPrimary}`}>
             Hear the Demo
           </a>
           <a
-            href="#"
-            data-placeholder="true"
-            className={`btn btn-secondary btn-sm ${styles.ctaSecondary}`}
+            href="#leak-check"
+            className={`${styles.ctaSecondary}`}
           >
             Book a Private Fit Call
           </a>
@@ -140,15 +138,14 @@ export default function Navbar() {
           <div className={styles.mobileCtas}>
             <a
               href="#demo"
-              className="btn btn-primary"
+              className={styles.mobilePrimaryCta}
               onClick={closeMobile}
             >
               Hear the Demo
             </a>
             <a
-              href="#"
-              data-placeholder="true"
-              className="btn btn-secondary"
+              href="#leak-check"
+              className={styles.mobileSecondaryCta}
               onClick={closeMobile}
             >
               Book a Private Fit Call

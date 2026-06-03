@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import styles from './styles/HowItWorks.module.css';
 
 const steps = [
@@ -9,7 +10,6 @@ const steps = [
     title: 'Learn',
     description:
       'We map your services, FAQs, booking rules, tone, escalation preferences, language needs, consent language, and front desk workflow.',
-    icon: 'search',
     details: [
       'Services and treatment categories',
       'Approved FAQs',
@@ -27,7 +27,6 @@ const steps = [
     title: 'Capture',
     description:
       'Avalora captures missed calls, overflow calls, after-hours inquiries, form leads, ad leads, DMs where configured, and booking requests.',
-    icon: 'funnel',
     details: [
       'Missed calls',
       'Overflow calls',
@@ -43,7 +42,6 @@ const steps = [
     title: 'Qualify',
     description:
       'Avalora collects the details your team needs: name, phone, treatment interest, preferred time, patient type, urgency, and notes.',
-    icon: 'checklist',
     details: [
       'Name',
       'Phone',
@@ -61,7 +59,6 @@ const steps = [
     title: 'Handoff',
     description:
       'Your team receives a clean summary through the workflow that fits your clinic: staff alert, email, SMS, CRM-light task, spreadsheet, dashboard, or deeper integration where supported.',
-    icon: 'handoff',
     details: [
       'Front desk alert',
       'Staff email',
@@ -75,140 +72,121 @@ const steps = [
   },
 ];
 
-function StepIcon({ type, className }) {
-  const icons = {
-    search: (
-      <svg className={className} viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <circle cx="12" cy="12" r="8" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M18 18l6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      </svg>
-    ),
-    funnel: (
-      <svg className={className} viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <path
-          d="M3 4h22l-8 9.6V22l-6 3V13.6L3 4z"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
-    checklist: (
-      <svg className={className} viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <rect x="4" y="3" width="20" height="22" rx="3" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M9 10l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M9 17h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M9 21h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      </svg>
-    ),
-    handoff: (
-      <svg className={className} viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <path d="M5 14h18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M17 8l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M2 8v12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      </svg>
-    ),
-  };
-  return icons[type] || null;
-}
-
 export default function HowItWorks() {
-  const sectionRef = useRef(null);
-  const [openSteps, setOpenSteps] = useState({});
+  const [activeStep, setActiveStep] = useState(0);
+  const [expandedDetails, setExpandedDetails] = useState({});
 
-  const toggleStep = (index) => {
-    setOpenSteps((prev) => ({
-      ...prev,
-      [index]: !prev[index],
-    }));
+  const toggleDetails = (index) => {
+    setExpandedDetails((prev) => ({ ...prev, [index]: !prev[index] }));
   };
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add(styles.visible);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
-    );
-
-    const elements = sectionRef.current?.querySelectorAll(`.${styles.revealed}`);
-    elements?.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
-    <section id="how-it-works" className={styles.section} ref={sectionRef}>
+    <section id="how-it-works" className={styles.section}>
       <div className={styles.container}>
-        <div className={`${styles.header} ${styles.revealed}`}>
-          <p className={styles.sectionLabel}>How It Works</p>
+        <motion.div
+          className={styles.header}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.8 }}
+        >
+          <p className={styles.eyebrow}>How It Works</p>
           <h2 className={styles.heading}>
             Built around your current booking flow, not forced on top of it.
           </h2>
-        </div>
+        </motion.div>
 
-        <div className={`${styles.stepsGrid} ${styles.revealed}`}>
-          {/* Desktop connecting line */}
-          <div className={styles.connectingLine} aria-hidden="true">
-            <div className={styles.lineShimmer} />
+        <motion.div
+          className={styles.stepsLayout}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          {/* Step Navigation Pills */}
+          <div className={styles.stepNav}>
+            {steps.map((step, i) => (
+              <button
+                key={i}
+                className={`${styles.stepPill} ${activeStep === i ? styles.stepPillActive : ''}`}
+                onClick={() => setActiveStep(i)}
+                aria-label={`Step ${step.number}: ${step.title}`}
+              >
+                <span className={styles.pillNumber}>{step.number}</span>
+                <span className={styles.pillTitle}>{step.title}</span>
+              </button>
+            ))}
           </div>
 
-          {/* Mobile connecting line */}
-          <div className={styles.mobileConnector} aria-hidden="true" />
-
-          {steps.map((step, index) => (
-            <div key={index} className={styles.step}>
-              <div className={styles.stepCircle} aria-hidden="true">
-                {step.number}
-              </div>
-
-              <div className={styles.stepContent}>
-                <StepIcon type={step.icon} className={styles.stepIcon} />
-                <h3 className={styles.stepTitle}>{step.title}</h3>
-                <p className={styles.stepDescription}>{step.description}</p>
+          {/* Active Step Content */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeStep}
+              className={styles.stepContent}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.4 }}
+            >
+              <div className={styles.stepBody}>
+                <div className={styles.stepNumberLarge}>{String(steps[activeStep].number).padStart(2, '0')}</div>
+                <h3 className={styles.stepTitle}>{steps[activeStep].title}</h3>
+                <p className={styles.stepDescription}>{steps[activeStep].description}</p>
 
                 <button
                   className={styles.detailToggle}
-                  onClick={() => toggleStep(index)}
-                  aria-expanded={!!openSteps[index]}
-                  aria-controls={`step-detail-${index}`}
+                  onClick={() => toggleDetails(activeStep)}
+                  aria-expanded={!!expandedDetails[activeStep]}
                 >
-                  {openSteps[index] ? 'Hide details' : 'View details'}
-                  <span
-                    className={`${styles.toggleArrow} ${
-                      openSteps[index] ? styles.toggleArrowOpen : ''
-                    }`}
-                    aria-hidden="true"
-                  >
-                    ▼
+                  {expandedDetails[activeStep] ? 'Hide details' : 'View details'}
+                  <span className={`${styles.toggleArrow} ${expandedDetails[activeStep] ? styles.toggleArrowOpen : ''}`}>
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                      <path d="M3.5 5.25l3.5 3.5 3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
                   </span>
                 </button>
 
-                <div
-                  id={`step-detail-${index}`}
-                  className={`${styles.detailList} ${
-                    openSteps[index] ? styles.detailListOpen : ''
-                  }`}
-                  role="region"
-                  aria-label={`${step.title} details`}
-                >
-                  <ul className={styles.detailItems} role="list">
-                    {step.details.map((detail, detailIndex) => (
-                      <li key={detailIndex} className={styles.detailItem}>
-                        <span className={styles.detailDot} aria-hidden="true" />
-                        <span>{detail}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <AnimatePresence>
+                  {expandedDetails[activeStep] && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className={styles.detailList}
+                    >
+                      <ul className={styles.detailItems}>
+                        {steps[activeStep].details.map((detail, di) => (
+                          <li key={di} className={styles.detailItem}>
+                            <span className={styles.detailDot} />
+                            {detail}
+                          </li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Visual Step Indicator */}
+              <div className={styles.stepVisual}>
+                <div className={styles.progressRing}>
+                  <svg viewBox="0 0 100 100" className={styles.ringSvg}>
+                    <circle cx="50" cy="50" r="42" className={styles.ringBg} />
+                    <circle
+                      cx="50"
+                      cy="50"
+                      r="42"
+                      className={styles.ringProgress}
+                      strokeDasharray={`${((activeStep + 1) / 4) * 264} 264`}
+                    />
+                  </svg>
+                  <span className={styles.ringLabel}>{activeStep + 1}/4</span>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            </motion.div>
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   );

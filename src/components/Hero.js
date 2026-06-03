@@ -1,141 +1,165 @@
 'use client';
 
-import useScrollReveal from '@/hooks/useScrollReveal';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 import styles from './styles/Hero.module.css';
 
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.15, delayChildren: 0.3 },
+  },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] },
+  },
+};
+
+const cardReveal = (delay = 0) => ({
+  hidden: { opacity: 0, y: 40, scale: 0.96 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.9, delay, ease: [0.25, 0.1, 0.25, 1] },
+  },
+});
+
+const floatY = (offset = 8, dur = 5) => ({
+  y: [0, -offset, 0],
+  transition: {
+    duration: dur,
+    repeat: Infinity,
+    repeatType: 'mirror',
+    ease: 'easeInOut',
+  },
+});
+
 export default function Hero() {
-  const sectionRef = useScrollReveal();
-
   return (
-    <section id="hero" className={styles.hero} aria-label="Hero" ref={sectionRef}>
-      <div className={styles.container}>
-        {/* ─── Left: Copy ─── */}
+    <section className={styles.hero}>
+      {/* Background Image */}
+      <div className={styles.bgImage}>
+        <Image
+          src="/images/hero-reception.png"
+          alt="Luxury med spa reception"
+          fill
+          style={{ objectFit: 'cover' }}
+          priority
+          quality={90}
+        />
+      </div>
+
+      {/* Dark Warm Overlay */}
+      <div className={styles.overlay} />
+
+      {/* Content Grid */}
+      <motion.div
+        className={styles.container}
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+      >
+        {/* ── Left Column ── */}
         <div className={styles.copyColumn}>
-          <p className={styles.eyebrow} data-reveal>Built for Miami med spas</p>
+          <motion.span className={styles.eyebrow} variants={fadeUp}>
+            Built for Miami med spas
+          </motion.span>
 
-          <h1 className={styles.headline} data-reveal data-reveal-delay="100">
+          <motion.h1 className={styles.headline} variants={fadeUp}>
             Bilingual call and booking recovery for Miami med spas.
-          </h1>
+          </motion.h1>
 
-          <p className={styles.subheadline} data-reveal data-reveal-delay="200">
+          <motion.p className={styles.subheadline} variants={fadeUp}>
             Avalora supports your front desk by capturing missed calls,
             after-hours inquiries, English/Spanish patient requests, and booking
             intent — then routing clean details back to your team.
-          </p>
+          </motion.p>
 
-          <div className={styles.ctaGroup} data-reveal data-reveal-delay="300">
-            <a href="#demo" className={styles.ctaPrimary}>
-              <span className={styles.ctaIcon} aria-hidden="true">▶</span>
-              Hear the Demo
-            </a>
-            <a
-              href="#"
-              className={styles.ctaSecondary}
-              data-placeholder="true"
+          <motion.div className={styles.ctaGroup} variants={fadeUp}>
+            <button
+              className={styles.ctaPrimary}
+              onClick={() => {
+                const modal = document.getElementById('demo-modal');
+                if (modal) modal.style.display = 'flex';
+              }}
             >
+              Hear the Demo
+            </button>
+            <button className={styles.ctaSecondary}>
               Book a Private Fit Call
-            </a>
-          </div>
+            </button>
+          </motion.div>
 
-          <p className={styles.microcopy} data-reveal data-reveal-delay="400">
+          <motion.p className={styles.microcopy} variants={fadeUp}>
             Front desk support. Clinic-approved FAQs. Human escalation when
             needed.
-          </p>
+          </motion.p>
         </div>
 
-        {/* ─── Right: Visual ─── */}
-        <div className={styles.visualColumn} aria-hidden="true">
-          {/* Live Status Pill */}
-          <div className={styles.statusPill} data-reveal data-reveal-delay="300">
-            <span className={styles.pulseDot} />
-            Capturing 24/7
-          </div>
-
-          {/* Main Dashboard Card (replaces Phone) */}
-          <div className={styles.dashboardCard} data-reveal data-reveal-delay="400">
-            <div className={styles.inquiryCard}>
-              <div className={styles.inquiryHeader}>
-                <span className={styles.inquiryIcon}>⚡</span>
-                <span className={styles.inquiryTitle}>Incoming inquiry</span>
-              </div>
-
-              <div className={styles.inquiryRow}>
-                <span className={styles.inquiryLabel}>Source</span>
-                <span className={styles.inquiryValue}>Missed call</span>
-              </div>
-
-              <div className={styles.inquiryRow}>
-                <span className={styles.inquiryLabel}>Treatment</span>
-                <span className={styles.inquiryValue}>
-                  Filler consultation
-                </span>
-              </div>
-
-              <div className={styles.inquiryRow}>
-                <span className={styles.inquiryLabel}>Preferred time</span>
-                <span className={styles.inquiryValue}>
-                  Friday after 4 PM
-                </span>
-              </div>
-
-              <div className={styles.inquiryRow}>
-                <span className={styles.inquiryLabel}>Language</span>
-                <span className={styles.inquiryValue}>
-                  Spanish{' '}
-                  <span className={styles.badgeLang}>ES</span>
-                </span>
-              </div>
-
-              <div className={styles.inquiryRow}>
-                <span className={styles.inquiryLabel}>Patient type</span>
-                <span className={styles.inquiryValue}>New patient</span>
-              </div>
-
-              <div className={styles.inquiryRow}>
-                <span className={styles.inquiryLabel}>Urgency</span>
-                <span className={styles.inquiryValue}>
-                  <span className={`${styles.badge} ${styles.badgeAmber}`}>
-                    Booking request
-                  </span>
-                </span>
-              </div>
-
-              <div className={styles.inquiryRow}>
-                <span className={styles.inquiryLabel}>Status</span>
-                <span className={styles.inquiryValue}>
-                  <span className={`${styles.badge} ${styles.badgeTeal}`}>
-                    Routed to front desk
-                  </span>
-                </span>
-              </div>
-
-              <div className={styles.inquiryRow}>
-                <span className={styles.inquiryLabel}>Escalation</span>
-                <span className={styles.inquiryValue}>
-                  Human review available
-                </span>
-              </div>
+        {/* ── Right Column — Floating Glass Cards ── */}
+        <div className={styles.cardsColumn}>
+          {/* Main Inquiry Card */}
+          <motion.div
+            className={styles.glassCard}
+            variants={cardReveal(0.5)}
+            animate={floatY(8, 5.5)}
+          >
+            <div className={styles.cardHeader}>
+              <span className={styles.cardDot} />
+              <span className={styles.cardLabel}>New Inquiry Captured</span>
             </div>
-          </div>
 
-          {/* Staff summary card — overlapping */}
-          <div className={styles.staffCard} data-reveal data-reveal-delay="600">
-            <div className={styles.staffCardHeader}>
-              <div className={styles.staffCardIcon}>📋</div>
-              <span className={styles.staffCardTitle}>Staff Summary</span>
+            <div className={styles.cardRow}>
+              <span className={styles.cardKey}>Source</span>
+              <span className={styles.cardValue}>Missed call</span>
             </div>
-            <p className={styles.staffCardBody}>
-              New patient asked about filler availability after 4 PM. Spanish
-              intake completed. Preferred time captured. Route to front desk for
-              scheduling review.
+            <div className={styles.cardRow}>
+              <span className={styles.cardKey}>Treatment</span>
+              <span className={styles.cardValue}>Filler consultation</span>
+            </div>
+            <div className={styles.cardRow}>
+              <span className={styles.cardKey}>Language</span>
+              <span className={styles.cardValue}>
+                Spanish{' '}
+                <span className={styles.badge}>ES</span>
+              </span>
+            </div>
+            <div className={styles.cardRow}>
+              <span className={styles.cardKey}>Status</span>
+              <span className={`${styles.cardValue} ${styles.statusValue}`}>
+                Routed to front desk
+              </span>
+            </div>
+          </motion.div>
+
+          {/* Staff Summary Card */}
+          <motion.div
+            className={`${styles.glassCard} ${styles.summaryCard}`}
+            variants={cardReveal(0.8)}
+            animate={floatY(6, 6.5)}
+          >
+            <div className={styles.cardHeader}>
+              <span className={`${styles.cardDot} ${styles.dotGold}`} />
+              <span className={styles.cardLabel}>Staff Summary</span>
+            </div>
+            <p className={styles.summaryText}>
+              Patient called after hours requesting filler consultation in
+              Spanish. Availability preferences captured. Ready for front desk
+              follow-up.
             </p>
-            <div className={styles.staffCardStatus}>
-              <span className={styles.checkIcon}>✓</span>
-              Ready for review
+            <div className={styles.summaryMeta}>
+              <span className={styles.metaTag}>Auto-translated</span>
+              <span className={styles.metaTag}>No escalation needed</span>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

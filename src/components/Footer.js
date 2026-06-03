@@ -3,9 +3,9 @@ import styles from './styles/Footer.module.css';
 
 const NAV_LINKS = [
   { label: 'Demo', href: '#demo' },
-  { label: 'What We Recover', href: '#recover' },
   { label: 'How It Works', href: '#how-it-works' },
-  { label: 'Booking Leak Calculator', href: '#calculator' },
+  { label: 'Workflows', href: '#workflow' },
+  { label: 'Leak Check', href: '#leak-check' },
   { label: 'FAQ', href: '#faq' },
 ];
 
@@ -50,11 +50,7 @@ export default function Footer() {
             <ul className={styles.columnList} role="list">
               {NAV_LINKS.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className={styles.columnLink}
-                    {...(link.placeholder ? { 'data-placeholder': 'true' } : {})}
-                  >
+                  <a href={link.href} className={styles.columnLink}>
                     {link.label}
                   </a>
                 </li>

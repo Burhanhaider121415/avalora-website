@@ -1,361 +1,197 @@
 /* ═══════════════════════════════════════════
-   WhatWeRecover — Module Cards Grid
-   Premium service modules with emerald accents
+   What We Recover — Interactive Module
    ═══════════════════════════════════════════ */
 
 .section {
-  padding: var(--space-4xl) var(--space-lg);
-  background: var(--ivory);
-  position: relative;
-}
-
-.section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--sage), transparent);
-  opacity: 0.25;
+  padding: 7rem 1.5rem;
+  background: #FFFFFF;
 }
 
 .container {
-  max-width: var(--max-width);
+  max-width: 1100px;
   margin: 0 auto;
 }
 
 /* ── Header ── */
-
 .header {
-  max-width: 740px;
-  margin: 0 auto var(--space-3xl);
   text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3.5rem;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #1B6B5A;
+  margin-bottom: 1rem;
+  padding: 0.35rem 1rem;
+  background: rgba(27, 107, 90, 0.06);
+  border: 1px solid rgba(27, 107, 90, 0.12);
+  border-radius: 9999px;
 }
 
 .heading {
   font-family: var(--font-serif);
-  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-  font-weight: 600;
-  color: var(--navy);
-  line-height: 1.25;
-  margin-bottom: var(--space-lg);
-  letter-spacing: -0.01em;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: #1A1A2E;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
 }
 
 .subtext {
   font-family: var(--font-sans);
-  font-size: clamp(0.95rem, 1.4vw, 1.0625rem);
-  color: var(--charcoal);
-  line-height: 1.75;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #3D2B1F;
+  opacity: 0.8;
 }
 
 /* ── Module Grid ── */
-
-.contentWrapper {
-  display: flex;
-  gap: var(--space-2xl);
-  margin-bottom: var(--space-3xl);
-  align-items: flex-start;
-}
-
 .moduleGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columns on desktop to fit mockup column */
-  gap: var(--space-xl);
-  flex: 2;
-  margin-bottom: 0;
-}
-
-.mockupColumn {
-  flex: 1;
-  min-width: 300px;
-  position: sticky;
-  top: 100px;
-}
-
-.mockupSticky {
-  display: flex;
-  flex-direction: column;
+  grid-template-columns: 1fr;
   gap: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
-.mockupCard {
-  background: var(--white);
-  border: 1px solid rgba(197, 165, 114, 0.25);
-  border-radius: var(--radius-lg);
-  padding: 1rem;
-  box-shadow: var(--shadow-md);
-  position: relative;
-  overflow: hidden;
-  transition: transform var(--duration-normal) var(--ease-out);
-}
-
-.mockupCardSecondary {
-  background: var(--white);
-  border: 1px solid rgba(27, 107, 90, 0.15);
-  border-radius: var(--radius-lg);
-  padding: 1rem;
-  box-shadow: var(--shadow-md);
-  position: relative;
-  overflow: hidden;
-  transition: transform var(--duration-normal) var(--ease-out);
-}
-
-.mockupCard:hover, .mockupCardSecondary:hover {
-  transform: translateY(-2px);
-}
-
-.mockupTag {
-  display: inline-block;
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  background: rgba(197, 165, 114, 0.12);
-  color: var(--gold);
-  padding: 0.25rem 0.6rem;
-  border-radius: var(--radius-sm);
-  margin-bottom: 0.75rem;
-}
-
-.mockupTagSecondary {
-  display: inline-block;
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  background: rgba(27, 107, 90, 0.08);
-  color: var(--emerald);
-  padding: 0.25rem 0.6rem;
-  border-radius: var(--radius-sm);
-  margin-bottom: 0.75rem;
-}
-
-.mockupImage {
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius-md);
-  display: block;
+@media (min-width: 768px) {
+  .moduleGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /* ── Module Card ── */
-
 .moduleCard {
-  background: var(--white);
-  border: 1px solid rgba(143, 168, 154, 0.12);
-  border-radius: var(--radius-lg);
+  background: #FAF8F5;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
   padding: 2rem;
   position: relative;
-  transition:
-    transform var(--duration-normal) var(--ease-out),
-    box-shadow var(--duration-normal) var(--ease-out),
-    border-color var(--duration-normal) var(--ease-out);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .moduleCard:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
-  border-color: rgba(27, 107, 90, 0.2);
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.06),
+    0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
-/* Emerald top accent on hover */
-.moduleCard::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: var(--space-xl);
-  right: var(--space-xl);
-  height: 2px;
-  background: var(--emerald);
-  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
-  opacity: 0;
-  transition: opacity var(--duration-normal) var(--ease-out);
+.cardNumber {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: rgba(27, 107, 90, 0.1);
+  line-height: 1;
+  margin-bottom: 1rem;
 }
-
-.moduleCard:hover::before {
-  opacity: 1;
-}
-
-/* ── Card Icon ── */
-
-.cardIcon {
-  width: 56px;
-  height: 56px;
-  border-radius: var(--radius-md);
-  background: linear-gradient(135deg, rgba(27, 107, 90, 0.08), rgba(143, 168, 154, 0.12));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: var(--space-xl);
-  transition: background var(--duration-normal) var(--ease-out);
-}
-
-.moduleCard:hover .cardIcon {
-  background: linear-gradient(135deg, rgba(27, 107, 90, 0.14), rgba(143, 168, 154, 0.18));
-}
-
-.icon {
-  width: 26px;
-  height: 26px;
-  color: var(--emerald);
-  flex-shrink: 0;
-}
-
-/* ── Card Content ── */
 
 .cardTitle {
-  font-family: var(--font-serif);
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--navy);
-  margin-bottom: var(--space-md);
-  line-height: 1.3;
-  letter-spacing: -0.005em;
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1A1A2E;
+  margin-bottom: 0.75rem;
 }
 
 .cardDescription {
   font-family: var(--font-sans);
-  font-size: 1.12rem; /* Increased size for readability (+10-15%) */
-  color: var(--charcoal);
-  line-height: 1.7;
-  margin-bottom: var(--space-lg);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #3D2B1F;
+  margin-bottom: 1rem;
 }
 
 .goodFor {
   font-family: var(--font-sans);
-  font-size: 0.9rem;
-  color: var(--sage);
-  line-height: 1.6;
-  font-style: italic;
-  padding-top: var(--space-md);
-  border-top: 1px solid rgba(143, 168, 154, 0.12);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: rgba(61, 43, 31, 0.6);
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .goodForLabel {
+  font-weight: 700;
+  color: #1B6B5A;
+}
+
+/* ── Toggle Button ── */
+.toggleArea {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0 2rem;
+}
+
+.toggleBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  background: transparent;
+  border: 1px solid rgba(27, 107, 90, 0.25);
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
   font-weight: 600;
-  color: var(--emerald);
-  font-style: normal;
-  letter-spacing: 0.02em;
+  color: #1B6B5A;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 48px;
+}
+
+.toggleBtn:hover {
+  background: rgba(27, 107, 90, 0.05);
+  border-color: #1B6B5A;
+}
+
+.toggleChevron {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.toggleChevronOpen {
+  transform: rotate(180deg);
 }
 
 /* ── Supporting Workflows ── */
-
 .workflowsSection {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-  padding-top: var(--space-2xl);
-  border-top: 1px solid rgba(143, 168, 154, 0.15);
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .workflowsHeading {
-  font-family: var(--font-serif);
-  font-size: clamp(1.125rem, 1.8vw, 1.375rem);
-  font-weight: 500;
-  color: var(--navy);
-  margin-bottom: var(--space-xl);
-  letter-spacing: -0.005em;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(61, 43, 31, 0.4);
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
-.workflowsList {
+.workflowPills {
   display: flex;
   flex-wrap: wrap;
+  gap: 0.5rem;
   justify-content: center;
-  gap: var(--space-sm) var(--space-md);
 }
 
-.workflowItem {
-  font-family: var(--font-sans);
-  font-size: 0.875rem;
-  color: var(--charcoal);
-  background: var(--white);
-  border: 1px solid rgba(143, 168, 154, 0.15);
-  border-radius: var(--radius-full);
-  padding: var(--space-xs) var(--space-lg);
-  line-height: 1.6;
-  transition:
-    border-color var(--duration-fast) var(--ease-out),
-    opacity var(--duration-fast) var(--ease-out);
-}
-
-.workflowItem:hover {
-  border-color: var(--emerald);
-  opacity: 1;
-}
-
-/* Bullet separator dot */
-.workflowItem::before {
-  content: '';
+.workflowPill {
   display: inline-block;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--emerald);
-  margin-right: var(--space-sm);
-  vertical-align: middle;
-  opacity: 0.5;
-}
-
-@media (max-width: 1024px) {
-  .contentWrapper {
-    flex-direction: column;
-  }
-  
-  .moduleGrid {
-    flex: none;
-    width: 100%;
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .mockupColumn {
-    width: 100%;
-    position: static;
-    margin-top: var(--space-2xl);
-  }
-  
-  .mockupSticky {
-    flex-direction: row;
-  }
-  
-  .mockupCard, .mockupCardSecondary {
-    flex: 1;
-  }
-}
-
-@media (max-width: 768px) {
-  .section {
-    padding: var(--space-3xl) var(--space-lg);
-  }
-
-  .moduleGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-lg);
-  }
-
-  .moduleCard {
-    padding: 2rem var(--space-lg);
-  }
-}
-
-@media (max-width: 560px) {
-  .section {
-    padding: var(--space-2xl) var(--space-md);
-  }
-
-  .moduleGrid {
-    grid-template-columns: 1fr;
-    gap: var(--space-md);
-  }
-
-  .mockupSticky {
-    flex-direction: column;
-  }
-
-  .workflowsList {
-    flex-direction: column;
-    align-items: center;
-  }
+  padding: 0.45rem 1rem;
+  background: rgba(27, 107, 90, 0.05);
+  border: 1px solid rgba(27, 107, 90, 0.1);
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #3D2B1F;
 }

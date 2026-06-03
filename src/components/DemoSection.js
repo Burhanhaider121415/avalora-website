@@ -1,170 +1,180 @@
 'use client';
 
-import { useMemo } from 'react';
-import useScrollReveal from '@/hooks/useScrollReveal';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import DemoModal from './DemoModal';
 import styles from './styles/DemoSection.module.css';
 
-/**
- * DemoSection — Premium demo experience with audio/video player
- * and live transcript/handoff preview.
- */
+/* ─── Animation variants ─── */
+const ease = [0.25, 0.1, 0.25, 1];
 
-/* Generate waveform bar heights for visual variety */
-function generateBarHeights(count) {
-  const heights = [];
-  for (let i = 0; i < count; i++) {
-    // Create a natural-looking waveform shape: taller in middle, shorter at edges
-    const position = i / (count - 1);
-    const curve = Math.sin(position * Math.PI);
-    const base = 12;
-    const range = 48;
-    const jitter = Math.sin(i * 2.7) * 8 + Math.cos(i * 1.3) * 6;
-    heights.push(Math.round(base + curve * range + jitter));
-  }
-  return heights;
-}
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-100px' },
+  transition: { duration: 0.8, ease, delay },
+});
 
-const CAPTURED_DETAILS = [
-  { label: 'Treatment interest', value: 'Botox or filler' },
-  { label: 'Patient type', value: 'New patient' },
-  { label: 'Preferred time', value: 'Tomorrow afternoon' },
-  { label: 'Question type', value: 'Availability and consultation request' },
-  { label: 'Next step', value: 'Front desk review' },
-];
+const staggerContainer = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12 } },
+};
+
+const staggerItem = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
+};
 
 export default function DemoSection() {
-  const barHeights = useMemo(() => generateBarHeights(26), []);
-  const sectionRef = useScrollReveal();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section id="demo" className={styles.section} aria-labelledby="demo-heading" ref={sectionRef}>
+    <section className={styles.section} id="demo">
       <div className={styles.container}>
-        {/* ── Section Header ── */}
-        <header className={styles.header}>
-          <h2 id="demo-heading" className={styles.heading} data-reveal>
-            Hear how Avalora handles a real med spa inquiry.
-          </h2>
-          <p className={styles.subtext} data-reveal data-reveal-delay="100">
-            Listen to a calm, clinic-approved intake flow for a high-intent
-            after-hours Botox or filler inquiry — then see the exact summary
-            your front desk receives.
-          </p>
-        </header>
+        {/* Eyebrow */}
+        <motion.span className={styles.eyebrow} {...fadeUp(0)}>
+          Product Experience
+        </motion.span>
 
-        {/* ── Two-Column Grid ── */}
-        <div className={styles.grid}>
-          {/* LEFT — Demo Player */}
-          <div className={styles.playerCard} role="region" aria-label="Demo player" data-reveal data-reveal-delay="200">
-            <div className={styles.playerInner}>
-              <p className={styles.scenarioLabel}>After-hours Botox/filler inquiry</p>
+        {/* Heading */}
+        <motion.h2 className={styles.heading} {...fadeUp(0.1)}>
+          Hear how Avalora handles a real med spa inquiry.
+        </motion.h2>
 
-              {/* Waveform Visualization */}
-              <div className={styles.waveformContainer} aria-hidden="true">
-                {barHeights.map((height, i) => (
-                  <span
-                    key={i}
-                    className={styles.waveBar}
-                    style={{ height: `${height}px`, '--bar-delay': `${i * 0.08}s` }}
-                  />
-                ))}
-              </div>
+        {/* Subtext */}
+        <motion.p className={styles.subtext} {...fadeUp(0.2)}>
+          Listen to a calm, clinic-approved intake flow for a high-intent
+          after-hours Botox or filler inquiry — then see the exact summary your
+          front desk receives.
+        </motion.p>
 
-              {/* Play Button */}
-              <button
-                className={styles.playButton}
-                aria-label="Play demo audio"
-                type="button"
-              >
-                <span className={styles.playIcon} />
-              </button>
-
-              <div className={styles.playerDivider} aria-hidden="true" />
-
-              {/* Placeholder Note */}
-              <p className={styles.placeholderNote}>
-                Full demo experience launching soon.
-              </p>
-
-              {/* Primary CTA */}
-              <a
-                href="#"
-                className={styles.primaryCta}
-                data-placeholder="true"
-                role="button"
-              >
-                Hear the Demo
-              </a>
+        {/* Demo Preview Card */}
+        <motion.div
+          className={styles.demoPreview}
+          onClick={() => setIsModalOpen(true)}
+          role="button"
+          tabIndex={0}
+          aria-label="Play demo: After-hours Botox/filler inquiry"
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              setIsModalOpen(true);
+            }
+          }}
+          {...fadeUp(0.3)}
+        >
+          <Image
+            src="/images/dashboard-ui.png"
+            alt="Avalora dashboard showing patient intake summary"
+            fill
+            className={styles.demoImage}
+            sizes="(max-width: 767px) 100vw, 800px"
+            priority
+          />
+          <div className={styles.playOverlay}>
+            <div className={styles.playBtn}>
+              <div className={styles.playIcon} />
             </div>
+            <span className={styles.previewLabel}>
+              After-hours Botox/filler inquiry
+            </span>
           </div>
+        </motion.div>
 
-          {/* RIGHT — Transcript & Handoff */}
-          <div className={styles.transcriptColumn}>
-            {/* Patient Chat Bubble */}
-            <div className={`${styles.chatBubble} ${styles.patientBubble}`} data-reveal data-reveal-delay="300">
-              <span className={styles.bubbleLabel}>Patient</span>
-              <q>
-                Hi, I wanted to ask about Botox or filler appointments this
-                week. Are you open tomorrow?
-              </q>
-            </div>
-
-            {/* Avalora Response Bubble */}
-            <div className={`${styles.chatBubble} ${styles.avalonBubble}`} data-reveal data-reveal-delay="400">
-              <span className={styles.bubbleLabel}>Avalora</span>
-              <q>
-                I can help collect a few details for the team. Are you a new or
-                returning patient, and do you have a preferred time?
-              </q>
-            </div>
-
-            {/* Captured Details Card */}
-            <div className={styles.detailsCard} data-reveal data-reveal-delay="500">
-              <h3 className={styles.detailsTitle}>Captured Details</h3>
-              <dl className={styles.detailsList}>
-                {CAPTURED_DETAILS.map(({ label, value }) => (
-                  <div key={label} className={styles.detailRow}>
-                    <dt className={styles.detailLabel}>{label}</dt>
-                    <dd className={styles.detailValue}>{value}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-
-            {/* Staff Handoff Card */}
-            <div className={styles.handoffCard} data-reveal data-reveal-delay="600">
-              <h3 className={styles.handoffTitle}>
-                <span className={styles.handoffIcon} aria-hidden="true">
-                  <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 1L15 8L8 15M15 8H1" strokeWidth="2" stroke="white" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+        {/* Floating Preview Cards */}
+        <motion.div
+          className={styles.previewCards}
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-80px' }}
+        >
+          {/* Transcript Preview */}
+          <motion.div className={styles.previewCard} variants={staggerItem}>
+            <div className={styles.previewCardTitle}>Live Transcript</div>
+            <div className={styles.transcript}>
+              <div className={styles.transcriptLine}>
+                <span className={styles.transcriptSpeaker}>Patient</span>
+                <span className={styles.transcriptText}>
+                  Hi, I&rsquo;m calling about Botox for my forehead lines&hellip;
                 </span>
-                Staff Handoff
-              </h3>
-              <p className={styles.handoffContent}>
-                Patient is interested in Botox/filler consultation this week.
-                New patient. Prefers tomorrow afternoon. Please review
-                availability and call back.
-              </p>
+              </div>
+              <div className={styles.transcriptLine}>
+                <span className={`${styles.transcriptSpeaker} ${styles.avalora}`}>
+                  Avalora
+                </span>
+                <span className={styles.transcriptText}>
+                  Of course — I can help. Have you had Botox with us before, or
+                  would this be your first visit?
+                </span>
+              </div>
+              <div className={styles.transcriptLine}>
+                <span className={styles.transcriptSpeaker}>Patient</span>
+                <span className={styles.transcriptText}>
+                  First time at your clinic. I&rsquo;ve had it done before
+                  though.
+                </span>
+              </div>
             </div>
+          </motion.div>
 
-            {/* Secondary CTA */}
-            <a
-              href="#"
-              className={styles.secondaryCta}
-              data-placeholder="true"
-              data-reveal
-              data-reveal-delay="700"
-            >
-              Book a Private Fit Call
-            </a>
-          </div>
-        </div>
+          {/* Staff Handoff Preview */}
+          <motion.div className={styles.previewCard} variants={staggerItem}>
+            <div className={styles.previewCardTitle}>Staff Handoff</div>
+            <div className={styles.handoffList}>
+              <div className={styles.handoffItem}>
+                <span className={styles.handoffDot} />
+                <span className={styles.handoffText}>
+                  <span className={styles.handoffLabel}>Treatment: </span>
+                  Botox — forehead lines
+                </span>
+              </div>
+              <div className={styles.handoffItem}>
+                <span className={styles.handoffDot} />
+                <span className={styles.handoffText}>
+                  <span className={styles.handoffLabel}>History: </span>
+                  Prior Botox experience, new to clinic
+                </span>
+              </div>
+              <div className={styles.handoffItem}>
+                <span className={styles.handoffDot} />
+                <span className={styles.handoffText}>
+                  <span className={styles.handoffLabel}>Intent: </span>
+                  High — ready to schedule
+                </span>
+              </div>
+              <div className={styles.handoffItem}>
+                <span className={styles.handoffDot} />
+                <span className={styles.handoffText}>
+                  <span className={styles.handoffLabel}>Follow-up: </span>
+                  Confirm availability, send intake form
+                </span>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
 
-        {/* ── Microcopy Disclaimer ── */}
-        <p className={styles.microcopy} data-reveal data-reveal-delay="800">
-          Demo examples use simulated or anonymized patient scenarios only.
-        </p>
+        {/* Bottom CTA */}
+        <motion.div className={styles.ctaArea} {...fadeUp(0.5)}>
+          <button
+            className={styles.ctaButton}
+            onClick={() => setIsModalOpen(true)}
+            type="button"
+          >
+            Hear the Demo
+          </button>
+          <span className={styles.microcopy}>
+            Demo examples use simulated or anonymized patient scenarios only.
+          </span>
+        </motion.div>
       </div>
+
+      {/* Demo Modal */}
+      <DemoModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 }
