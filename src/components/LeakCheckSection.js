@@ -17,6 +17,7 @@ export default function LeakCheck() {
   return (
     <section id="leak-check" className={styles.section}>
       <div className={styles.container}>
+        <p className={styles.sectionIntro}>Run your free Leak Check</p>
         <motion.div
           className={styles.card}
           initial={{ opacity: 0, y: 40 }}

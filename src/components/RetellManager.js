@@ -31,22 +31,21 @@ export default function RetellManager() {
       // Widget is ready — stop polling
       clearInterval(poll);
 
-      // ─── Hide vendor branding + customize modal text ───
-      const customizeBranding = () => {
+      // ─── Inject CSS into shadow DOM to PERMANENTLY hide branding ───
+      // This ensures branding never flashes — CSS hides it before paint
+      const styleTag = document.createElement('style');
+      styleTag.textContent = `
+        [class*="brandSubtitle"] { display: none !important; }
+        [class*="poweredBy"] { display: none !important; }
+      `;
+      sr.appendChild(styleTag);
+
+      // ─── Customize button text (Start to call → Start Live Demo) ───
+      const customizeText = () => {
         try {
-          // Hide "Your RetellAI assistant" subtitle
-          const subtitle = sr.querySelector('[class*="brandSubtitle"]');
-          if (subtitle) subtitle.style.display = 'none';
-
-          // Hide "Powered by Retell"
-          const powered = sr.querySelector('[class*="poweredBy"]');
-          if (powered) powered.style.display = 'none';
-
-          // Change "Start to call" button text to "Start Live Demo"
           const allBtns = sr.querySelectorAll('button');
           allBtns.forEach(btn => {
             if (btn.textContent && btn.textContent.trim().includes('Start to call')) {
-              // Find the text span inside
               const spans = btn.querySelectorAll('span');
               spans.forEach(span => {
                 if (span.textContent.trim() === 'Start to call') {
@@ -65,9 +64,8 @@ export default function RetellManager() {
         } catch (e) { /* ignore */ }
       };
 
-      customizeBranding();
-      // Keep customizing in case the widget re-renders
-      const hideInterval = setInterval(customizeBranding, 800);
+      customizeText();
+      const hideInterval = setInterval(customizeText, 800);
 
       // ─── Expose global trigger function ───
       window.triggerRetellWidget = () => {
