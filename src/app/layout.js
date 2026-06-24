@@ -65,7 +65,7 @@ export default function RootLayout({ children }) {
           type="module"
           strategy="afterInteractive"
           data-voice-public-key="public_key_f0c21d7fc2a86f6165b2a"
-          data-voice-agent-id="agent_4ede89fd9d32176954f8b51052"
+          data-voice-agent-id="agent_110629fbb2a27acb5e89f951c9"
           data-title="Hear Avalora in Action"
           data-fab-text="Hear Demo"
           data-color="#123C34"
