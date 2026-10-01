@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function BookingLeakReport() {
   return (
-    <main className={styles.legalPage}>
+    <main id="main-content" className={styles.legalPage}>
       <div className={styles.container}>
         <h1 className={styles.title}>Miami Med Spa Booking Leak Report</h1>
 

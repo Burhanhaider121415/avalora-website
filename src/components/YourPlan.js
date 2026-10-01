@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 import { motion } from 'framer-motion';
 import styles from './styles/YourPlan.module.css';
 
@@ -101,12 +103,12 @@ export default function YourPlan() {
             </div>
 
             <div className={styles.ctaArea}>
-              <a
+              <Link
                 href="/#book-call"
-                className={styles.primaryCTA}
+                className="buttonBook"
               >
                 Book a Private Fit Call
-              </a>
+              </Link>
               <p className={styles.supportLine}>
                 15 minutes. We review your call volume, patient communication
                 flow, bilingual needs, and missed booking opportunities.

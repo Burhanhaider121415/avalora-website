@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from './styles.module.css';
 
 export const metadata = {
@@ -7,9 +8,9 @@ export const metadata = {
 
 export default function CommunicationConsent() {
   return (
-    <main className={styles.legalPage}>
+    <main id="main-content" className={styles.legalPage}>
       <div className={styles.container}>
-        <a href='/' className={styles.backLink}>&larr; Back to Home</a>
+        <Link href='/' className={styles.backLink}>&larr; Back to Home</Link>
         <h1 className={styles.title}>Communication Consent</h1>
 
         <div className={styles.content}>

@@ -37,11 +37,12 @@
   align-items: center;
   flex-shrink: 0;
   z-index: 10;
+  gap: 0.65rem;
 }
 
 .logoImage {
-  height: 36px;
-  width: auto;
+  height: 44px;
+  width: 44px;
   object-fit: contain;
 }
 
@@ -96,35 +97,10 @@
   gap: var(--space-sm);
 }
 
-.ctaPrimary {
-  font-size: var(--fs-sm) !important;
-  padding: 10px 22px !important;
-  background: linear-gradient(135deg, var(--emerald), var(--emerald-deep)) !important;
-  color: var(--white) !important;
-  border: none !important;
-  font-weight: 600 !important;
-  box-shadow: 0 2px 8px rgba(27, 107, 90, 0.2);
-}
 
-.ctaPrimary:hover {
-  box-shadow: 0 4px 16px rgba(27, 107, 90, 0.3);
-  transform: translateY(-1px);
-}
 
-.goldButton {
-  background: linear-gradient(135deg, #d4af37, #aa8000) !important;
-  color: #fff !important;
-  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3) !important;
-}
 
-.goldButton:hover {
-  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.5) !important;
-}
 
-.ctaSecondary {
-  font-size: var(--fs-xs) !important;
-  padding: 10px 20px !important;
-}
 
 /* --- Hamburger Button --- */
 .hamburger {
@@ -374,13 +350,11 @@
     gap: var(--space-md);
   }
 
-  .ctaPrimary {
-    font-size: var(--fs-sm) !important;
-    padding: 10px 26px !important;
+
   }
 
-  .ctaSecondary {
-    font-size: var(--fs-sm) !important;
-    padding: 10px 24px !important;
-  }
-}
+.wordmark { font-family: var(--font-serif); color: var(--deep-teal); font-size: 1.4rem; letter-spacing: 0.1em; }
+.bookButton { font-size: 0.875rem; padding: 0.75rem 1.25rem; }
+.closeMenu { position: absolute; top: 1rem; right: 1.25rem; min-height: 44px; padding: 0.5rem; color: var(--deep-teal); }
+.mobileMenu { background: var(--ivory); overscroll-behavior: contain; height: 100dvh; }
+@media (min-width: 1024px) { .link { padding: 8px 10px; } }

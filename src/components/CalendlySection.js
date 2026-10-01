@@ -26,13 +26,15 @@ export default function CalendlySection() {
         <p className={styles.subtext}>
           Choose a time below to discuss how Avalora can fit into your clinic&apos;s workflow.
         </p>
+        <p className={styles.founderIdentity}><strong>Burhan Haider</strong> · Founder, Avalora<br />Your conversation about workflow and implementation.</p>
         <div className={styles.widgetWrapper}>
           <div
             className="calendly-inline-widget"
             data-url="https://calendly.com/burhanwithavalora?hide_gdpr_banner=1"
-            style={{ minWidth: '320px', height: '700px' }}
+            style={{ minWidth: '100%', height: '700px' }}
           ></div>
         </div>
+        <a className={styles.schedulerLink} href="https://calendly.com/burhanwithavalora" target="_blank" rel="noopener noreferrer">Open the scheduler in a new tab ↗</a>
       </div>
     </section>
   );

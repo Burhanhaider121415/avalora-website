@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from './contact.module.css';
 
 export const metadata = {
@@ -8,7 +9,7 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <main className={styles.main}>
+    <main id="main-content" className={styles.main}>
       <section className={styles.section}>
         <div className={styles.container}>
           <p className={styles.eyebrow}>Contact</p>
@@ -23,9 +24,9 @@ export default function ContactPage() {
           </p>
 
           <div className={styles.actions}>
-            <a href="/#book-call" className={styles.primaryCTA}>
+            <Link href="/#book-call" className="buttonBook">
               Book a Private Fit Call
-            </a>
+            </Link>
             <a
               href="mailto:burhan@theavalora.com"
               className={styles.emailLink}

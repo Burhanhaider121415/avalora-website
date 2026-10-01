@@ -1,4 +1,4 @@
-import Navbar from '@/components/Navbar';
+import FounderNote from '@/components/FounderNote';
 import Hero from '@/components/Hero';
 import DemoSection from '@/components/DemoSection';
 import FrontDeskRelief from '@/components/FrontDeskRelief';
@@ -11,7 +11,6 @@ import LeakCheckSection from '@/components/LeakCheckSection';
 import YourPlan from '@/components/YourPlan';
 import FinalCTA from '@/components/FinalCTA';
 import CalendlySection from '@/components/CalendlySection';
-import Footer from '@/components/Footer';
 
 export const metadata = {
   title: 'Avalora — Bilingual Call & Booking Recovery for Miami Med Spas',
@@ -20,7 +19,7 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <main>
+    <main id="main-content">
       <Hero />
       <DemoSection />
       <FrontDeskRelief />
@@ -31,6 +30,7 @@ export default function Home() {
       <LeakCheckSection />
       <YourPlan />
       <FAQ />
+      <FounderNote />
       <FinalCTA />
       <CalendlySection />
     </main>

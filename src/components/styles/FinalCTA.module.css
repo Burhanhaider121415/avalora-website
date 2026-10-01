@@ -1,11 +1,11 @@
 /* ── Final CTA Section ── */
 
 .section {
-  padding: 8rem 1.5rem;
+  padding: 5.5rem 1.5rem;
   background: linear-gradient(
     165deg,
-    var(--navy, #1A1F36) 0%,
-    var(--emerald-deep, #0F4F42) 100%
+    var(--deep-teal) 0%,
+    #0A2B25 100%
   );
   position: relative;
   overflow: hidden;
@@ -123,47 +123,9 @@
   margin-bottom: 2rem;
 }
 
-.primaryCTA {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--navy, #1A1F36);
-  background: linear-gradient(135deg, var(--gold, #C5A572), var(--gold-light, #D4BC8E));
-  border-radius: var(--radius-full, 9999px);
-  padding: 1.3rem 3.25rem;
-  text-decoration: none;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0 4px 18px rgba(197, 165, 114, 0.25);
-}
 
-.primaryCTA:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(197, 165, 114, 0.3);
-}
 
-.secondaryCTA {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-inter, 'Inter', sans-serif);
-  font-size: 1rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
-  background: transparent;
-  border: 1.5px solid rgba(255, 255, 255, 0.25);
-  border-radius: var(--radius-full, 9999px);
-  padding: 1rem 2.25rem;
-  text-decoration: none;
-  transition: background-color 0.25s ease, border-color 0.25s ease;
-}
 
-.secondaryCTA:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.55);
-}
 
 /* ── Microcopy ── */
 
@@ -178,7 +140,7 @@
 .trustMicrocopy {
   font-family: var(--font-inter, 'Inter', sans-serif);
   font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.8);
   line-height: 1.65;
   margin: 0;
   max-width: 540px;
@@ -211,14 +173,13 @@
     gap: 0.75rem;
   }
 
-  .primaryCTA,
-  .secondaryCTA {
-    width: 100%;
-    justify-content: center;
-  }
 
   .floatingCard1,
   .floatingCard2 {
     display: none;
   }
 }
+
+.ctaGroup :global(.buttonBook) { border-color: rgba(255,248,240,0.4); }
+
+@media (max-width: 600px) { .ctaGroup > * { width: 100%; } }

@@ -46,3 +46,6 @@
     font-size: 1.75rem;
   }
 }
+
+.founderIdentity { color: var(--deep-teal); font-size: 0.9rem; margin: -1.5rem auto 2rem; }
+.schedulerLink { display: inline-block; color: var(--deep-teal); text-decoration: underline; padding: 1rem; margin-top: 0.75rem; }

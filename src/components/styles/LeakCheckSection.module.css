@@ -3,7 +3,7 @@
    ═══════════════════════════════════════════ */
 
 .section {
-  padding: 7rem 1.5rem;
+  padding: clamp(4rem, 6vw, 5.5rem) 1.5rem;
   background: #FAF8F5;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .card {
-  background: linear-gradient(135deg, #0F1B2D 0%, #1A1A2E 50%, #0D4A3A 100%);
+  background: linear-gradient(135deg, #123C34 0%, #0A2B25 100%);
   border-radius: 24px;
   padding: 3.5rem;
   position: relative;
@@ -118,7 +118,7 @@
   font-weight: 700;
   border-radius: 9999px;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow:
     0 6px 20px rgba(27, 107, 90, 0.4),
     0 2px 8px rgba(27, 107, 90, 0.2);
@@ -136,7 +136,7 @@
 .supportLine {
   font-family: var(--font-sans);
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.78);
 }
 
 /* ── Factors Column ── */
@@ -146,7 +146,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.78);
   margin-bottom: 1.5rem;
 }
 
@@ -190,7 +190,7 @@
   text-align: center;
   font-family: var(--font-sans);
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.78);
   margin-top: 2rem;
   position: relative;
   z-index: 1;

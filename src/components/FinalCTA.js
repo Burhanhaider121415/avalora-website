@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 import { useEffect, useRef } from 'react';
 import styles from './styles/FinalCTA.module.css';
 
@@ -51,15 +53,8 @@ export default function FinalCTA() {
         </p>
 
         <div className={`${styles.ctaGroup} ${styles.animate}`}>
-          <button onClick={() => window.triggerRetellWidget?.()} className={styles.primaryCTA}>
-            Hear the Demo
-          </button>
-          <a
-            href="/#book-call"
-            className={styles.secondaryCTA}
-          >
-            Book a Private Fit Call
-          </a>
+          <Link href="/#book-call" className="buttonBook">Book a Private Fit Call</Link>
+          <button onClick={() => window.triggerRetellWidget?.()} className="buttonDemo buttonDemoLight">Hear the Demo</button>
         </div>
 
         <p className={`${styles.microcopy} ${styles.animate}`}>
@@ -68,9 +63,8 @@ export default function FinalCTA() {
         </p>
 
         <p className={`${styles.trustMicrocopy} ${styles.animate}`}>
-          BAA-backed workflows available where protected health information is
-          involved. Call recording, SMS follow-up, and patient handoff rules are
-          configured during onboarding.
+          Consent, recording, data handling, and handoff requirements should be
+          reviewed for your clinic before implementation.
         </p>
       </div>
     </section>

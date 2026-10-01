@@ -86,24 +86,23 @@ const faqGroups = [
       {
         question: 'Is Avalora HIPAA compliant?',
         answer:
-          'Avalora supports HIPAA-aware workflows and BAA-backed deployment where protected health information is involved. Workflows are configured around clinic-approved FAQs, human escalation, structured summaries, and controlled handoff rules.',
+          'HIPAA requirements depend on your clinic’s data flow and deployment. Applicable agreements, vendor documentation, access, and handling requirements need review before any workflow involving protected health information goes live. This website does not establish compliance for your clinic.',
       },
       {
         question: 'Do you sign a Business Associate Agreement?',
         answer:
-          'Yes, where protected health information is involved. During onboarding, Avalora reviews the data flow, vendor chain, storage, routing, access rules, and agreement requirements before launch.',
+          'If your workflow involves protected health information, ask to review required Business Associate Agreements and vendor coverage before launch. Availability and scope need to be confirmed for your deployment.',
       },
       {
         question: 'What about SOC 2?',
         answer:
-          'Avalora can provide vendor security documentation where available. If voice infrastructure is supported by SOC 2-audited vendors, documentation can be reviewed during onboarding.',
+          'Ask to review current vendor security documentation and any applicable audit reports during onboarding. Avalora does not claim SOC 2 certification on this website.',
       },
     ],
   },
 ];
 
 function FAQItem({ item, isOpen, onToggle, globalIndex }) {
-  const contentRef = useRef(null);
 
   return (
     <div
@@ -140,11 +139,11 @@ function FAQItem({ item, isOpen, onToggle, globalIndex }) {
         role="region"
         aria-labelledby={`faq-question-${globalIndex}`}
         className={styles.faqAnswerWrapper}
-        style={{
-          maxHeight: isOpen ? contentRef.current?.scrollHeight + 'px' : '0px',
-        }}
+        aria-hidden={!isOpen}
+        inert={!isOpen}
+        style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
       >
-        <div ref={contentRef} className={styles.faqAnswer}>
+        <div className={styles.faqAnswer}>
           <p>{item.answer}</p>
         </div>
       </div>

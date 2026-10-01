@@ -54,6 +54,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body>
+        <a href="#main-content" className="skipLink">Skip to content</a>
         <AnnouncementBar />
         <Navbar />
         {children}

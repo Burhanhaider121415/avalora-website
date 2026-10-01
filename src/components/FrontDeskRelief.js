@@ -5,12 +5,9 @@ import Image from 'next/image';
 import styles from './styles/FrontDeskRelief.module.css';
 
 const benefits = [
-  'Support patients faster',
-  'Reduce front desk pressure',
-  'Capture overflow and after-hours interest',
-  'Route clean summaries back to staff',
-  'Keep human escalation in place',
-  'Protect the patient experience',
+  'Your team keeps control of the next step',
+  'Clinic-approved information and clear boundaries',
+  'Human escalation when judgment matters',
 ];
 
 export default function FrontDeskRelief() {
@@ -53,23 +50,14 @@ export default function FrontDeskRelief() {
           <h2 className={styles.heading}>
             Your front desk stays human.{' '}
             <span className={styles.headingAccent}>
-              Avalora catches what they miss.
+              Avalora supports the team.
             </span>
           </h2>
 
           <p className={styles.paragraph}>
-            Your receptionist is doing more than answering phones.
-          </p>
-          <p className={styles.paragraph}>
-            She is checking in patients, managing payments, calming nervous
-            clients, updating provider schedules, handling DMs, and still
-            trying to answer every call.
-          </p>
-          <p className={styles.paragraph}>
-            Avalora adds a controlled capture layer around the moments your
-            team cannot reach fast enough: overflow calls, missed calls,
-            after-hours inquiries, repetitive booking questions, and follow-up
-            requests.
+            Your team is welcoming patients, managing schedules, and answering
+            questions. Avalora supports them when calls and inquiries overlap,
+            so they can stay focused on the people in front of them.
           </p>
 
           <p className={styles.listLabel}>Avalora helps your team:</p>
@@ -97,8 +85,7 @@ export default function FrontDeskRelief() {
               This is not receptionist replacement.
             </p>
             <p className={styles.closingText}>
-              It is front desk support for the moments demand moves faster than
-              the team can respond.
+              Your staff stays responsible for patient care, decisions, and follow-up.
             </p>
           </div>
         </motion.div>

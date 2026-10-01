@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 import styles from './styles/Footer.module.css';
 
 const NAV_LINKS = [
@@ -7,10 +9,12 @@ const NAV_LINKS = [
   { label: 'How It Works', href: '/#how-it-works' },
   { label: 'Workflows', href: '/#workflow' },
   { label: 'Leak Check', href: 'https://leakcheck.theavalora.com' },
+  { label: 'Insights', href: '/insights' },
   { label: 'FAQ', href: '/#faq' },
 ];
 
 const LEGAL_LINKS = [
+  { label: 'Trust & Security', href: '/trust-security' },
   { label: 'Privacy Policy', href: '/privacy-policy' },
   { label: 'Terms of Service', href: '/terms-of-service' },
   { label: 'HIPAA & Security', href: '/hipaa-security' },
@@ -89,12 +93,12 @@ export default function Footer() {
           {/* Contact Column */}
           <div className={styles.column}>
             <h4 className={styles.columnTitle}>Contact</h4>
-            <a
+            <Link
               href="/contact"
               className={styles.columnLink}
             >
               Contact
-            </a>
+            </Link>
             <a
               href="mailto:burhan@theavalora.com"
               className={styles.email}

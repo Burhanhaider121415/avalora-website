@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import styles from './styles/Hero.module.css';
@@ -51,7 +53,7 @@ export default function Hero() {
           fill
           style={{ objectFit: 'cover' }}
           priority
-          quality={90}
+          sizes="100vw"
         />
       </div>
 
@@ -72,25 +74,22 @@ export default function Hero() {
           </motion.span>
 
           <motion.h1 className={styles.headline} variants={fadeUp}>
-            Bilingual call and booking recovery for Miami med spas.
+            Call &amp; booking recovery for Miami med spas.
           </motion.h1>
 
           <motion.p className={styles.subheadline} variants={fadeUp}>
-            Avalora supports your front desk by capturing missed calls,
-            after-hours inquiries, English/Spanish patient requests, and booking
-            intent — then routing clean details back to your team.
+            In English and Spanish. Avalora is the recovery layer behind your
+            front desk — capturing missed calls, after-hours inquiries, and booking
+            intent, then routing clean details back to your team.
           </motion.p>
 
           <motion.div className={styles.ctaGroup} variants={fadeUp}>
-            <button
-              className={styles.ctaPrimary}
-              onClick={() => window.triggerRetellWidget?.()}
-            >
+            <Link href="/#book-call" className="buttonBook">
+              Book a Private Fit Call
+            </Link>
+            <button className="buttonDemo buttonDemoLight" onClick={() => window.triggerRetellWidget?.()}>
               Hear the Demo
             </button>
-            <a href="/#book-call" className={styles.ctaSecondary}>
-              Book a Private Fit Call
-            </a>
           </motion.div>
 
           <motion.p className={styles.microcopy} variants={fadeUp}>
@@ -101,11 +100,11 @@ export default function Hero() {
 
         {/* ── Right Column — Floating Glass Cards ── */}
         <div className={styles.cardsColumn}>
+          <p className={styles.exampleLabel}>Illustrative workflow example</p>
           {/* Main Inquiry Card */}
           <motion.div
             className={styles.glassCard}
             variants={cardReveal(0.5)}
-            animate={floatY(8, 5.5)}
           >
             <div className={styles.cardHeader}>
               <span className={styles.cardDot} />
@@ -139,7 +138,6 @@ export default function Hero() {
           <motion.div
             className={`${styles.glassCard} ${styles.summaryCard}`}
             variants={cardReveal(0.8)}
-            animate={floatY(6, 6.5)}
           >
             <div className={styles.cardHeader}>
               <span className={`${styles.cardDot} ${styles.dotGold}`} />

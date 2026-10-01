@@ -25,13 +25,14 @@ export default function DemoSection() {
 
         {/* Heading */}
         <motion.h2 className={styles.heading} {...fadeUp(0.1)}>
-          Hear how Avalora handles a real med spa inquiry.
+          Hear a realistic med spa workflow demo.
         </motion.h2>
 
         {/* Subtext */}
         <motion.p className={styles.subtext} {...fadeUp(0.2)}>
-          Listen to a calm, clinic-approved intake flow for a high-intent
-          after-hours Botox or filler inquiry in English or Spanish.
+          Explore a sample after-hours Botox or filler inquiry in English or
+          Spanish. This is an interactive demo, not a recording of a real
+          patient inquiry or a customer result.
         </motion.p>
 
         {/* Luxury Receptionist & Button Overlay */}
@@ -44,19 +45,20 @@ export default function DemoSection() {
               src="/images/medspa-reception.png" 
               alt="Luxury Med Spa Reception" 
               fill
+              sizes="(max-width: 900px) 100vw, 900px"
               className={styles.receptionImage}
               style={{ objectFit: 'cover' }}
             />
             <div className={styles.overlay}>
               <button
-                className={styles.talkButton}
+                className="buttonDemo buttonDemoLight"
                 onClick={() => {
                   if (window.triggerRetellWidget) window.triggerRetellWidget();
                 }}
                 type="button"
               >
                 <div className={styles.playIcon} />
-                Hear Demo
+                Hear the Demo
               </button>
               <p className={styles.overlayNote}>
                 Sofia can respond in English or Spanish.

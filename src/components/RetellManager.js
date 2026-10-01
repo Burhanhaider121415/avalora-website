@@ -1,94 +1,74 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
+
+const FAB_SELECTOR = 'button[class*="fabBase"]';
 
 export default function RetellManager() {
-  const injectedRef = useRef(false);
+  const [notice, setNotice] = useState('');
 
   useEffect(() => {
-    if (injectedRef.current) return;
-    injectedRef.current = true;
-
-    // The Retell script is already injected via layout.js as a <script id="retell-widget">
-    // The widget creates <div id="retell-widget-root"> with a shadow DOM child
-
-    // Wait for the widget to fully render, then set up trigger + hide branding
+    let poll;
+    let observer;
+    let pendingOpen = false;
     let attempts = 0;
-    const poll = setInterval(() => {
-      attempts++;
-      if (attempts > 120) { clearInterval(poll); return; }
+    let timeout;
 
+    const getWidget = () => {
       const root = document.getElementById('retell-widget-root');
-      if (!root || !root.children[0]) return;
-
-      const widgetEl = root.children[0];
-      const sr = widgetEl.shadowRoot;
-      if (!sr) return;
-
-      const fabBtn = sr.querySelector('button');
-      if (!fabBtn) return;
-
-      // Widget is ready — stop polling
+      return { root, shadow: root?.children[0]?.shadowRoot };
+    };
+    const openWidget = (shadow) => {
+      const button = shadow?.querySelector(FAB_SELECTOR);
+      if (!button) return false;
+      // A repeated invitation should leave an already-open demo open.
+      if (!button.className.includes('fabOpen')) button.click();
+      return true;
+    };
+    const customizeText = (shadow) => {
+      shadow.querySelectorAll('button span').forEach((span) => {
+        if (span.textContent.trim() === 'Start to call') span.textContent = 'Start Live Demo';
+      });
+    };
+    window.triggerRetellWidget = () => {
+      const { shadow } = getWidget();
+      if (openWidget(shadow)) { setNotice(''); return; }
+      pendingOpen = true;
+      setNotice('The demo is loading…');
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        pendingOpen = false;
+        setNotice('The demo could not load. Please refresh and try again, or book a private fit call.');
+      }, 10000);
+    };
+    poll = setInterval(() => {
+      const { root, shadow } = getWidget();
+      attempts += 1;
+      if (!shadow?.querySelector(FAB_SELECTOR)) {
+        if (attempts >= 120) clearInterval(poll);
+        return;
+      }
       clearInterval(poll);
-
-      // ─── Inject CSS into shadow DOM to PERMANENTLY hide branding ───
-      // This ensures branding never flashes — CSS hides it before paint
-      const styleTag = document.createElement('style');
-      styleTag.textContent = `
-        [class*="brandSubtitle"] { display: none !important; }
-        [class*="poweredBy"] { display: none !important; }
+      const style = document.createElement('style');
+      style.textContent = `
+        [class*="brandSubtitle"], [class*="poweredBy"] { display: none !important; }
+        button[class*="fabBase"]:not([class*="fabOpen"]):not([class*="fabActiveCall"]) { display: none !important; }
       `;
-      sr.appendChild(styleTag);
+      shadow.appendChild(style);
+      root.dataset.avaloraReady = 'true';
+      customizeText(shadow);
+      observer = new MutationObserver(() => customizeText(shadow));
+      observer.observe(shadow, { childList: true, subtree: true });
+      if (pendingOpen) { clearTimeout(timeout); pendingOpen = false; openWidget(shadow); setNotice(''); }
+    }, 250);
 
-      // ─── Customize button text (Start to call → Start Live Demo) ───
-      const customizeText = () => {
-        try {
-          const allBtns = sr.querySelectorAll('button');
-          allBtns.forEach(btn => {
-            if (btn.textContent && btn.textContent.trim().includes('Start to call')) {
-              const spans = btn.querySelectorAll('span');
-              spans.forEach(span => {
-                if (span.textContent.trim() === 'Start to call') {
-                  span.textContent = 'Start Live Demo';
-                }
-              });
-              if (spans.length === 0 && btn.childNodes.length > 0) {
-                btn.childNodes.forEach(node => {
-                  if (node.nodeType === 3 && node.textContent.trim() === 'Start to call') {
-                    node.textContent = 'Start Live Demo';
-                  }
-                });
-              }
-            }
-          });
-        } catch (e) { /* ignore */ }
-      };
-
-      customizeText();
-      const hideInterval = setInterval(customizeText, 800);
-
-      // ─── Expose global trigger function ───
-      window.triggerRetellWidget = () => {
-        try {
-          const r = document.getElementById('retell-widget-root');
-          if (!r || !r.children[0]) return;
-          const s = r.children[0].shadowRoot;
-          if (!s) return;
-          const btn = s.querySelector('button');
-          if (btn) {
-            btn.click();
-          }
-        } catch (e) {
-          console.error('Retell trigger error:', e);
-        }
-      };
-
-      // Cleanup on unmount
-      return () => clearInterval(hideInterval);
-    }, 500);
-
-    return () => clearInterval(poll);
+    return () => {
+      clearInterval(poll);
+      clearTimeout(timeout);
+      observer?.disconnect();
+      delete window.triggerRetellWidget;
+    };
   }, []);
 
-  return null;
+  return notice ? <aside className="demoNotice" role="status"><p>{notice}</p><button onClick={() => setNotice('')} aria-label="Dismiss demo status">×</button></aside> : null;
 }

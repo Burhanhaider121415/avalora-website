@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import styles from './styles/Navbar.module.css';
 
@@ -8,11 +9,13 @@ const NAV_LINKS = [
   { label: 'Demo', href: '/#demo' },
   { label: 'How It Works', href: '/#how-it-works' },
   { label: 'Workflows', href: '/#workflow' },
-  { label: 'Leak Check', href: 'https://leakcheck.theavalora.com' },
-  { label: 'FAQ', href: '/#faq' },
+  { label: 'Leak Check', href: '/#leak-check' },
+  { label: 'Insights', href: '/insights' },
 ];
 
 export default function Navbar() {
+  const panelRef = useRef(null);
+  const toggleRef = useRef(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
@@ -41,6 +44,25 @@ export default function Navbar() {
     setIsMobileOpen(false);
   }, []);
 
+  // Keep keyboard navigation within the open drawer, including an explicit close action.
+  useEffect(() => {
+    if (!isMobileOpen) return;
+    const panel = panelRef.current;
+    const items = Array.from(panel.querySelectorAll('a[href], button'));
+    const previous = document.activeElement;
+    items[0]?.focus();
+    const handleKey = (event) => {
+      if (event.key === 'Escape') { event.preventDefault(); closeMobile(); }
+      if (event.key === 'Tab') {
+        const first = items[0], last = items[items.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+      }
+    };
+    panel.addEventListener('keydown', handleKey);
+    return () => { panel.removeEventListener('keydown', handleKey); previous?.focus(); };
+  }, [isMobileOpen, closeMobile]);
+
   const toggleMobile = useCallback(() => {
     setIsMobileOpen((prev) => !prev);
   }, []);
@@ -52,16 +74,17 @@ export default function Navbar() {
     >
       <nav className={styles.nav} aria-label="Main navigation">
         {/* Logo */}
-        <a href="/" className={styles.logo} aria-label="Avalora — Home">
+        <Link href="/" className={styles.logo} aria-label="Avalora — Home">
           <Image
             src="/logo.jpeg"
             alt="Avalora"
-            width={140}
-            height={40}
+            width={44}
+            height={44}
             className={styles.logoImage}
             priority
           />
-        </a>
+          <span className={styles.wordmark} aria-hidden="true">AVALORA</span>
+        </Link>
 
         {/* Desktop Navigation Links */}
         <ul className={styles.links} role="list">
@@ -76,19 +99,17 @@ export default function Navbar() {
 
         {/* Desktop CTAs */}
         <div className={styles.ctas}>
-          <button onClick={() => window.triggerRetellWidget?.()} className={`${styles.ctaPrimary} ${styles.goldButton}`}>
-            Hear the Demo
-          </button>
-          <a
+          <Link
             href="/#book-call"
-            className={`${styles.ctaSecondary}`}
+            className={`buttonBook ${styles.bookButton}`}
           >
-            Book a Private Fit Call
-          </a>
+            Book a Fit Call
+          </Link>
         </div>
 
         {/* Mobile Hamburger */}
         <button
+          ref={toggleRef}
           className={`${styles.hamburger} ${isMobileOpen ? styles.hamburgerOpen : ''}`}
           onClick={toggleMobile}
           aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
@@ -110,6 +131,9 @@ export default function Navbar() {
 
       {/* Mobile Slide-in Panel */}
       <div
+        ref={panelRef}
+        inert={!isMobileOpen}
+        aria-hidden={!isMobileOpen}
         id="mobile-menu"
         className={`${styles.mobileMenu} ${isMobileOpen ? styles.mobileMenuOpen : ''}`}
         role="dialog"
@@ -117,6 +141,7 @@ export default function Navbar() {
         aria-label="Mobile navigation"
       >
         <div className={styles.mobileMenuInner}>
+          <button className={styles.closeMenu} onClick={closeMobile} aria-label="Close menu">Close ×</button>
           <ul className={styles.mobileLinks} role="list">
             {NAV_LINKS.map((link, index) => (
               <li
@@ -136,22 +161,13 @@ export default function Navbar() {
           </ul>
 
           <div className={styles.mobileCtas}>
-            <button
-              onClick={() => {
-                window.triggerRetellWidget?.();
-                closeMobile();
-              }}
-              className={`${styles.mobilePrimaryCta} ${styles.goldButton}`}
-            >
-              Hear the Demo
-            </button>
-            <a
+            <Link
               href="/#book-call"
-              className={styles.mobileSecondaryCta}
+              className="buttonBook"
               onClick={closeMobile}
             >
               Book a Private Fit Call
-            </a>
+            </Link>
           </div>
 
           <div className={styles.mobileContact}>
