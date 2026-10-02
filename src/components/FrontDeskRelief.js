@@ -54,12 +54,6 @@ export default function FrontDeskRelief() {
             </span>
           </h2>
 
-          <p className={styles.paragraph}>
-            Your team is welcoming patients, managing schedules, and answering
-            questions. Avalora supports them when calls and inquiries overlap,
-            so they can stay focused on the people in front of them.
-          </p>
-
           <p className={styles.listLabel}>Avalora helps your team:</p>
           <ul className={styles.benefitsList} role="list">
             {benefits.map((benefit, index) => (

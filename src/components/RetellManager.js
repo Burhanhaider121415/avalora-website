@@ -52,7 +52,14 @@ export default function RetellManager() {
       const style = document.createElement('style');
       style.textContent = `
         [class*="brandSubtitle"], [class*="poweredBy"] { display: none !important; }
-        button[class*="fabBase"]:not([class*="fabOpen"]):not([class*="fabActiveCall"]) { display: none !important; }
+        :host { --color-bg-primary: #fff8f0; --color-primary: #123c34; }
+        button[class*="fabBase"]:not([class*="fabOpen"]):not([class*="fabActiveCall"]) {
+          background: #123c34 !important; color: #fff8f0 !important;
+          border: 1px solid #c8a97d !important;
+        }
+        [class*="fabImage"] { filter: grayscale(1) sepia(0.55); }
+        button:focus-visible { outline: 2px solid #c8a97d !important; outline-offset: 3px; }
+
       `;
       shadow.appendChild(style);
       root.dataset.avaloraReady = 'true';

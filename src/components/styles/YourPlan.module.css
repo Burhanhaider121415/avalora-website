@@ -3,7 +3,7 @@
    ═══════════════════════════════════════════ */
 
 .section {
-  padding: 6rem 1.5rem;
+  padding: clamp(3rem, 5vw, 4rem) 1.5rem;
   background: var(--ivory);
 }
 

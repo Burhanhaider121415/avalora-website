@@ -1,4 +1,4 @@
-.section { padding: 4.5rem 1.5rem; background: var(--ivory); }
+.section { padding: 4rem 1.5rem 2.5rem; background: var(--ivory); }
 .container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
 .copy { display: grid; gap: 1.1rem; color: var(--espresso); }
 .copy h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 600; }
@@ -8,3 +8,6 @@
 .videoSpace p { font-family: var(--font-serif); font-size: 1.4rem; color: var(--deep-teal); }
 .videoLabel, .duration { font-size: 0.8rem; color: var(--charcoal); }
 @media (max-width: 767px) { .section { padding: 3.5rem 1.25rem; } .container { grid-template-columns: 1fr; gap: 2rem; } }
+
+.founderIdentity { display: flex; align-items: center; gap: 1rem; }
+.portrait { width: 88px; height: 88px; object-fit: cover; border-radius: 50%; border: 1px solid var(--champagne); }

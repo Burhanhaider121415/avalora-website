@@ -15,8 +15,8 @@ export default function TermsOfService() {
 
         <div className={styles.content}>
           <p className={styles.disclosure}>
-            The full Terms of Service are being finalized by the Avalora legal and compliance team.
-            This page will be updated with complete legal copy before launch.
+            This is a preliminary outline, not finalized Terms of Service.
+            Service scope and applicable agreements must be confirmed before implementation.
           </p>
 
           <h2>Core Terms</h2>

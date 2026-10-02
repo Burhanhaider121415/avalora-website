@@ -3,7 +3,7 @@ import styles from './styles.module.css';
 
 export const metadata = {
   title: 'HIPAA & Security | Avalora',
-  description: 'Avalora supports HIPAA-aware workflows and BAA-backed deployment for controlled, clinic-approved patient communication.',
+  description: 'Questions to review before deploying clinic communication workflows involving protected health information.',
 };
 
 export default function HIPAASecurity() {
@@ -16,8 +16,8 @@ export default function HIPAASecurity() {
         <div className={styles.content}>
           <p>
             Avalora is designed for controlled, clinic-approved patient communication. Where protected
-            health information is involved, Avalora supports HIPAA-aware workflows and BAA-backed
-            deployment.
+            health information may be involved, required agreements, vendor coverage, and data-handling
+            controls must be confirmed before deployment. This page does not establish HIPAA compliance.
           </p>
           <p>
             Avalora helps clinics capture, qualify, summarize, and route patient inquiries according to the
@@ -34,13 +34,15 @@ export default function HIPAASecurity() {
             requirements, and vendor chain.
           </p>
           <p>
-            Where protected health information is involved, Avalora reviews required Business Associate
-            Agreement coverage and vendor documentation before PHI-bearing workflows go live.
+            Where protected health information is involved, ask to review required Business Associate
+            Agreements and current vendor documentation before any workflow goes live. Availability
+            and scope must be confirmed for the specific deployment.
           </p>
           <p>
             Avalora may use trusted third-party vendors for voice infrastructure, telephony, workflow
             automation, storage, alerts, dashboards, and integrations. Vendor security documentation and
-            BAA coverage are reviewed based on the workflow being deployed.
+            BAA coverage need to be reviewed for the workflow being proposed; this page does not verify
+            vendor agreements or audit status.
           </p>
 
           <h2>What Avalora does not do</h2>

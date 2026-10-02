@@ -3,7 +3,7 @@
    ═══════════════════════════════════════════ */
 
 .section {
-  padding: clamp(4rem, 6vw, 5.5rem) 1.5rem;
+  padding: clamp(3rem, 5vw, 4rem) 1.5rem 2.5rem;
   background: #FAF8F5;
 }
 
@@ -111,8 +111,9 @@
   align-items: center;
   justify-content: center;
   padding: 1.1rem 2.5rem;
-  background: #1B6B5A;
-  color: #FFFFFF;
+  background: var(--ivory-warm);
+  color: var(--deep-teal);
+  border: 1px solid var(--champagne);
   font-family: var(--font-sans);
   font-size: 1.05rem;
   font-weight: 700;
@@ -126,7 +127,7 @@
 }
 
 .primaryCTA:hover {
-  background: #0D4A3A;
+  background: #EDE2CF;
   transform: translateY(-2px);
   box-shadow:
     0 8px 28px rgba(27, 107, 90, 0.5),

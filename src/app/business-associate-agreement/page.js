@@ -3,7 +3,7 @@ import styles from './styles.module.css';
 
 export const metadata = {
   title: 'Business Associate Agreement | Avalora',
-  description: 'Information about Avalora BAA-backed workflows for clinics handling protected health information.',
+  description: 'Business Associate Agreement requirements to confirm before workflows involving protected health information.',
 };
 
 export default function BusinessAssociateAgreement() {
@@ -19,11 +19,12 @@ export default function BusinessAssociateAgreement() {
             clinic&apos;s patient communication process.
           </p>
           <p>
-            For PHI-bearing deployments, Avalora can support a Business Associate Agreement before
-            those workflows go live.
+            For workflows involving protected health information, required Business Associate Agreements
+            and vendor coverage must be reviewed before launch. Availability and scope need to be
+            confirmed for the proposed deployment; this page is not an executed agreement.
           </p>
 
-          <h2>A BAA-backed Avalora deployment is designed to define:</h2>
+          <h2>Required agreements should define:</h2>
           <ul>
             <li>permitted uses and disclosures of PHI</li>
             <li>clinic-approved communication boundaries</li>

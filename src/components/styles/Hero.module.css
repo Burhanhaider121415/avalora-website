@@ -25,9 +25,9 @@
   z-index: 1;
   background: linear-gradient(
     100deg,
-    rgba(24, 32, 29, 0.72) 0%,
-    rgba(39, 37, 29, 0.48) 60%,
-    rgba(18, 60, 52, 0.48) 100%
+    rgba(17, 28, 27, 0.68) 0%,
+    rgba(35, 32, 28, 0.29) 60%,
+    rgba(18, 60, 52, 0.26) 100%
   );
 }
 
@@ -59,7 +59,7 @@
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #c8a97d;
+  color: #dfc39c;
 }
 
 .headline {
@@ -75,7 +75,7 @@
   font-family: var(--font-sans);
   font-size: 1.1rem;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.95);
   max-width: 520px;
   margin: 0;
 }
@@ -95,7 +95,7 @@
 .microcopy {
   font-family: var(--font-sans);
   font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.95);
   margin: 0;
 }
 
@@ -136,8 +136,8 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #4ade80;
-  box-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
+  background: #a5cec0;
+  box-shadow: 0 0 8px rgba(165, 206, 192, 0.2);
   flex-shrink: 0;
 }
 
@@ -152,7 +152,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.88);
 }
 
 /* Card rows */
@@ -185,7 +185,7 @@
 }
 
 .statusValue {
-  color: #4ade80;
+  color: #a5cec0;
 }
 
 .badge {
@@ -199,7 +199,7 @@
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: #c8a97d;
+  color: #dfc39c;
 }
 
 /* Summary card specifics */
@@ -207,7 +207,7 @@
   font-family: var(--font-sans);
   font-size: 0.88rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.9);
   margin: 0 0 1rem;
 }
 
@@ -226,7 +226,7 @@
   font-family: var(--font-sans);
   font-size: 0.72rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /* ═══════════════════════════════════════════
@@ -281,3 +281,8 @@
 .summaryCard { animation-delay: -2s; }
 @keyframes gentleFloat { 0%, 100% { translate: 0 0; } 50% { translate: 0 -6px; } }
 @media (prefers-reduced-motion: reduce) { .copyColumn > *, .glassCard { opacity: 1 !important; transform: none !important; animation: none; } }
+
+.bgImage img { filter: brightness(1.08) saturate(0.92); }
+.microcopy, .exampleLabel { color: #fff8f0; text-shadow: 0 1px 4px rgba(0,0,0,0.65); }
+
+@media (max-width: 767px) { .overlay { background: linear-gradient(180deg, rgba(17,28,27,0.65), rgba(35,32,28,0.57)); } }

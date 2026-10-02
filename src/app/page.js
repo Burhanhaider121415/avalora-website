@@ -9,7 +9,6 @@ import WorkflowModule from '@/components/WorkflowModule';
 import FAQ from '@/components/FAQ';
 import LeakCheckSection from '@/components/LeakCheckSection';
 import YourPlan from '@/components/YourPlan';
-import FinalCTA from '@/components/FinalCTA';
 import CalendlySection from '@/components/CalendlySection';
 
 export const metadata = {
@@ -31,7 +30,6 @@ export default function Home() {
       <YourPlan />
       <FAQ />
       <FounderNote />
-      <FinalCTA />
       <CalendlySection />
     </main>
   );

@@ -41,8 +41,12 @@
 }
 
 .logoImage {
-  height: 44px;
-  width: 44px;
+  position: absolute;
+  height: 126px;
+  width: 126px;
+  max-width: none;
+  left: -36px;
+  top: -31px;
   object-fit: contain;
 }
 
@@ -353,8 +357,11 @@
 
   }
 
-.wordmark { font-family: var(--font-serif); color: var(--deep-teal); font-size: 1.4rem; letter-spacing: 0.1em; }
+.wordmark { font-family: var(--font-serif); color: var(--deep-teal); font-size: 1.65rem; letter-spacing: 0.1em; }
 .bookButton { font-size: 0.875rem; padding: 0.75rem 1.25rem; }
 .closeMenu { position: absolute; top: 1rem; right: 1.25rem; min-height: 44px; padding: 0.5rem; color: var(--deep-teal); }
 .mobileMenu { background: var(--ivory); overscroll-behavior: contain; height: 100dvh; }
 @media (min-width: 1024px) { .link { padding: 8px 10px; } }
+
+.logoIcon { position: relative; display: block; width: 54px; height: 48px; overflow: hidden; flex-shrink: 0; }
+@media (min-width: 1024px) and (max-width: 1279px) { .nav { padding: 0 1.5rem; } .link { padding: 8px; } .bookButton { padding: 0.75rem 1rem; } }

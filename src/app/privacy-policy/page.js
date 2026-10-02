@@ -15,8 +15,8 @@ export default function PrivacyPolicy() {
 
         <div className={styles.content}>
           <p className={styles.disclosure}>
-            The full Privacy Policy is being finalized by the Avalora legal and compliance team.
-            This page will be updated with complete legal copy before launch.
+            This is a preliminary policy outline, not a finalized Privacy Policy.
+            Contact Avalora for current information about data handling before sharing sensitive information.
           </p>
 
           <h2>Scope</h2>
@@ -43,10 +43,9 @@ export default function PrivacyPolicy() {
           </ul>
 
           <p className={styles.disclosure}>
-            Where Avalora processes protected health information on behalf of a clinic, Avalora does
-            so under the applicable agreement with that clinic, including a Business Associate
-            Agreement where required. Avalora does not use PHI for advertising or unrelated
-            marketing purposes.
+            Before any workflow involving protected health information is considered, the clinic should
+            confirm applicable agreements, vendor coverage, permitted uses, access, retention, and
+            deletion requirements. This outline does not establish those arrangements or policies.
           </p>
 
           <div className={styles.contact}>

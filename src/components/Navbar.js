@@ -75,14 +75,14 @@ export default function Navbar() {
       <nav className={styles.nav} aria-label="Main navigation">
         {/* Logo */}
         <Link href="/" className={styles.logo} aria-label="Avalora — Home">
-          <Image
+          <span className={styles.logoIcon} aria-hidden="true"><Image
             src="/logo.jpeg"
-            alt="Avalora"
-            width={44}
-            height={44}
+            alt=""
+            width={126}
+            height={126}
             className={styles.logoImage}
             priority
-          />
+          /></span>
           <span className={styles.wordmark} aria-hidden="true">AVALORA</span>
         </Link>
 
@@ -103,7 +103,7 @@ export default function Navbar() {
             href="/#book-call"
             className={`buttonBook ${styles.bookButton}`}
           >
-            Book a Fit Call
+            Book a Private Fit Call
           </Link>
         </div>
 
