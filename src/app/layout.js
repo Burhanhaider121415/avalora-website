@@ -3,6 +3,7 @@ import "./globals.css";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BackToTop from "@/components/BackToTop";
 import RetellManager from "@/components/RetellManager";
 import Script from "next/script";
 
@@ -53,12 +54,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <body>
+      <body id="page-top">
         <a href="#main-content" className="skipLink">Skip to content</a>
         <AnnouncementBar />
         <Navbar />
         {children}
         <Footer />
+        <BackToTop />
         <RetellManager />
         <Script
           id="retell-widget"

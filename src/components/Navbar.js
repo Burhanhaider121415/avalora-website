@@ -67,6 +67,17 @@ export default function Navbar() {
     setIsMobileOpen((prev) => !prev);
   }, []);
 
+  const returnHome = (event) => {
+    // Next's same-route navigation can keep the current scroll position.
+    // Preserve normal link behavior for other pages and modified clicks.
+    if (window.location.pathname !== '/' || event.button !== 0 ||
+        event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    closeMobile();
+    window.history.replaceState(window.history.state, '', '/#page-top');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
   return (
     <header
       className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}
@@ -74,7 +85,7 @@ export default function Navbar() {
     >
       <nav className={styles.nav} aria-label="Main navigation">
         {/* Logo */}
-        <Link href="/" className={styles.logo} aria-label="Avalora — Home">
+        <Link href="/#page-top" className={styles.logo} aria-label="Avalora — Back to home and top" onClick={returnHome}>
           <span className={styles.logoIcon} aria-hidden="true"><Image
             src="/logo.jpeg"
             alt=""

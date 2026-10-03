@@ -117,11 +117,12 @@
   border-radius: 20px;
   padding: 1.6rem 1.8rem;
   color: #fff;
+  width: 100%;
   max-width: 380px;
 }
 
 .summaryCard {
-  margin-left: 2.5rem;
+  margin-left: 0;
 }
 
 /* Card header */
@@ -278,7 +279,7 @@
 .exampleLabel { color: var(--ivory-warm); font-size: 0.75rem; letter-spacing: 0.04em; }
 
 .glassCard { animation: gentleFloat 6s ease-in-out infinite; }
-.summaryCard { animation-delay: -2s; }
+
 @keyframes gentleFloat { 0%, 100% { translate: 0 0; } 50% { translate: 0 -6px; } }
 @media (prefers-reduced-motion: reduce) { .copyColumn > *, .glassCard { opacity: 1 !important; transform: none !important; animation: none; } }
 

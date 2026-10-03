@@ -1,0 +1,20 @@
+.button {
+  position: fixed;
+  left: max(1rem, env(safe-area-inset-left));
+  bottom: calc(1rem + env(safe-area-inset-bottom));
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--gold-light);
+  border-radius: 50%;
+  background: var(--deep-teal);
+  color: var(--ivory);
+  box-shadow: var(--shadow-float);
+  touch-action: manipulation;
+}
+
+.button[hidden] { display: none; }
+.button:hover { background: var(--deep-teal-dark, #0c2923); }
+.button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
